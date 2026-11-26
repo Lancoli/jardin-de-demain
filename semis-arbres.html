@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide complet du semis d'arbres : glands, châtaignes, aubépine. Protocoles de stratification, semis et avantages." />
+  <title>Semer ses arbres — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 32px; }
+    h3 { font-size: 26px; margin: 0 0 16px; }
+    h4 { font-size: 16px; margin: 20px 0 12px; text-transform: uppercase; letter-spacing: .08em; color: #d6f900; font-weight: 600; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+      line-height: 1.7;
+    }
+
+    .intro strong {
+      color: #f5f4ef;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #30343a;
+    }
+
+    .species-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .species-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-left: 4px solid #d6f900;
+      border-radius: 8px;
+      padding: 32px;
+      transition: all .2s;
+    }
+
+    .species-card:hover {
+      border-left-color: #d6f900;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    .species-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      margin: 0 0 8px;
+      color: #f5f4ef;
+    }
+
+    .species-latin {
+      font-size: 14px;
+      color: #718078;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .protocol-step {
+      background: #15191f;
+      border: 1px solid #30343a;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .protocol-step h4 {
+      margin-top: 0;
+    }
+
+    .protocol-step p {
+      margin: 0;
+      color: #718078;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .protocol-step ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: #718078;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background: #15191f;
+      border: 1px solid #30343a;
+      border-left: 4px solid #ffb347;
+      padding: 20px;
+      border-radius: 6px;
+      margin: 24px 0;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #718078;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #ffb347;
+    }
+
+    .advantages {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 32px;
+      margin-top: 40px;
+    }
+
+    .advantages h3 {
+      color: #d6f900;
+      margin-bottom: 24px;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .advantage-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .advantage-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(214, 249, 0, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .advantage-content h4 {
+      font-size: 15px;
+      margin: 0 0 8px;
+      color: #f5f4ef;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+
+    .advantage-content p {
+      margin: 0;
+      color: #718078;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .timeline {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .timeline-date {
+      flex-shrink: 0;
+      width: 120px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #d6f900;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: #718078;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .species-grid, .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-item {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .timeline-date {
+        width: auto;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="semis-arbres.html">Semer ses arbres</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Technique privilégiée</p>
+      <h1>Semer ses arbres</h1>
+      <p class="lead">Glands, châtaignes, aubépine : protocoles complets pour des arbres plus résilients grâce à l'enracinement profond dès le semis.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Pourquoi semer plutôt que planter :</strong></p>
+        <p>Le semis direct produit des arbres avec un pivot racinaire profond et puissant, contrairement aux plants en conteneur dont les racines tournent en spirale. Ces racines profondes permettent d'accéder aux réserves d'eau en profondeur, créant des arbres beaucoup plus résistants à la sécheresse et aux vents violents.</p>
+        <p><strong>Patience nécessaire :</strong> Un arbre semé met 2-3 ans de plus qu'un plant acheté pour atteindre la même taille, mais sa longévité et sa résilience sont supérieures. Idéal pour projets à long terme et régénération naturelle.</p>
+      </div>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Protocoles par espèce</h2>
+        </div>
+
+        <div class="species-grid">
+          <!-- Chêne -->
+          <article class="species-card">
+            <h3 class="species-name">Chêne (glands)</h3>
+            <p class="species-latin">Quercus robur, Q. petraea, Q. pubescens</p>
+
+            <div class="protocol-step">
+              <h4>1. Récolte</h4>
+              <p><strong>Période :</strong> Septembre-novembre</p>
+              <p><strong>Sélection :</strong> Glands tombés naturellement, lourds, sans trous de vers. Test de flottaison : éliminer ceux qui flottent (vides). Un bon gland coule.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>2. Stratification</h4>
+              <p><strong>Durée :</strong> 60-90 jours au froid (0-5°C)</p>
+              <p><strong>Méthode :</strong> Mélanger avec sable humide (3:1) dans un sac perforé. Placer au réfrigérateur ou enterrer en extérieur. Vérifier l'humidité chaque semaine.</p>
+              <p><strong>Alternative :</strong> Semis direct en automne (novembre), la nature fait la stratification.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>3. Semis</h4>
+              <p><strong>Période :</strong> Mars-avril (après stratification) ou novembre (direct)</p>
+              <p><strong>Profondeur :</strong> 3-5cm, gland couché sur le côté</p>
+              <p><strong>Espacement :</strong> 30-50cm entre glands</p>
+              <p><strong>Protection :</strong> Grillage anti-rongeurs obligatoire (mulots, écureuils). Paillage léger.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>4. Première année</h4>
+              <ul>
+                <li>Germination : 3-6 semaines après semis printanier</li>
+                <li>Croissance aérienne lente (15-30cm), pivot plonge profond</li>
+                <li>Arrosage si sécheresse (1x/semaine)</li>
+                <li>Désherbage manuel autour du plant</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <p><strong>Attention :</strong> Le chêne développe un pivot de 40-60cm la première année. Ne JAMAIS transplanter après cette première année, les racines seraient détruites.</p>
+            </div>
+          </article>
+
+          <!-- Châtaignier -->
+          <article class="species-card">
+            <h3 class="species-name">Châtaignier</h3>
+            <p class="species-latin">Castanea sativa</p>
+
+            <div class="protocol-step">
+              <h4>1. Récolte</h4>
+              <p><strong>Période :</strong> Octobre-novembre</p>
+              <p><strong>Sélection :</strong> Châtaignes tombées, pleines, brillantes. Test d'eau : doivent couler. Éliminer celles qui flottent ou ont des trous.</p>
+              <p><strong>Conservation :</strong> Trempage 24h puis stratification immédiate (se dessèchent vite).</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>2. Stratification</h4>
+              <p><strong>Durée :</strong> 90-120 jours au froid (2-5°C)</p>
+              <p><strong>Méthode :</strong> Sable humide (pas détrempé) en caissette perforée. Humidité constante cruciale. Vérifier toutes les 2 semaines.</p>
+              <p><strong>Semis direct possible :</strong> Novembre, en sol frais et bien drainé.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>3. Semis</h4>
+              <p><strong>Période :</strong> Mars-avril ou novembre</p>
+              <p><strong>Profondeur :</strong> 5-8cm, face plate vers le bas</p>
+              <p><strong>Sol :</strong> Acide à neutre (pH 5-6.5), impératif. Éviter calcaire.</p>
+              <p><strong>Espacement :</strong> 50cm minimum</p>
+              <p><strong>Protection :</strong> Grillage anti-rongeurs + mulots. Sangliers si zone rurale.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>4. Première année</h4>
+              <ul>
+                <li>Germination rapide : 2-4 semaines</li>
+                <li>Croissance vigoureuse : 40-80cm première année</li>
+                <li>Arrosage régulier première année (sol frais)</li>
+                <li>Paillage important pour conserver humidité</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <p><strong>Sol acide obligatoire :</strong> Le châtaignier ne tolère pas le calcaire. Tester le pH avant semis. Si sol calcaire, préférer chêne pubescent ou amandier.</p>
+            </div>
+          </article>
+
+          <!-- Aubépine -->
+          <article class="species-card">
+            <h3 class="species-name">Aubépine</h3>
+            <p class="species-latin">Crataegus monogyna, C. laevigata</p>
+
+            <div class="protocol-step">
+              <h4>1. Récolte</h4>
+              <p><strong>Période :</strong> Septembre-octobre</p>
+              <p><strong>Sélection :</strong> Cenelles (baies) bien mûres, rouge vif à brun. Récolter sur plusieurs arbres pour diversité génétique.</p>
+              <p><strong>Nettoyage :</strong> Écraser légèrement pour extraire noyaux. Rincer à l'eau.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>2. Stratification longue</h4>
+              <p><strong>Durée :</strong> 18-24 mois ! (double stratification)</p>
+              <p><strong>Année 1 (chaud) :</strong> 3-4 mois à 15-20°C dans sable humide (ramollir enveloppe)</p>
+              <p><strong>Année 1-2 (froid) :</strong> 12-18 mois à 2-5°C (lever dormance embryon)</p>
+              <p><strong>Alternative rapide :</strong> Scarification mécanique (limer enveloppe) + 4-6 mois au froid. Plus risqué.</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>3. Semis</h4>
+              <p><strong>Période :</strong> Printemps après stratification complète</p>
+              <p><strong>Profondeur :</strong> 1-2cm, noyaux très durs</p>
+              <p><strong>Sol :</strong> Tous types, même calcaire</p>
+              <p><strong>Espacement :</strong> 20cm (haie) à 2m (isolé)</p>
+            </div>
+
+            <div class="protocol-step">
+              <h4>4. Première année</h4>
+              <ul>
+                <li>Germination lente et échelonnée (certains germent année suivante)</li>
+                <li>Croissance modérée : 20-40cm</li>
+                <li>Très rustique, peu d'entretien</li>
+                <li>Idéal pour haies défensives et biodiversité</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <p><strong>Stratification très longue :</strong> L'aubépine demande patience. Récolter en année N pour germination en année N+2. Prévoir à l'avance. Alternative : acheter plants 2 ans.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="advantages">
+          <h3>Pourquoi semer : les avantages</h3>
+          <div class="advantages-grid">
+            <div class="advantage-item">
+              <div class="advantage-icon">🌱</div>
+              <div class="advantage-content">
+                <h4>Enracinement profond</h4>
+                <p>Pivot central de 50-80cm dès la première année. Accès aux réserves d'eau en profondeur. Résilience sécheresse et vents.</p>
+              </div>
+            </div>
+
+            <div class="advantage-item">
+              <div class="advantage-icon">💰</div>
+              <div class="advantage-content">
+                <h4>Économique</h4>
+                <p>Gratuit (récolte locale) ou quasi-gratuit. Un seul arbre produit des centaines de graines. Idéal pour grands projets.</p>
+              </div>
+            </div>
+
+            <div class="advantage-item">
+              <div class="advantage-icon">🧬</div>
+              <div class="advantage-content">
+                <h4>Génétique locale</h4>
+                <p>Arbres adaptés au climat et sol locaux. Meilleure survie et croissance que variétés lointaines.</p>
+              </div>
+            </div>
+
+            <div class="advantage-item">
+              <div class="advantage-icon">🌳</div>
+              <div class="advantage-content">
+                <h4>Longévité supérieure</h4>
+                <p>Arbres plus sains, système racinaire naturel non perturbé. Durée de vie potentiellement plus longue.</p>
+              </div>
+            </div>
+
+            <div class="advantage-item">
+              <div class="advantage-icon">🦔</div>
+              <div class="advantage-content">
+                <h4>Régénération naturelle</h4>
+                <p>Méthode proche de la nature. Favorise biodiversité, champignons mycorhiziens, équilibre écosystème.</p>
+              </div>
+            </div>
+
+            <div class="advantage-item">
+              <div class="advantage-icon">📚</div>
+              <div class="advantage-content">
+                <h4>Pédagogique</h4>
+                <p>Observer germination et croissance complète. Idéal pour projets éducatifs, enfants, transmission savoir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Calendrier récapitulatif</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Sept-Nov</div>
+            <div class="timeline-content">
+              <p><strong>Récolte des graines</strong> : Glands, châtaignes (oct-nov), cenelles d'aubépine (sept-oct). Sélection, test de flottaison, nettoyage.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Novembre</div>
+            <div class="timeline-content">
+              <p><strong>Option : semis direct</strong> pour chêne et châtaignier. La nature fait la stratification froide. Protection anti-rongeurs obligatoire.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Nov-Mars</div>
+            <div class="timeline-content">
+              <p><strong>Stratification froide</strong> : Chêne (60-90j), châtaignier (90-120j). Aubépine : phase chaude puis longue phase froide (18-24 mois total).</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Mars-Avril</div>
+            <div class="timeline-content">
+              <p><strong>Semis printanier</strong> après stratification. Chêne 3-5cm, châtaignier 5-8cm, aubépine 1-2cm. Grillage anti-rongeurs.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Avril-Oct</div>
+            <div class="timeline-content">
+              <p><strong>Première saison</strong> : Germination (3-6 semaines), croissance, arrosage si sécheresse, désherbage, surveillance rongeurs.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Année 2-3</div>
+            <div class="timeline-content">
+              <p><strong>Établissement</strong> : Racines profondes, croissance accélérée. Réduire arrosage progressivement. Ne plus transplanter (pivot).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+</body>
+</html>

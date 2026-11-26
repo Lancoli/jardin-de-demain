@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Notice et calculateur : combien de temps prévoir pour installer et entretenir un jardin selon sa surface." />
+  <title>Temps au jardin — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.02;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(46px, 7vw, 90px); max-width: 900px; margin: 18px auto; }
+    h1 em, h2 em { color: #d6f900; font-style: italic; }
+    .hero p { max-width: 600px; margin: 25px auto 0; color: #718078; font-size: 18px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #d6f900;
+      color: #263000;
+      padding: 16px 25px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 30px;
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+    section { padding: 95px 0; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: clamp(42px, 6vw, 70px); margin-top: 12px; }
+    .section-head p { color: #718078; margin-top: 18px; }
+
+    /* Notice */
+    .notice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .notice-card {
+      border: 1px solid #30343a;
+      background: linear-gradient(135deg, #171b20, #101318);
+      padding: 28px;
+    }
+
+    .notice-wide { grid-column: 1 / -1; }
+    .result-title { color: #d6f900; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; margin-top: 32px; }
+    .result-title + .result-list { margin-top: 12px; }
+
+    .notice-card .number { color: #d6f900; font-size: 12px; letter-spacing: .1em; }
+    .notice-card h3 { font-size: 34px; margin: 7px 0 14px; }
+    .notice-card p { color: #718078; margin: 0 0 12px; font-size: 14px; }
+    .notice-card p:last-child { margin-bottom: 0; }
+
+    .ratio {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid #30343a;
+    }
+
+    .ratio strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 1;
+      color: #d6f900;
+      white-space: nowrap;
+    }
+
+    .ratio span { color: #718078; font-size: 14px; }
+
+    .tasks { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; padding: 0; list-style: none; }
+    .tasks li {
+      border: 1px solid #30343a;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: #718078;
+    }
+
+    /* Calculateur */
+    .calc {
+      border-top: 1px solid #30343a;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .calc-form, .calc-results {
+      border: 1px solid #30343a;
+      background: #111419;
+      padding: 28px;
+    }
+
+    .field { margin-bottom: 24px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 14px; margin-bottom: 4px; }
+    .field .hint { color: #718078; font-size: 12px; margin-bottom: 10px; }
+
+    .input-row { display: flex; align-items: center; gap: 12px; }
+    .input-row input[type="range"] { flex: 1; min-width: 0; accent-color: #d6f900; }
+
+    .input-unit {
+      display: flex;
+      align-items: center;
+      flex: 0 0 118px;
+      border: 1px solid #30343a;
+      border-radius: 6px;
+      background: #15191f;
+    }
+
+    .input-unit:focus-within { border-color: #d6f900; }
+
+    .input-unit input {
+      width: 100%;
+      min-width: 0;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: #f5f4ef;
+      font: inherit;
+      font-size: 16px;
+      padding: 10px 0 10px 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .input-unit span { color: #718078; font-size: 12px; padding: 0 12px 0 6px; white-space: nowrap; }
+
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .presets button {
+      background: transparent;
+      border: 1px solid #30343a;
+      border-radius: 999px;
+      color: #718078;
+      font: inherit;
+      font-size: 12px;
+      padding: 5px 12px;
+      cursor: pointer;
+    }
+    .presets button:hover { border-color: #d6f900; color: #d6f900; }
+
+    .result-main {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .result-block { padding-top: 18px; border-top: 2px solid #d6f900; }
+    .result-block .label { color: #d6f900; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .result-block .value {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 6vw, 64px);
+      line-height: 1.05;
+      margin: 8px 0 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .result-block .sub { color: #718078; font-size: 14px; }
+
+    .result-list { margin: 28px 0 0; padding: 0; list-style: none; }
+    .result-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid #30343a;
+      font-size: 14px;
+    }
+    .result-list li span:first-child { color: #718078; }
+    .result-list li span:last-child { font-variant-numeric: tabular-nums; text-align: right; }
+
+    .verdict {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border: 1px solid #30343a;
+      border-left: 3px solid #d6f900;
+      background: #15191f;
+      font-size: 14px;
+    }
+    .verdict.warn { border-left-color: #ffb347; }
+    .verdict strong { display: block; font-size: 16px; margin-bottom: 4px; }
+    .verdict p { margin: 0; color: #718078; }
+
+    .footnote { color: #718078; font-size: 12px; max-width: 760px; margin: 28px auto 0; text-align: center; }
+
+    footer {
+      border-top: 1px solid #30343a;
+      padding: 25px 0;
+      color: #718078;
+      font-size: 12px;
+    }
+
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 760px) {
+      .container { width: min(calc(100% - 28px), 1280px); }
+      nav { display: none; }
+      .hero { padding: 65px 10px; }
+      section { padding: 65px 0; }
+      .notice-grid, .calc-grid, .result-main { grid-template-columns: 1fr; }
+      .notice-card, .calc-form, .calc-results { padding: 20px; }
+      .notice-card h3 { font-size: 30px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="jardin-de-demain-prototype.html"><span class="brand-mark"></span>Jardin de demain</a>
+      <nav aria-label="Navigation principale">
+        <a href="temps-au-jardin.html">Temps au jardin</a>
+        <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+        <a href="arbres-secheresse.html">Arbres résistants</a>
+        <a href="pharmacopee.html">Pharmacopée</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Outil · Temps de travail au jardin</div>
+      <h1>Combien de temps pour <em>mon jardin ?</em></h1>
+      <p>Avant de choisir une surface, vérifier qu'elle correspond au temps que l'on peut réellement lui consacrer.</p>
+      <a class="button" href="#calculateur">Faire le calcul ↓</a>
+    </section>
+
+    <section id="notice">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">01 · Notice</div>
+          <h2>Deux temps à <em>anticiper.</em></h2>
+          <p>Un jardin demande du temps deux fois : une fois pour l'installer, puis chaque année pour s'en occuper.</p>
+        </div>
+
+        <div class="notice-grid">
+          <article class="notice-card">
+            <div class="number">01</div>
+            <h3>L'installation</h3>
+            <p>Préparer une surface de culture prend du temps, souvent en janvier-février, à un moment où l'on n'a pas très envie d'être dehors.</p>
+            <ul class="tasks">
+              <li>Retirer le gazon</li>
+              <li>Passer la grelinette</li>
+              <li>Chercher les paillages</li>
+              <li>Petites préparations</li>
+            </ul>
+            <div class="ratio"><strong>1 h / m²</strong><span>une seule fois, à la création</span></div>
+            <p>10 m² représentent environ 10 heures de travail ; 100 m², environ 100 heures. D'où l'intérêt de commencer petit.</p>
+          </article>
+
+          <article class="notice-card">
+            <div class="number">02</div>
+            <h3>L'entretien annuel</h3>
+            <p>Une fois le jardin prêt, il faut s'en occuper tout au long de la saison. La récolte représente à elle seule environ la moitié de ce temps.</p>
+            <ul class="tasks">
+              <li>Semer</li>
+              <li>Planter</li>
+              <li>Entretenir</li>
+              <li>Gérer les ravageurs</li>
+              <li>Récolter</li>
+            </ul>
+            <div class="ratio"><strong>2 h / m²</strong><span>par an, en plein air</span></div>
+            <div class="ratio"><strong>3 h / m²</strong><span>par an, sous serre</span></div>
+            <p>Ce temps peut se regrouper un jour sur deux ou le week-end, mais le jardin demande souvent un passage presque quotidien : récolter, observer, vérifier que rien ne souffre de la soif ou des ravageurs.</p>
+          </article>
+
+          <article class="notice-card notice-wide">
+            <div class="number">03</div>
+            <h3>Ce que le jardin peut nourrir</h3>
+            <p>Dernier repère pour dimensionner la surface : la quantité de nourriture dont on a besoin. Rapportée au rendement du jardin, elle indique quelle part de l'alimentation la surface envisagée peut couvrir, et combien de temps demanderait une surface plus ambitieuse.</p>
+            <div class="ratio"><strong>800 kg</strong><span>de nourriture par adulte et par an, tous aliments confondus</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculateur" class="calc">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">02 · Calculateur</div>
+          <h2>La surface face au <em>temps disponible.</em></h2>
+          <p>Indiquer les surfaces envisagées pour obtenir le temps d'installation et le temps d'entretien à prévoir.</p>
+        </div>
+
+        <div class="calc-grid">
+          <form class="calc-form" id="calc" onsubmit="return false">
+            <div class="field">
+              <label for="dehors">Surface cultivée en plein air</label>
+              <div class="hint">2 h par m² et par an</div>
+              <div class="input-row">
+                <input type="range" id="dehors-range" min="0" max="300" step="1" value="100" aria-label="Surface en plein air" />
+                <div class="input-unit"><input type="number" id="dehors" min="0" step="1" value="100" inputmode="decimal" /><span>m²</span></div>
+              </div>
+              <div class="presets" aria-label="Surfaces types">
+                <button type="button" data-dehors="10">10 m²</button>
+                <button type="button" data-dehors="50">50 m²</button>
+                <button type="button" data-dehors="100">100 m²</button>
+                <button type="button" data-dehors="200">200 m²</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="serre">Surface cultivée sous serre</label>
+              <div class="hint">3 h par m² et par an</div>
+              <div class="input-row">
+                <input type="range" id="serre-range" min="0" max="100" step="1" value="0" aria-label="Surface sous serre" />
+                <div class="input-unit"><input type="number" id="serre" min="0" step="1" value="0" inputmode="decimal" /><span>m²</span></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="mois">Durée de la saison active</label>
+              <div class="hint">Période sur laquelle se répartit l'entretien</div>
+              <div class="input-row">
+                <input type="range" id="mois-range" min="4" max="12" step="1" value="9" aria-label="Durée de la saison active" />
+                <div class="input-unit"><input type="number" id="mois" min="1" max="12" step="1" value="9" inputmode="numeric" /><span>mois</span></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="dispo">Temps que je peux y consacrer</label>
+              <div class="hint">Facultatif — pour vérifier si la surface est tenable</div>
+              <div class="input-row">
+                <input type="range" id="dispo-range" min="0" max="20" step="0.5" value="0" aria-label="Temps disponible par semaine" />
+                <div class="input-unit"><input type="number" id="dispo" min="0" step="0.5" value="0" inputmode="decimal" /><span>h / sem.</span></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="adultes">Adultes à nourrir</label>
+              <div class="hint">800 kg de nourriture par adulte et par an</div>
+              <div class="input-row">
+                <input type="range" id="adultes-range" min="1" max="8" step="1" value="1" aria-label="Nombre d'adultes à nourrir" />
+                <div class="input-unit"><input type="number" id="adultes" min="1" step="1" value="1" inputmode="numeric" /><span>adultes</span></div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rendement">Rendement moyen du jardin</label>
+              <div class="hint">Hypothèse à ajuster selon vos cultures et votre expérience</div>
+              <div class="input-row">
+                <input type="range" id="rendement-range" min="0.5" max="10" step="0.5" value="4" aria-label="Rendement moyen du jardin" />
+                <div class="input-unit"><input type="number" id="rendement" min="0" step="0.5" value="4" inputmode="decimal" /><span>kg / m²</span></div>
+              </div>
+            </div>
+          </form>
+
+          <div class="calc-results" aria-live="polite">
+            <div class="result-main">
+              <div class="result-block">
+                <div class="label">Installation · une fois</div>
+                <div class="value" id="r-install">—</div>
+                <div class="sub" id="r-install-sub"></div>
+              </div>
+              <div class="result-block">
+                <div class="label">Entretien · chaque année</div>
+                <div class="value" id="r-annuel">—</div>
+                <div class="sub" id="r-annuel-sub"></div>
+              </div>
+            </div>
+
+            <ul class="result-list">
+              <li><span>Par jour, pendant la saison</span><span id="r-jour">—</span></li>
+              <li><span>Par semaine, pendant la saison</span><span id="r-semaine">—</span></li>
+              <li><span>Dont récolte (environ la moitié)</span><span id="r-recolte">—</span></li>
+              <li><span>Plein air</span><span id="r-dehors">—</span></li>
+              <li><span>Sous serre</span><span id="r-serre">—</span></li>
+            </ul>
+
+            <div class="result-title">Production · chaque année</div>
+            <ul class="result-list">
+              <li><span>Récolte estimée</span><span id="r-production">—</span></li>
+              <li><span>Besoins du foyer</span><span id="r-besoins">—</span></li>
+              <li><span>Part des besoins couverte</span><span id="r-part">—</span></li>
+              <li><span>Surface pour tout couvrir</span><span id="r-surface-auto">—</span></li>
+              <li><span>Entretien de cette surface</span><span id="r-temps-auto">—</span></li>
+            </ul>
+
+            <div class="verdict" id="verdict" hidden>
+              <strong id="verdict-title"></strong>
+              <p id="verdict-text"></p>
+            </div>
+          </div>
+        </div>
+
+        <p class="footnote">Ordres de grandeur indicatifs : le temps réel varie selon le sol, les cultures, l'équipement et l'expérience. L'installation est comptée à 1 h par m², serre comprise, et répartie ici sur huit semaines (janvier-février). Les 800 kg par adulte couvrent toute l'alimentation, y compris ce qu'un potager ne produit pas ; le rendement est une hypothèse à ajuster.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© Jardin de demain</span>
+      <span>Mentions légales · RGPD · Contact</span>
+    </div>
+  </footer>
+
+  <script>
+    // Ratios de la notice
+    const H_INSTALL_M2 = 1;      // heures par m², une fois
+    const H_DEHORS_M2 = 2;       // heures par m² et par an, plein air
+    const H_SERRE_M2 = 3;        // heures par m² et par an, sous serre
+    const PART_RECOLTE = 0.5;
+    const SEMAINES_INSTALL = 8;  // janvier-février
+    const JOURS_PAR_MOIS = 365 / 12;
+    const KG_PAR_ADULTE = 800;   // kg de nourriture par adulte et par an
+
+    const $ = (id) => document.getElementById(id);
+    const fields = ["dehors", "serre", "mois", "dispo", "adultes", "rendement"];
+
+    const num = (id) => {
+      const v = parseFloat($(id).value.replace(",", "."));
+      return Number.isFinite(v) && v > 0 ? v : 0;
+    };
+
+    const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
+    const nf1 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
+
+    const heures = (h) => nf.format(Math.round(h)) + " h";
+
+    // Durée courte : « 45 min », « 1 h 05 »
+    function duree(h) {
+      const total = Math.round(h * 60);
+      if (total < 60) return total + " min";
+      const hh = Math.floor(total / 60);
+      const mm = total % 60;
+      return mm === 0 ? hh + " h" : hh + " h " + String(mm).padStart(2, "0");
+    }
+
+    function calculer() {
+      const dehors = num("dehors");
+      const serre = num("serre");
+      const mois = Math.min(Math.max(num("mois"), 1), 12);
+      const dispo = num("dispo");
+
+      const surface = dehors + serre;
+      const install = surface * H_INSTALL_M2;
+      const hDehors = dehors * H_DEHORS_M2;
+      const hSerre = serre * H_SERRE_M2;
+      const annuel = hDehors + hSerre;
+
+      const jours = mois * JOURS_PAR_MOIS;
+      const parJour = annuel / jours;
+      const parSemaine = parJour * 7;
+
+      $("r-install").textContent = heures(install);
+      $("r-install-sub").textContent = surface > 0
+        ? "soit " + duree(install / SEMAINES_INSTALL) + " par semaine sur " + SEMAINES_INSTALL + " semaines"
+        : "";
+      $("r-annuel").textContent = heures(annuel);
+      $("r-annuel-sub").textContent = surface > 0
+        ? "pour " + nf1.format(surface) + " m² cultivés"
+        : "";
+
+      $("r-jour").textContent = surface > 0 ? duree(parJour) : "—";
+      $("r-semaine").textContent = surface > 0 ? duree(parSemaine) : "—";
+      $("r-recolte").textContent = surface > 0 ? heures(annuel * PART_RECOLTE) + " par an" : "—";
+      $("r-dehors").textContent = nf1.format(dehors) + " m² · " + heures(hDehors);
+      $("r-serre").textContent = nf1.format(serre) + " m² · " + heures(hSerre);
+
+      // Production, à rendement identique en plein air et sous serre
+      const adultes = Math.max(num("adultes"), 1);
+      const rendement = num("rendement");
+      const besoins = adultes * KG_PAR_ADULTE;
+      const production = surface * rendement;
+      $("r-production").textContent = nf.format(Math.round(production)) + " kg";
+      $("r-besoins").textContent = nf.format(besoins) + " kg";
+      $("r-part").textContent = nf.format(Math.round(production / besoins * 100)) + " %";
+      if (rendement > 0) {
+        const surfaceAuto = besoins / rendement;
+        // Même proportion plein air / serre que la surface saisie
+        const hParM2 = surface > 0 ? annuel / surface : H_DEHORS_M2;
+        const annuelAuto = surfaceAuto * hParM2;
+        $("r-surface-auto").textContent = nf.format(Math.ceil(surfaceAuto)) + " m²";
+        $("r-temps-auto").textContent = heures(annuelAuto) + " par an · " + duree(annuelAuto / jours) + " par jour";
+      } else {
+        $("r-surface-auto").textContent = "—";
+        $("r-temps-auto").textContent = "—";
+      }
+
+      const verdict = $("verdict");
+      if (dispo > 0 && surface > 0) {
+        // Surface tenable, à proportion plein air / serre constante
+        const tenable = surface * (dispo / parSemaine);
+        const ok = dispo >= parSemaine;
+        verdict.hidden = false;
+        verdict.classList.toggle("warn", !ok);
+        $("verdict-title").textContent = ok
+          ? "Cette surface correspond à votre temps disponible."
+          : "Cette surface dépasse votre temps disponible.";
+        $("verdict-text").textContent = ok
+          ? "Il faut " + duree(parSemaine) + " par semaine et vous disposez de " + duree(dispo) + ". Avec ce temps, vous pourriez entretenir jusqu'à environ " + nf.format(Math.floor(tenable)) + " m²."
+          : "Il faut " + duree(parSemaine) + " par semaine et vous disposez de " + duree(dispo) + ". Avec ce temps, visez plutôt environ " + nf.format(Math.floor(tenable)) + " m² pour commencer.";
+      } else {
+        verdict.hidden = true;
+      }
+    }
+
+    // Synchronisation curseur ↔ champ numérique
+    fields.forEach((id) => {
+      const input = $(id);
+      const range = $(id + "-range");
+      input.addEventListener("input", () => { range.value = num(id); calculer(); });
+      range.addEventListener("input", () => { input.value = range.value; calculer(); });
+    });
+
+    document.querySelectorAll("[data-dehors]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        $("dehors").value = btn.dataset.dehors;
+        $("dehors-range").value = btn.dataset.dehors;
+        calculer();
+      });
+    });
+
+    calculer();
+  </script>
+    <!-- retours:debut --><script src="retours/retours-config.js"></script><script src="retours/retours.js" defer></script><!-- retours:fin -->
+</body>
+</html>

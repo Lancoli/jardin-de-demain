@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Plantes nurses pour protéger les jeunes arbres : liste complète des espèces qui créent de l'ombre durant les premières années." />
+  <title>Plantes nurses pour jeunes arbres — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 24px; }
+    h3 { font-size: 22px; margin: 0 0 12px; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+    }
+
+    .intro strong {
+      color: #f5f4ef;
+    }
+
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      background: #111419;
+      border: 1px solid #30343a;
+      color: #718078;
+      padding: 10px 20px;
+      border-radius: 24px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover {
+      border-color: #d6f900;
+      color: #d6f900;
+    }
+
+    .filter-btn.active {
+      background: #d6f900;
+      border-color: #d6f900;
+      color: #0b0d10;
+      font-weight: 600;
+    }
+
+    .plants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .plant-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 28px;
+      transition: all .2s;
+      position: relative;
+    }
+
+    .plant-card:hover {
+      border-color: #d6f900;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    .plant-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin: 0 0 6px;
+      color: #f5f4ef;
+    }
+
+    .plant-latin {
+      font-size: 13px;
+      color: #718078;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .plant-property {
+      margin: 10px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .plant-property-label {
+      color: #718078;
+      min-width: 100px;
+      font-size: 13px;
+    }
+
+    .plant-property-value {
+      color: #f5f4ef;
+    }
+
+    .plant-note {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #30343a;
+      font-size: 14px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    .plant-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .plant-tag {
+      background: #15191f;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #718078;
+    }
+
+    .plant-tag.type-arbuste { border-left: 3px solid #7bc96f; }
+    .plant-tag.type-vivace { border-left: 3px solid #64b4ff; }
+    .plant-tag.type-graminee { border-left: 3px solid #d6f900; }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .plants-grid {
+        grid-template-columns: 1fr;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="plantes-nurses.html">Plantes nurses</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Technique de plantation</p>
+      <h1>Plantes nurses pour jeunes arbres</h1>
+      <p class="lead">Protéger les jeunes arbres fruitiers de la sécheresse et des canicules en créant de l'ombre durant leurs premières années de croissance.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Pourquoi des plantes nurses :</strong></p>
+        <p>Les jeunes arbres fruitiers sont vulnérables durant leurs 2-3 premières années, notamment face aux canicules et à la sécheresse. Les plantes nurses créent un microclimat protecteur en apportant de l'ombre légère, réduisant l'évapotranspiration et protégeant du soleil direct aux heures les plus chaudes.</p>
+        <p><strong>Comment les utiliser :</strong> Planter à 1-2m du jeune arbre, côté sud ou sud-ouest. Les supprimer ou tailler progressivement à partir de la 3e année quand l'arbre est bien établi.</p>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="tous">Tous</button>
+        <button class="filter-btn" data-filter="arbuste">Arbustes</button>
+        <button class="filter-btn" data-filter="vivace">Vivaces</button>
+        <button class="filter-btn" data-filter="graminee">Graminées</button>
+      </div>
+
+      <div class="plants-grid" id="plants"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+
+  <script>
+    const plantes = [
+      {
+        type: 'arbuste',
+        nom: 'Sureau noir',
+        latin: 'Sambucus nigra',
+        hauteur: '2-3m en 2 ans',
+        eau: 'Modérée',
+        exposition: 'Mi-ombre à soleil',
+        sol: 'Tous types, frais',
+        note: 'Croissance très rapide, feuillage dense créant une bonne ombre. Floraison et fructification comestibles. Supporte bien la taille. Se bouture facilement. Idéal en haie temporaire.',
+        tags: ['Croissance rapide', 'Comestible', 'Bouturage facile']
+      },
+      {
+        type: 'arbuste',
+        nom: 'Argousier',
+        latin: 'Hippophae rhamnoides',
+        hauteur: '1.5-2m en 2 ans',
+        eau: 'Faible à modérée',
+        exposition: 'Plein soleil',
+        sol: 'Pauvre, drainant, sableux',
+        note: 'Très résistant à la sécheresse, feuillage argenté léger. Fruits riches en vitamine C. Fixateur d\'azote qui enrichit le sol. Supporte les sols pauvres. Épineux, attention lors de la suppression.',
+        tags: ['Sécheresse', 'Fixateur azote', 'Sol pauvre']
+      },
+      {
+        type: 'arbuste',
+        nom: 'Lavande papillon',
+        latin: 'Lavandula stoechas',
+        hauteur: '0.8-1.2m en 1 an',
+        eau: 'Faible',
+        exposition: 'Plein soleil',
+        sol: 'Drainant, calcaire',
+        note: 'Parfaite pour climat sec et chaud. Floraison longue attirant les pollinisateurs. Ombre légère adaptée aux jeunes plants. Peu concurrentielle pour l\'eau. Aromatique et décorative.',
+        tags: ['Sécheresse', 'Pollinisateurs', 'Aromatique']
+      },
+      {
+        type: 'arbuste',
+        nom: 'Caryopteris',
+        latin: 'Caryopteris x clandonensis',
+        hauteur: '1-1.5m en 1 an',
+        eau: 'Faible à modérée',
+        exposition: 'Plein soleil',
+        sol: 'Drainant, calcaire toléré',
+        note: 'Arbuste caduc à floraison bleue tardive (août-septembre). Feuillage aromatique. Très mellifère. Résiste bien à la sécheresse une fois installé. Taille facile pour contrôler la hauteur.',
+        tags: ['Sécheresse', 'Mellifère', 'Floraison tardive']
+      },
+      {
+        type: 'vivace',
+        nom: 'Consoude',
+        latin: 'Symphytum officinale',
+        hauteur: '0.8-1.2m',
+        eau: 'Modérée',
+        exposition: 'Mi-ombre à soleil',
+        sol: 'Profond, riche',
+        note: 'Racines profondes qui remontent les nutriments. Feuillage dense créant de l\'ombre au sol. Excellent paillage après coupe. Mellifère. Disparaît en hiver, laissant place à l\'arbre. Attention : envahissante.',
+        tags: ['Nutriments', 'Paillage', 'Mellifère']
+      },
+      {
+        type: 'vivace',
+        nom: 'Grande ortie',
+        latin: 'Urtica dioica',
+        hauteur: '1-1.5m',
+        eau: 'Modérée',
+        exposition: 'Mi-ombre',
+        sol: 'Riche, azote',
+        note: 'Indicateur de sol riche. Feuillage dense protecteur. Disparaît en hiver. Excellente pour purin fertilisant. Attire auxiliaires. Se contrôle par fauchage régulier. Urticante mais utile.',
+        tags: ['Indicatrice sol', 'Purin', 'Auxiliaires']
+      },
+      {
+        type: 'vivace',
+        nom: 'Rhubarbe',
+        latin: 'Rheum rhabarbarum',
+        hauteur: '1-1.5m (feuillage)',
+        eau: 'Modérée à élevée',
+        exposition: 'Mi-ombre à soleil',
+        sol: 'Profond, riche, frais',
+        note: 'Très grandes feuilles créant une ombre dense. Pétioles comestibles. Vivace robuste demandant peu d\'entretien. Feuillage caduc laissant place en hiver. Préfère les sols frais.',
+        tags: ['Ombre dense', 'Comestible', 'Grandes feuilles']
+      },
+      {
+        type: 'vivace',
+        nom: 'Hosta géant',
+        latin: 'Hosta sieboldiana',
+        hauteur: '0.6-1m',
+        eau: 'Modérée',
+        exposition: 'Mi-ombre',
+        sol: 'Frais, riche',
+        note: 'Très grandes feuilles bleutées. Parfait en sous-bois clair. Disparaît en hiver. Peu concurrentiel pour les racines. Craint le soleil direct et la sécheresse. Préfère les situations fraîches.',
+        tags: ['Mi-ombre', 'Grandes feuilles', 'Sol frais']
+      },
+      {
+        type: 'graminee',
+        nom: 'Miscanthus',
+        latin: 'Miscanthus sinensis',
+        hauteur: '1.5-2m en 1 an',
+        eau: 'Modérée',
+        exposition: 'Plein soleil',
+        sol: 'Tous types, drainant',
+        note: 'Croissance rapide au printemps. Port en touffe dense. Feuillage persistant l\'hiver (peut rester pour protection hivernale). Peu concurrentiel. Floraison décorative en fin d\'été.',
+        tags: ['Croissance rapide', 'Port touffe', 'Peu concurrentiel']
+      },
+      {
+        type: 'graminee',
+        nom: 'Panic érigé',
+        latin: 'Panicum virgatum',
+        hauteur: '1-1.8m',
+        eau: 'Faible à modérée',
+        exposition: 'Plein soleil',
+        sol: 'Tous types, drainant',
+        note: 'Graminée indigène très résistante à la sécheresse. Port dressé léger. Floraison vaporeuse. Feuillage caduc. Très peu exigeante. Idéale en climat sec. Peu de concurrence racinaire.',
+        tags: ['Sécheresse', 'Indigène', 'Sol pauvre']
+      },
+      {
+        type: 'arbuste',
+        nom: 'Eleagnus',
+        latin: 'Elaeagnus x ebbingei',
+        hauteur: '2-3m en 2-3 ans',
+        eau: 'Faible',
+        exposition: 'Soleil à mi-ombre',
+        sol: 'Tous types, drainant',
+        note: 'Persistant, croissance rapide. Feuillage argenté dessous. Très résistant à la sécheresse. Fixateur d\'azote enrichissant le sol. Floraison parfumée en automne. Peu d\'entretien.',
+        tags: ['Persistant', 'Fixateur azote', 'Sécheresse']
+      },
+      {
+        type: 'arbuste',
+        nom: 'Troène de Californie',
+        latin: 'Ligustrum ovalifolium',
+        hauteur: '1.5-2m en 1 an',
+        eau: 'Faible à modérée',
+        exposition: 'Soleil à ombre',
+        sol: 'Tous types',
+        note: 'Très rustique et adaptable. Croissance rapide. Semi-persistant. Supporte très bien la taille. Floraison mellifère. Baies toxiques. Idéal en haie temporaire, facile à supprimer ensuite.',
+        tags: ['Adaptable', 'Croissance rapide', 'Mellifère']
+      }
+    ];
+
+    const container = document.getElementById('plants');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function renderPlants(filter = 'tous') {
+      container.innerHTML = '';
+      const filtered = filter === 'tous' ? plantes : plantes.filter(p => p.type === filter);
+
+      filtered.forEach(plante => {
+        const card = document.createElement('article');
+        card.className = 'plant-card';
+        card.setAttribute('data-type', plante.type);
+
+        card.innerHTML = `
+          <h3 class="plant-name">${plante.nom}</h3>
+          <p class="plant-latin">${plante.latin}</p>
+
+          <div class="plant-property">
+            <span class="plant-property-label">Hauteur</span>
+            <span class="plant-property-value">${plante.hauteur}</span>
+          </div>
+          <div class="plant-property">
+            <span class="plant-property-label">Besoin en eau</span>
+            <span class="plant-property-value">${plante.eau}</span>
+          </div>
+          <div class="plant-property">
+            <span class="plant-property-label">Exposition</span>
+            <span class="plant-property-value">${plante.exposition}</span>
+          </div>
+          <div class="plant-property">
+            <span class="plant-property-label">Sol</span>
+            <span class="plant-property-value">${plante.sol}</span>
+          </div>
+
+          <div class="plant-note">${plante.note}</div>
+
+          <div class="plant-tags">
+            <span class="plant-tag type-${plante.type}">${plante.type.charAt(0).toUpperCase() + plante.type.slice(1)}</span>
+            ${plante.tags.map(tag => `<span class="plant-tag">${tag}</span>`).join('')}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPlants(btn.dataset.filter);
+      });
+    });
+
+    renderPlants();
+  </script>
+</body>
+</html>

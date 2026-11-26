@@ -1,0 +1,128 @@
+{
+  "projet": "JardinDeDemain",
+  "but": "Des guides pour jardiner face au climat qui change (projet associatif / engagé).",
+  "cibles": [],
+  "jalons": [
+    {
+      "niveau": "N0",
+      "horizon": "2026-11-27",
+      "decide": "proposé",
+      "ouvert": true
+    },
+    {
+      "niveau": "N1",
+      "horizon": "2027-01-31",
+      "decide": "proposé",
+      "ouvert": false
+    }
+  ],
+  "criteres": [],
+  "exceptions": [],
+  "todo": [
+    {
+      "id": "auto-git",
+      "texte": "N0 · dépôt git propre (rien en attente de commit)",
+      "pour": "git",
+      "preuve": "2 fichier(s) non commité(s)",
+      "fait": false,
+      "auto": true
+    },
+    {
+      "id": "auto-github",
+      "texte": "N0 · sur GitHub, à jour (origin, 0 commit non poussé)",
+      "pour": "github",
+      "preuve": "pas de remote origin",
+      "fait": false,
+      "auto": true
+    },
+    {
+      "id": "auto-readme",
+      "texte": "N0 · README : ce que c'est, comment le lancer (≥ 300 caractères)",
+      "pour": "readme",
+      "preuve": "README.md absent",
+      "fait": true,
+      "auto": true,
+      "fait_le": "2026-11-26T18:18:25.661Z"
+    }
+  ],
+  "etat": {
+    "date": "2026-11-26T18:20:26.123Z",
+    "niveau": null,
+    "prochain": "N0",
+    "bloque": [
+      "git",
+      "github"
+    ],
+    "humain": {},
+    "criteres": {
+      "git": {
+        "ok": false,
+        "preuve": "2 fichier(s) non commité(s)"
+      },
+      "github": {
+        "ok": false,
+        "preuve": "pas de remote origin"
+      },
+      "readme": {
+        "ok": true,
+        "preuve": "827 caractères"
+      },
+      "conforme": {
+        "ok": true,
+        "preuve": "6 vérifications"
+      },
+      "liens": {
+        "ok": true,
+        "preuve": "79 références"
+      },
+      "console": {
+        "ok": true,
+        "preuve": "11 page(s) sans erreur"
+      },
+      "mobile": {
+        "ok": true,
+        "preuve": "11 page(s) à 375 px"
+      },
+      "remplissage": {
+        "ok": true,
+        "preuve": "11 page(s)"
+      },
+      "meta": {
+        "ok": false,
+        "preuve": "11/11 page(s) incomplète(s) — arbres-secheresse.html : favicon, og:image"
+      },
+      "lighthouse": {
+        "ok": null,
+        "preuve": "outil pas encore installé"
+      },
+      "a11y": {
+        "ok": null,
+        "preuve": "outil pas encore installé"
+      },
+      "mentions": {
+        "ok": null,
+        "preuve": "à valider par toi"
+      },
+      "en-ligne": {
+        "ok": null,
+        "preuve": "pas encore d'adresse publique"
+      },
+      "e2e": {
+        "ok": null,
+        "preuve": "scénario à écrire"
+      },
+      "audience": {
+        "ok": null,
+        "preuve": "à valider par toi"
+      },
+      "surveillance": {
+        "ok": null,
+        "preuve": "à valider par toi"
+      },
+      "sauvegarde": {
+        "ok": null,
+        "preuve": "à valider par toi"
+      }
+    }
+  }
+}

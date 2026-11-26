@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La pharmacopée du Jardin de demain : des bocaux de fleurs séchées, leurs usages traditionnels, leurs précautions et ce qu'on regarde pour juger de leur qualité.">
+<title>Pharmacopée — Jardin de demain</title>
+
+<style>
+
+/* =========================================================
+   02. BASE
+========================================================= */
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  color:#285c42;
+  font-family:Arial, Helvetica, sans-serif;
+  line-height:1.55;
+  background-color:#f3efe2;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(255,255,255,.55), transparent 32%),
+    radial-gradient(circle at 88% 30%, rgba(40,92,66,.035), transparent 30%),
+    image-set(url("assets/textures/papier-grain.png") 2x);
+  background-size:auto, auto, 256px 256px;
+  /* le grain est un gris centré : il ne marque qu'en soft-light */
+  background-blend-mode:normal, normal, soft-light;
+}
+
+a{ color:inherit; }
+
+h1, h2, h3{
+  font-family:Georgia, "Times New Roman", serif;
+  font-weight:400;
+  line-height:1.05;
+  margin:0;
+  color:#193f2d;
+}
+
+h1 em, h2 em{ font-style:italic; }
+
+.container{
+  width:min(calc(100% - 32px), 1180px);
+  margin:0 auto;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  font-weight:700;
+  color:#285c42;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ transition:none !important; animation:none !important; }
+}
+
+
+/* =========================================================
+   03. EN-TÊTE
+========================================================= */
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:22px 0 16px;
+  border-bottom:1px solid rgba(40,92,66,.22);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:Georgia, serif;
+  font-size:26px;
+  text-decoration:none;
+  color:#193f2d;
+}
+
+.brand-mark{
+  width:26px;
+  height:26px;
+  border:2.5px solid #285c42;
+  border-radius:50%;
+}
+
+.topbar nav{
+  display:flex;
+  gap:22px;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.topbar nav a{ text-decoration:none; }
+.topbar nav a:hover{ color:#193f2d; text-decoration:underline; text-underline-offset:4px; }
+
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:end;
+  padding:64px 0 36px;
+}
+
+.hero h1{
+  font-size:clamp(44px, 7vw, 86px);
+  margin-top:14px;
+}
+
+.hero p{
+  margin:0;
+  color:#718078;
+  font-size:17px;
+  max-width:460px;
+}
+
+@media (max-width:760px){
+  .topbar nav{ display:none; }
+  .hero{ grid-template-columns:1fr; gap:18px; padding:40px 0 24px; }
+}
+
+
+/* =========================================================
+   04. FILTRES
+========================================================= */
+
+.filtres{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 22px;
+  padding:0;
+  border:0;
+  min-inline-size:0;
+}
+
+.filtres legend{
+  width:100%;
+  margin-bottom:10px;
+  padding:0;
+}
+
+.filtre{
+  appearance:none;
+  font:inherit;
+  font-size:13px;
+  color:#285c42;
+  background:#faf7ed;
+  border:1px solid rgba(40,92,66,.25);
+  border-radius:999px;
+  padding:8px 15px;
+  cursor:pointer;
+  transition:background .2s, color .2s, border-color .2s;
+}
+
+.filtre:hover{ border-color:#285c42; }
+
+.filtre[aria-pressed="true"]{
+  background:#285c42;
+  border-color:#285c42;
+  color:#fffdf5;
+}
+
+.filtre:focus-visible,
+.bocal:focus-visible{
+  outline:2px solid #193f2d;
+  outline-offset:3px;
+}
+
+
+/* =========================================================
+   05. OFFICINE : ARMOIRE + FICHE
+========================================================= */
+
+.officine{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 360px;
+  gap:28px;
+  align-items:start;
+  padding-bottom:70px;
+}
+
+@media (max-width:960px){
+  .officine{ grid-template-columns:1fr; }
+}
+
+/* L'armoire : un cadre en bois, un fond de papier ombré. */
+.armoire{
+  padding:14px;
+  border-radius:10px 10px 6px 6px;
+  background:
+    repeating-linear-gradient(92deg, rgba(0,0,0,.05) 0 2px, transparent 2px 9px),
+    linear-gradient(180deg, #a87c56, #8a6142 40%, #5f3f28);
+  box-shadow:
+    0 22px 40px rgba(36,40,30,.18),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.armoire + .armoire{ margin-top:22px; }
+
+.fond{
+  border-radius:4px;
+  padding:6px 0 0;
+  background-color:#e7e0cc;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.35), transparent 60%),
+    image-set(url("assets/textures/papier-grain.png") 2x);
+  background-size:auto, 256px 256px;
+  background-blend-mode:normal, soft-light;
+  box-shadow:inset 0 10px 24px rgba(40,30,15,.22), inset 0 -4px 10px rgba(40,30,15,.1);
+}
+
+.plaque{
+  display:block;
+  width:max-content;
+  max-width:calc(100% - 32px);
+  margin:10px auto 0;
+  padding:5px 16px;
+  font-family:Georgia, serif;
+  font-size:14px;
+  letter-spacing:.06em;
+  color:#3d2a17;
+  background:linear-gradient(180deg, #e6cf98, #c9a965);
+  border-radius:3px;
+  box-shadow:0 1px 2px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+/* Une étagère = une rangée de bocaux posée sur une planche. */
+.etagere{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  align-items:end;
+  gap:10px;
+  padding:22px 18px 0;
+}
+
+.etagere::after{
+  content:"";
+  grid-column:1 / -1;
+  height:16px;
+  margin:0 -18px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.22), transparent 30%),
+    linear-gradient(180deg, #a87c56, #5f3f28);
+  box-shadow:0 10px 14px -4px rgba(40,25,10,.35);
+}
+
+/* Le bocal est un bouton : on le choisit, la fiche s'ouvre. */
+.bocal{
+  appearance:none;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  padding:0;
+  margin:0 0 -2px;
+  border:0;
+  background:none;
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  transition:opacity .25s, filter .25s;
+}
+
+.bocal svg{
+  display:block;
+  width:88%;
+  height:auto;
+  overflow:visible;
+  filter:drop-shadow(0 3px 3px rgba(40,25,10,.18));
+  transition:filter .25s;
+}
+
+/* Survol : lumière et ombre, jamais de déplacement. */
+.bocal::before{
+  content:"";
+  position:absolute;
+  inset:-6% -4% 0;
+  border-radius:50% 50% 8px 8px;
+  background:radial-gradient(ellipse at 50% 60%, rgba(255,250,225,.75), transparent 68%);
+  opacity:0;
+  transition:opacity .25s;
+  pointer-events:none;
+}
+
+.bocal:hover::before{ opacity:.7; }
+.bocal:hover svg{ filter:drop-shadow(0 4px 8px rgba(40,25,10,.28)); }
+
+.bocal[aria-pressed="true"]::before{ opacity:1; }
+.bocal[aria-pressed="true"] .etiquette{ fill:#fff8de; stroke:#285c42; stroke-width:1.2; }
+
+.bocal.est-pale{
+  opacity:.28;
+  filter:saturate(.4);
+}
+
+@media (max-width:560px){
+  .etagere{ padding:18px 10px 0; gap:6px; }
+  .etagere::after{ margin:0 -10px; }
+}
+
+
+/* =========================================================
+   06. FICHE
+========================================================= */
+
+.fiche{
+  position:sticky;
+  top:20px;
+  padding:28px;
+  border-radius:14px;
+  background:#faf7ed;
+  background-image:image-set(url("assets/textures/papier-grain.png") 2x);
+  background-size:256px 256px;
+  background-blend-mode:soft-light;
+  border:1px solid rgba(40,92,66,.16);
+  box-shadow:0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+  scroll-margin-top:16px;
+}
+
+@media (max-width:960px){
+  .fiche{ position:static; }
+}
+
+.fiche h2{
+  font-size:clamp(32px, 4vw, 42px);
+  margin-top:10px;
+}
+
+.fiche .latin{
+  margin:6px 0 0;
+  font-family:Georgia, serif;
+  font-style:italic;
+  color:#718078;
+}
+
+.fiche dl{
+  margin:22px 0 0;
+  display:grid;
+  gap:14px;
+}
+
+.fiche dt{
+  font-size:10.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:700;
+  color:#285c42;
+}
+
+.fiche dd{
+  margin:3px 0 0;
+  color:#254b38;
+  font-size:15px;
+}
+
+.fiche .precaution{
+  padding:12px 14px;
+  border-left:3px solid #b5703c;
+  background:rgba(181,112,60,.08);
+  border-radius:0 6px 6px 0;
+}
+
+.fiche .precaution dt{ color:#8a4f24; }
+
+.fiche-vide{
+  color:#718078;
+  font-size:15px;
+}
+
+.fiche-vide h2{ margin-bottom:12px; }
+
+.etiquettes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:18px;
+}
+
+.etiquettes span{
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#dce6d7;
+  color:#193f2d;
+}
+
+.statut{
+  display:inline-block;
+  margin-top:18px;
+  font-size:12px;
+  padding:5px 11px;
+  border-radius:999px;
+  border:1px dashed #285c42;
+}
+
+.lien-plante{
+  appearance:none;
+  font:inherit;
+  color:#193f2d;
+  background:none;
+  border:0;
+  padding:0;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   07. QUALITÉ + AVERTISSEMENT
+========================================================= */
+
+.bande{
+  padding:70px 0;
+  background:rgba(220,230,215,.55);
+  border-top:1px solid rgba(40,92,66,.14);
+  border-bottom:1px solid rgba(40,92,66,.14);
+}
+
+.bande-tete{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:end;
+  margin-bottom:36px;
+}
+
+.bande-tete h2{ font-size:clamp(36px, 5vw, 58px); margin-top:10px; }
+.bande-tete p{ margin:0; color:#718078; }
+
+.criteres{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+  counter-reset:critere;
+}
+
+.criteres li{
+  counter-increment:critere;
+  padding:22px;
+  border-radius:12px;
+  background:#faf7ed;
+  border:1px solid rgba(40,92,66,.12);
+}
+
+.criteres li::before{
+  content:counter(critere, decimal-leading-zero);
+  display:block;
+  font-family:Georgia, serif;
+  font-size:30px;
+  color:#285c42;
+  margin-bottom:6px;
+}
+
+.criteres h3{ font-size:21px; margin-bottom:6px; }
+.criteres p{ margin:0; color:#718078; font-size:14.5px; }
+
+@media (max-width:860px){
+  .bande-tete{ grid-template-columns:1fr; }
+  .criteres{ grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:560px){
+  .criteres{ grid-template-columns:1fr; }
+}
+
+.avertissement{
+  padding:40px 0 60px;
+  font-size:13.5px;
+  color:#718078;
+  max-width:760px;
+}
+
+footer{
+  border-top:1px solid rgba(40,92,66,.22);
+  padding:20px 0 34px;
+  font-size:12px;
+  color:#718078;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <header class="topbar">
+    <a class="brand" href="jardin-de-demain-prototype.html"><span class="brand-mark" aria-hidden="true"></span>Jardin de demain</a>
+    <nav aria-label="Navigation">
+      <a href="temps-au-jardin.html">Temps au jardin</a>
+      <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+      <a href="arbres-secheresse.html">Arbres résistants</a>
+      <a href="pharmacopee.html">Pharmacopée</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Fleurs · Cueillette · Séchage</p>
+      <h1>La <em>pharmacopée</em> du jardin.</h1>
+    </div>
+    <p>Des fleurs cueillies au bon moment, séchées à l'ombre, rangées en bocaux. Choisis un bocal : sa fiche dit à quoi la plante sert traditionnellement, comment la préparer et quand s'en méfier.</p>
+  </section>
+</div>
+
+<main class="container" id="officine">
+
+  <fieldset class="filtres" id="filtres">
+    <legend class="eyebrow">Usage</legend>
+  </fieldset>
+
+  <div class="officine">
+    <div>
+      <div class="armoire">
+        <div class="fond">
+          <span class="plaque">Fleurs &amp; plantes sèches</span>
+          <div id="etageres-plantes"></div>
+        </div>
+      </div>
+
+      <div class="armoire">
+        <div class="fond">
+          <span class="plaque">Préparations</span>
+          <div id="etageres-preparations"></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="fiche" id="fiche" aria-live="polite" tabindex="-1">
+      <div class="fiche-vide">
+        <p class="eyebrow">Fiche</p>
+        <h2>Choisis un bocal.</h2>
+        <p>Chaque plante a sa fiche : partie utilisée, période de cueillette, usage traditionnel, préparation et précautions.</p>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<section class="bande" id="qualite">
+  <div class="container">
+    <div class="bande-tete">
+      <div>
+        <p class="eyebrow">La qualité</p>
+        <h2>Ce qu'on regarde <em>dans un bocal</em></h2>
+      </div>
+      <p>Une plante sèche vaut ce que valent sa cueillette, son séchage et sa conservation. Ces repères servent aussi pour acheter ailleurs.</p>
+    </div>
+
+    <ol class="criteres">
+      <li>
+        <h3>Le bon stade</h3>
+        <p>Chaque plante a son moment : boutons pour la rose, début de floraison pour le tilleul. Trop tard, la fleur perd l'essentiel.</p>
+      </li>
+      <li>
+        <h3>Loin des routes</h3>
+        <p>Cueillir sur un sol sain, loin des cultures traitées et des bords de route. Jamais de fleurs de fleuriste.</p>
+      </li>
+      <li>
+        <h3>Séchée à l'ombre</h3>
+        <p>À l'abri du soleil, dans un endroit aéré, sous 40 °C. Une fleur bien séchée garde sa couleur et son odeur.</p>
+      </li>
+      <li>
+        <h3>Entière plutôt que broyée</h3>
+        <p>Une fleur entière se reconnaît et garde mieux ses arômes qu'une poudre ou un sachet de miettes.</p>
+      </li>
+      <li>
+        <h3>Au sec, à l'abri de la lumière</h3>
+        <p>Bocal fermé, rangé dans un placard. La lumière et l'humidité décolorent et éventent les fleurs.</p>
+      </li>
+      <li>
+        <h3>Une étiquette honnête</h3>
+        <p>Nom latin, partie utilisée, lieu et date de cueillette. Et un an, pas plus : passé ce délai, on renouvelle.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<div class="container">
+  <p class="avertissement">Les usages indiqués sont des usages traditionnels, donnés à titre d'information. Ils ne remplacent pas l'avis d'un médecin ou d'un pharmacien, en particulier pendant la grossesse ou l'allaitement, chez l'enfant, ou avec un traitement en cours.</p>
+
+  <footer>
+    <span>Jardin de demain — pharmacopée</span>
+    <a href="jardins-vivants.html">Retour au jardin</a>
+  </footer>
+</div>
+
+
+<script>
+
+/* =========================================================
+   DONNÉES
+   Les préparations sont des compositions proposées :
+   rien n'est en vente pour l'instant.
+========================================================= */
+
+const USAGES = {
+  digestion: "Digestion",
+  sommeil: "Sommeil & nervosité",
+  gorge: "Gorge & rhume",
+  peau: "Peau & soins externes",
+};
+
+const PLANTES = [
+  {
+    id: "camomille", nom: "Camomille romaine", court: "Camomille", latin: "Chamaemelum nobile",
+    partie: "Capitules floraux", cueillette: "Juin à août, fleurs bien ouvertes.",
+    usages: ["digestion", "sommeil"],
+    usage: "Digestion difficile, ballonnements, petites tensions nerveuses.",
+    preparation: "Infusion : 1 cuillère à café (1 à 2 g) pour 150 ml d'eau frémissante, 10 minutes à couvert. Amère : elle se boit après le repas.",
+    precautions: "À éviter en cas d'allergie aux Astéracées (marguerite, arnica, armoise…).",
+    dessin: { forme: "marguerite", fond: "#d9c98a", couleurs: ["#f6f0dc", "#efe6c6"], coeur: "#d9a520" }, couvercle: "liege", taille: .9,
+  },
+  {
+    id: "calendula", nom: "Souci officinal", court: "Calendula", latin: "Calendula officinalis",
+    partie: "Fleurs (capitules)", cueillette: "Juin à octobre, au fil de la floraison.",
+    usages: ["peau"],
+    usage: "En usage externe : petites plaies superficielles, irritations, peaux sèches ou abîmées.",
+    preparation: "Macérat huileux : fleurs sèches couvertes d'huile d'olive ou de tournesol, 3 à 4 semaines à l'abri de la lumière, puis filtrer. Ou infusion en compresse.",
+    precautions: "Allergie aux Astéracées. Usage externe à privilégier.",
+    dessin: { forme: "disque", fond: "#c46a12", couleurs: ["#f08a1c", "#f4a531", "#e2731a"], coeur: "#9a4a0c" }, couvercle: "metal", taille: .82,
+  },
+  {
+    id: "lavande", nom: "Lavande vraie", court: "Lavande", latin: "Lavandula angustifolia",
+    partie: "Épis floraux", cueillette: "Juillet, quand les premières fleurs de l'épi s'ouvrent.",
+    usages: ["sommeil"],
+    usage: "Nervosité légère, difficultés d'endormissement.",
+    preparation: "Infusion : 1 cuillère à café pour 150 ml, 5 à 10 minutes. Ou un petit sachet de fleurs près de l'oreiller.",
+    precautions: "Les fleurs ne sont pas l'huile essentielle : celle-ci ne s'avale pas sans avis.",
+    dessin: { forme: "epi", fond: "#5e5486", couleurs: ["#7e6fb0", "#9384c4", "#6a5d9c", "#8a9a78"] }, couvercle: "liege", taille: .94,
+  },
+  {
+    id: "tilleul", nom: "Tilleul", court: "Tilleul", latin: "Tilia cordata",
+    partie: "Inflorescences avec leurs bractées", cueillette: "Juin à juillet, tout début de floraison.",
+    usages: ["sommeil", "gorge"],
+    usage: "Légère nervosité, sommeil ; aide à transpirer au début d'un rhume.",
+    preparation: "Infusion : 2 g (une bonne pincée) pour 150 ml, 10 minutes.",
+    precautions: "Bien toléré. Choisir des fleurs récoltées loin des routes.",
+    dessin: { forme: "bractee", fond: "#b8b06c", couleurs: ["#d8d29a", "#cfc884", "#e3dca8"], coeur: "#a99a48" }, couvercle: "metal", taille: .86,
+  },
+  {
+    id: "mauve", nom: "Mauve sylvestre", court: "Mauve", latin: "Malva sylvestris",
+    partie: "Fleurs", cueillette: "Juin à septembre.",
+    usages: ["gorge"],
+    usage: "Gorge irritée, toux sèche : ses mucilages adoucissent.",
+    preparation: "Infusion : 2 g pour 150 ml, ou macération à froid quelques heures. L'infusion bleue vire au rose avec un filet de citron.",
+    precautions: "Les mucilages peuvent gêner l'absorption d'un médicament pris en même temps : espacer de deux heures.",
+    dessin: { forme: "petale", fond: "#4f3a6e", couleurs: ["#8e5fa8", "#a274b8", "#6f4a8f", "#b58ac6"] }, couvercle: "liege", taille: .8,
+  },
+  {
+    id: "coquelicot", nom: "Coquelicot", court: "Coquelicot", latin: "Papaver rhoeas",
+    partie: "Pétales", cueillette: "Mai à juillet, par temps sec, le matin.",
+    usages: ["gorge", "sommeil"],
+    usage: "Toux sèche, nervosité et sommeil léger chez l'adulte.",
+    preparation: "Infusion : 1 cuillère à café de pétales pour 150 ml, 10 minutes. Les pétales sont fragiles : sécher vite, à l'ombre.",
+    precautions: "Déconseillé pendant la grossesse et chez le jeune enfant.",
+    dessin: { forme: "petale", fond: "#5e1416", couleurs: ["#a82024", "#8f1b1f", "#c0312e", "#731619"] }, couvercle: "metal", taille: .92,
+  },
+  {
+    id: "aubepine", nom: "Aubépine", court: "Aubépine", latin: "Crataegus monogyna",
+    partie: "Sommités fleuries", cueillette: "Avril à mai, à l'ouverture des fleurs.",
+    usages: ["sommeil"],
+    usage: "Nervosité, palpitations légères liées au stress, sommeil agité.",
+    preparation: "Infusion : 1 à 2 g pour 150 ml, 10 minutes, en cure de quelques semaines.",
+    precautions: "Demander un avis médical en cas de traitement pour le cœur.",
+    dessin: { forme: "grappe", fond: "#8c8456", couleurs: ["#efe8d2", "#e6dcc0", "#d9cfae"], coeur: "#7d8a52" }, couvercle: "liege", taille: .88,
+  },
+  {
+    id: "sureau", nom: "Sureau noir", court: "Sureau", latin: "Sambucus nigra",
+    partie: "Fleurs (ombelles)", cueillette: "Mai à juin, ombelles bien ouvertes.",
+    usages: ["gorge"],
+    usage: "Premiers signes du rhume, état grippal : la fleur fait transpirer.",
+    preparation: "Infusion : 2 à 3 g pour 150 ml, à boire chaude.",
+    precautions: "Seules les fleurs et les baies cuites se consomment. Feuilles, tiges et baies crues sont toxiques.",
+    dessin: { forme: "grappe", fond: "#b9a668", couleurs: ["#f1e6b6", "#e8da9e", "#f6eecb"], coeur: "#9e8a46" }, couvercle: "metal", taille: .9,
+  },
+  {
+    id: "bleuet", nom: "Bleuet", court: "Bleuet", latin: "Centaurea cyanus",
+    partie: "Fleurs", cueillette: "Juin à août.",
+    usages: ["peau"],
+    usage: "Yeux fatigués ou irrités, en compresse. Il donne aussi sa couleur aux mélanges.",
+    preparation: "Infusion : 2 g pour 100 ml, filtrée très finement. Compresses tièdes sur les paupières fermées.",
+    precautions: "Allergie aux Astéracées. Préparer chaque jour, ne pas garder l'infusion.",
+    dessin: { forme: "petale", fond: "#1f3d7a", couleurs: ["#3d6fd1", "#2f5bb8", "#5a86de", "#2a4f9c"] }, couvercle: "liege", taille: .78,
+  },
+  {
+    id: "rose", nom: "Rose de Provins", court: "Rose", latin: "Rosa gallica",
+    partie: "Boutons et pétales", cueillette: "Mai à juin, en boutons.",
+    usages: ["peau"],
+    usage: "Astringente : bains de bouche pour les gencives, lotion pour la peau.",
+    preparation: "Infusion : 2 g pour 150 ml, en bain de bouche ou en lotion refroidie.",
+    precautions: "Uniquement des roses non traitées.",
+    dessin: { forme: "bouton", fond: "#7a2a3c", couleurs: ["#c45a74", "#b04862", "#d67a90", "#9c3b54"], coeur: "#5e7a48" }, couvercle: "metal", taille: .86,
+  },
+  {
+    id: "achillee", nom: "Achillée millefeuille", court: "Achillée", latin: "Achillea millefolium",
+    partie: "Sommités fleuries", cueillette: "Juin à septembre.",
+    usages: ["digestion"],
+    usage: "Digestion lente, crampes digestives, règles douloureuses.",
+    preparation: "Infusion : 2 g pour 150 ml, 10 minutes.",
+    precautions: "Allergie aux Astéracées. Déconseillée pendant la grossesse.",
+    dessin: { forme: "grappe", fond: "#7b8058", couleurs: ["#f2efe2", "#e4dfcc", "#ece4d6"], coeur: "#6b7a4a" }, couvercle: "liege", taille: .84,
+  },
+  {
+    id: "melisse", nom: "Mélisse", court: "Mélisse", latin: "Melissa officinalis",
+    partie: "Feuilles, avant la floraison", cueillette: "Juin à juillet.",
+    usages: ["sommeil", "digestion"],
+    usage: "Stress, sommeil léger, digestion nouée par la nervosité.",
+    preparation: "Infusion à couvert : 2 g pour 150 ml, 10 minutes. Ses arômes partent vite.",
+    precautions: "Avis médical en cas de traitement de la thyroïde.",
+    dessin: { forme: "feuille", fond: "#3e5a2c", couleurs: ["#6b8c48", "#7c9a56", "#5a7a3e", "#8aa666"] }, couvercle: "metal", taille: .92,
+  },
+];
+
+const PREPARATIONS = [
+  {
+    id: "soir", nom: "Mélange « Soir »", court: "Soir", type: "sachet",
+    genre: "Tisane", composition: ["tilleul", "melisse", "lavande", "aubepine"],
+    usages: ["sommeil"],
+    usage: "Une tasse le soir pour ralentir.",
+    preparation: "1 cuillère à soupe pour 250 ml d'eau frémissante, 10 minutes à couvert.",
+    couleur: "#c9a978",
+  },
+  {
+    id: "gorge", nom: "Mélange « Gorge »", court: "Gorge", type: "sachet",
+    genre: "Tisane", composition: ["mauve", "sureau", "coquelicot"],
+    usages: ["gorge"],
+    usage: "Pour les premiers jours de rhume et les gorges qui grattent.",
+    preparation: "1 cuillère à soupe pour 250 ml, 10 minutes. Avec du miel.",
+    couleur: "#b8946a",
+  },
+  {
+    id: "macerat", nom: "Macérat de calendula", court: "Calendula", type: "flacon",
+    genre: "Macérat", composition: ["calendula"],
+    usages: ["peau"],
+    usage: "Peaux sèches, irritées, petites écorchures.",
+    preparation: "Fleurs sèches dans une huile végétale, quatre semaines à l'ombre. Quelques gouttes sur la peau.",
+    couleur: "#d98a1c",
+  },
+  {
+    id: "hydrolat", nom: "Eau florale de lavande", court: "Lavande", type: "spray",
+    genre: "Hydrolat", composition: ["lavande"],
+    usages: ["sommeil", "peau"],
+    usage: "Sur l'oreiller, ou en lotion douce pour la peau.",
+    preparation: "Obtenue par distillation à la vapeur des épis. Se garde au frais, quelques mois après ouverture.",
+    couleur: "#8f82bd",
+  },
+];
+
+
+/* =========================================================
+   DESSIN DES BOCAUX
+========================================================= */
+
+const NS = "http://www.w3.org/2000/svg";
+
+function hasard(graine){
+  let a = graine;
+  return () => {
+    a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function graineDe(texte){
+  let h = 2166136261;
+  for (const c of texte) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  return h >>> 0;
+}
+
+const choisir = (r, liste) => liste[Math.floor(r() * liste.length)];
+
+/* Une fleur séchée, selon la forme de la plante. */
+function fleur(d, r, x, y){
+  const rot = Math.round(r() * 360);
+  const c = choisir(r, d.couleurs);
+  switch (d.forme){
+    case "marguerite": {
+      const rr = 2.2 + r() * 1.3;
+      return `<circle cx="${x}" cy="${y}" r="${rr}" fill="${c}"/><circle cx="${x}" cy="${y}" r="${rr * .45}" fill="${d.coeur}"/>`;
+    }
+    case "disque": {
+      const rr = 2.6 + r() * 1.6;
+      return `<circle cx="${x}" cy="${y}" r="${rr}" fill="${c}"/><circle cx="${x}" cy="${y}" r="${rr * .4}" fill="${d.coeur}"/>`;
+    }
+    case "epi":
+      return `<ellipse cx="${x}" cy="${y}" rx="${3.5 + r() * 2}" ry="${1 + r() * .5}" fill="${c}" transform="rotate(${rot} ${x} ${y})"/>`;
+    case "bractee":
+      return r() < .3
+        ? `<circle cx="${x}" cy="${y}" r="${1.1 + r() * .6}" fill="${d.coeur}"/>`
+        : `<ellipse cx="${x}" cy="${y}" rx="${4 + r() * 2}" ry="${1.4 + r() * .6}" fill="${c}" transform="rotate(${rot} ${x} ${y})"/>`;
+    case "petale":
+      return `<ellipse cx="${x}" cy="${y}" rx="${2.6 + r() * 1.8}" ry="${1.6 + r() * 1.2}" fill="${c}" transform="rotate(${rot} ${x} ${y})"/>`;
+    case "bouton": {
+      const rr = 2 + r() * 1.3;
+      return `<ellipse cx="${x}" cy="${y}" rx="${rr}" ry="${rr * 1.25}" fill="${c}" transform="rotate(${rot} ${x} ${y})"/>`
+        + (r() < .5 ? `<circle cx="${x}" cy="${y + rr}" r="${rr * .45}" fill="${d.coeur}"/>` : "");
+    }
+    case "grappe":
+      return r() < .12
+        ? `<line x1="${x}" y1="${y}" x2="${x + 3 - r() * 6}" y2="${y + 3 - r() * 6}" stroke="${d.coeur}" stroke-width=".7"/>`
+        : `<circle cx="${x}" cy="${y}" r="${.8 + r() * .8}" fill="${c}"/>`;
+    case "feuille":
+      return `<ellipse cx="${x}" cy="${y}" rx="${3.4 + r() * 2}" ry="${1.8 + r() * .8}" fill="${c}" transform="rotate(${rot} ${x} ${y})"/>`;
+  }
+  return "";
+}
+
+function couvercle(type){
+  if (type === "liege"){
+    return `
+      <rect x="27" y="4" width="46" height="18" rx="3" fill="#c49a68"/>
+      <rect x="27" y="4" width="46" height="18" rx="3" fill="url(#liege)" opacity=".5"/>
+      <rect x="27" y="4" width="46" height="4" rx="2" fill="#d8b384"/>`;
+  }
+  return `
+    <rect x="22" y="6" width="56" height="15" rx="3" fill="#7d8578"/>
+    <rect x="22" y="6" width="56" height="5" rx="2.5" fill="#a3aa9c"/>
+    <path d="M24 14h52M24 17.5h52" stroke="#636a5f" stroke-width=".8"/>`;
+}
+
+function svgBocal(p, i){
+  const d = p.dessin;
+  const r = hasard(graineDe(p.id));
+  const id = `b${i}`;
+
+  // Remplissage : entre 55 % et 85 % du bocal.
+  const bas = 131, haut = 28;
+  const niveau = bas - (bas - haut) * (.55 + r() * .3);
+  let fleurs = "";
+  const n = d.forme === "grappe" ? 260 : 120;
+  for (let k = 0; k < n; k++){
+    const x = (14 + r() * 72).toFixed(1);
+    const y = (niveau - 2 + r() * (bas - niveau + 4)).toFixed(1);
+    fleurs += fleur(d, r, +x, +y);
+  }
+
+  return `
+  <svg viewBox="0 0 100 140" aria-hidden="true" focusable="false">
+    <defs>
+      <clipPath id="${id}-int"><rect x="15" y="25" width="70" height="108" rx="11"/></clipPath>
+      <linearGradient id="${id}-verre" x1="0" x2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".35"/>
+        <stop offset=".5" stop-color="#ffffff" stop-opacity=".08"/>
+        <stop offset="1" stop-color="#2b4a3a" stop-opacity=".14"/>
+      </linearGradient>
+    </defs>
+
+    <rect x="12" y="20" width="76" height="116" rx="14" fill="rgba(235,242,236,.35)"/>
+    <g clip-path="url(#${id}-int)">
+      <rect x="15" y="${niveau.toFixed(1)}" width="70" height="${(bas - niveau + 4).toFixed(1)}" fill="${d.fond}"/>
+      ${fleurs}
+      <rect x="15" y="25" width="70" height="108" fill="url(#${id}-verre)"/>
+    </g>
+    <rect x="12" y="20" width="76" height="116" rx="14" fill="none" stroke="rgba(37,75,56,.4)" stroke-width="1.4"/>
+    <path d="M20 34 Q18 80 21 122" stroke="#fff" stroke-opacity=".6" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M80 40 Q82 70 80 96" stroke="#fff" stroke-opacity=".25" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+    ${couvercle(p.couvercle)}
+
+    <rect class="etiquette" x="25" y="62" width="50" height="30" rx="2" fill="#f7f0db" stroke="rgba(60,45,25,.25)" stroke-width=".6"/>
+    <text x="50" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#8a6a40" letter-spacing=".6">N° ${String(i + 1).padStart(2, "0")}</text>
+    <text x="50" y="84" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#2a3b2c">${p.court}</text>
+  </svg>`;
+}
+
+/* Les préparations : sachet kraft, flacon ambré, vaporisateur. */
+function svgPreparation(p){
+  const etiquette = (y) => `
+    <rect class="etiquette" x="27" y="${y}" width="46" height="26" rx="2" fill="#f7f0db" stroke="rgba(60,45,25,.25)" stroke-width=".6"/>
+    <text x="50" y="${y + 10}" text-anchor="middle" font-family="Georgia, serif" font-size="4.6" fill="#8a6a40" letter-spacing=".5">${p.genre.toUpperCase()}</text>
+    <text x="50" y="${y + 20}" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#2a3b2c">${p.court}</text>`;
+
+  if (p.type === "sachet"){
+    return `
+    <svg viewBox="0 0 100 140" aria-hidden="true" focusable="false">
+      <path d="M18 40 L22 136 H78 L82 40 Z" fill="${p.couleur}"/>
+      <path d="M18 40 L22 136 H30 L24 40 Z" fill="#000" opacity=".08"/>
+      <path d="M18 40 L22 30 H78 L82 40 Z" fill="#a98657"/>
+      <rect x="20" y="24" width="60" height="8" rx="1" fill="#8b6a40"/>
+      <path d="M20 28 h60" stroke="#6a4f2c" stroke-width=".8" stroke-dasharray="2 2"/>
+      ${etiquette(70)}
+    </svg>`;
+  }
+  if (p.type === "flacon"){
+    return `
+    <svg viewBox="0 0 100 140" aria-hidden="true" focusable="false">
+      <rect x="40" y="8" width="20" height="16" rx="2" fill="#2d2a26"/>
+      <path d="M42 24 h16 v10 q18 6 18 22 v70 q0 10 -10 10 h-32 q-10 0 -10 -10 v-70 q0 -16 18 -22 z" fill="#6b3a12"/>
+      <path d="M42 24 h16 v10 q18 6 18 22 v70 q0 10 -10 10 h-32 q-10 0 -10 -10 v-70 q0 -16 18 -22 z" fill="${p.couleur}" opacity=".35"/>
+      <path d="M30 62 Q28 96 31 126" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+      ${etiquette(76)}
+    </svg>`;
+  }
+  return `
+  <svg viewBox="0 0 100 140" aria-hidden="true" focusable="false">
+    <rect x="44" y="4" width="12" height="10" rx="2" fill="#e8e4d8"/>
+    <rect x="40" y="14" width="20" height="14" rx="2" fill="#d5d0c2"/>
+    <rect x="26" y="28" width="48" height="108" rx="9" fill="rgba(220,226,236,.55)" stroke="rgba(37,75,56,.35)" stroke-width="1.2"/>
+    <rect x="29" y="58" width="42" height="75" rx="6" fill="${p.couleur}" opacity=".35"/>
+    <path d="M32 40 Q30 84 33 126" stroke="#fff" stroke-opacity=".6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    ${etiquette(78)}
+  </svg>`;
+}
+
+
+/* =========================================================
+   RENDU
+========================================================= */
+
+const etat = { filtre: "tout", choix: null };
+const etroit = matchMedia("(max-width:560px)");
+const fiche = document.getElementById("fiche");
+
+function bouton(item, svg, taille){
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "bocal";
+  b.dataset.id = item.id;
+  b.setAttribute("aria-pressed", "false");
+  b.setAttribute("aria-label", item.nom);
+  b.style.setProperty("--w", `${Math.round((taille ?? .88) * 100)}%`);
+  b.innerHTML = svg;
+  b.addEventListener("click", () => choisirItem(item.id, true));
+  return b;
+}
+
+function rangerSur(conteneur, boutons){
+  const parEtagere = etroit.matches ? 3 : 4;
+  conteneur.replaceChildren();
+  for (let i = 0; i < boutons.length; i += parEtagere){
+    const etagere = document.createElement("div");
+    etagere.className = "etagere";
+    etagere.style.setProperty("--cols", parEtagere);
+    etagere.append(...boutons.slice(i, i + parEtagere));
+    conteneur.append(etagere);
+  }
+}
+
+const boutonsPlantes = PLANTES.map((p, i) => bouton(p, svgBocal(p, i), p.taille));
+const boutonsPreparations = PREPARATIONS.map(p => bouton(p, svgPreparation(p), .82));
+
+function ranger(){
+  rangerSur(document.getElementById("etageres-plantes"), boutonsPlantes);
+  rangerSur(document.getElementById("etageres-preparations"), boutonsPreparations);
+}
+
+/* Motif de liège, partagé par tous les bocaux. */
+document.body.insertAdjacentHTML("afterbegin", `
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <pattern id="liege" width="6" height="6" patternUnits="userSpaceOnUse">
+        <circle cx="1.5" cy="1.5" r=".7" fill="#7a5530"/>
+        <circle cx="4.5" cy="4" r=".5" fill="#7a5530"/>
+      </pattern>
+    </defs>
+  </svg>`);
+
+
+/* Filtres d'usage : les bocaux hors sujet pâlissent. */
+function filtres(){
+  const zone = document.getElementById("filtres");
+  const options = { tout: "Tout", ...USAGES };
+  for (const [cle, libelle] of Object.entries(options)){
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "filtre";
+    b.textContent = libelle;
+    b.dataset.filtre = cle;
+    b.addEventListener("click", () => { etat.filtre = cle; appliquer(); });
+    zone.append(b);
+  }
+}
+
+function trouver(id){
+  return PLANTES.find(p => p.id === id) || PREPARATIONS.find(p => p.id === id);
+}
+
+function appliquer(){
+  for (const b of document.querySelectorAll(".filtre")){
+    b.setAttribute("aria-pressed", String(b.dataset.filtre === etat.filtre));
+  }
+  for (const b of [...boutonsPlantes, ...boutonsPreparations]){
+    const item = trouver(b.dataset.id);
+    const garde = etat.filtre === "tout" || item.usages.includes(etat.filtre);
+    b.classList.toggle("est-pale", !garde);
+    b.setAttribute("aria-pressed", String(b.dataset.id === etat.choix));
+  }
+}
+
+function echapper(t){
+  return t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+}
+
+function etiquettesUsage(item){
+  return `<div class="etiquettes">${item.usages.map(u => `<span>${USAGES[u]}</span>`).join("")}</div>`;
+}
+
+function rendreFiche(item){
+  if (PLANTES.includes(item)){
+    fiche.innerHTML = `
+      <p class="eyebrow">Bocal n° ${String(PLANTES.indexOf(item) + 1).padStart(2, "0")}</p>
+      <h2>${echapper(item.nom)}</h2>
+      <p class="latin">${echapper(item.latin)}</p>
+      ${etiquettesUsage(item)}
+      <dl>
+        <div><dt>Partie utilisée</dt><dd>${echapper(item.partie)}</dd></div>
+        <div><dt>Cueillette</dt><dd>${echapper(item.cueillette)}</dd></div>
+        <div><dt>Usage traditionnel</dt><dd>${echapper(item.usage)}</dd></div>
+        <div><dt>Préparation</dt><dd>${echapper(item.preparation)}</dd></div>
+        <div class="precaution"><dt>Précautions</dt><dd>${echapper(item.precautions)}</dd></div>
+      </dl>`;
+    return;
+  }
+
+  const composition = item.composition
+    .map(id => `<button type="button" class="lien-plante" data-plante="${id}">${echapper(trouver(id).nom)}</button>`)
+    .join(", ");
+  const precautions = item.composition
+    .map(id => trouver(id))
+    .map(p => `<b>${echapper(p.court)}</b> : ${echapper(p.precautions)}`)
+    .join("<br>");
+
+  fiche.innerHTML = `
+    <p class="eyebrow">${echapper(item.genre)}</p>
+    <h2>${echapper(item.nom)}</h2>
+    ${etiquettesUsage(item)}
+    <dl>
+      <div><dt>Composition</dt><dd>${composition}</dd></div>
+      <div><dt>Pour quoi</dt><dd>${echapper(item.usage)}</dd></div>
+      <div><dt>Préparation</dt><dd>${echapper(item.preparation)}</dd></div>
+      <div class="precaution"><dt>Précautions</dt><dd>${precautions}</dd></div>
+    </dl>
+    <span class="statut">Composition proposée — pas encore disponible</span>`;
+
+  for (const lien of fiche.querySelectorAll(".lien-plante")){
+    lien.addEventListener("click", () => choisirItem(lien.dataset.plante, true));
+  }
+}
+
+/* Un seul point d'entrée pour changer de bocal ; le choix vit dans l'URL. */
+function choisirItem(id, depuisClic){
+  const item = trouver(id);
+  if (!item) return;
+  etat.choix = id;
+  rendreFiche(item);
+  appliquer();
+  history.replaceState(null, "", `#${id}`);
+  if (depuisClic && matchMedia("(max-width:960px)").matches){
+    const calme = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    fiche.scrollIntoView({ behavior: calme ? "auto" : "smooth", block: "start" });
+  }
+}
+
+filtres();
+ranger();
+appliquer();
+etroit.addEventListener("change", ranger);
+
+const depart = decodeURIComponent(location.hash.slice(1));
+if (trouver(depart)) choisirItem(depart, false);
+
+</script>
+
+    <!-- retours:debut --><script src="retours/retours-config.js"></script><script src="retours/retours.js" defer></script><!-- retours:fin -->
+</body>
+</html>

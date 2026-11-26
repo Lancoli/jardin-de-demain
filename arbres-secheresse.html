@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide des arbres fruitiers résistants à la sécheresse : classement, fiches détaillées et conseils de plantation." />
+  <title>Arbres résistants à la sécheresse — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 24px; }
+    h3 { font-size: 24px; margin: 0 0 12px; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+    }
+
+    .intro p:last-child {
+      margin: 0;
+    }
+
+    .category {
+      margin-bottom: 80px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #30343a;
+    }
+
+    .category-badge {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+    }
+
+    .category-exceptionnel .category-badge { background: rgba(214, 249, 0, .2); color: #d6f900; }
+    .category-tres-bon .category-badge { background: rgba(123, 201, 111, .2); color: #7bc96f; }
+    .category-bon .category-badge { background: rgba(100, 180, 255, .2); color: #64b4ff; }
+
+    .trees-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .tree-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 28px;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tree-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .tree-card.level-exceptionnel::before { background: #d6f900; }
+    .tree-card.level-tres-bon::before { background: #7bc96f; }
+    .tree-card.level-bon::before { background: #64b4ff; }
+
+    .tree-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    .tree-card.level-exceptionnel:hover { border-color: #d6f900; }
+    .tree-card.level-tres-bon:hover { border-color: #7bc96f; }
+    .tree-card.level-bon:hover { border-color: #64b4ff; }
+
+    .tree-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      margin: 0 0 8px;
+      color: #f5f4ef;
+    }
+
+    .tree-latin {
+      font-size: 13px;
+      color: #718078;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .tree-property {
+      margin: 12px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .tree-property-label {
+      color: #718078;
+      min-width: 110px;
+      font-size: 13px;
+    }
+
+    .tree-property-value {
+      color: #f5f4ef;
+    }
+
+    .tree-note {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #30343a;
+      font-size: 14px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    .tree-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tree-tag {
+      background: #15191f;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #718078;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .trees-grid {
+        grid-template-columns: 1fr;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Adaptation climatique</p>
+      <h1>Arbres fruitiers résistants à la sécheresse</h1>
+      <p class="lead">Classement et fiches détaillées des arbres fruitiers adaptés aux étés chauds et secs, pour des jardins résilients face au changement climatique.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Pourquoi ce classement :</strong></p>
+        <p>Face aux étés de plus en plus chauds et secs, le choix des arbres fruitiers devient crucial. Ce classement est basé sur l'observation de la résistance des espèces en conditions de sécheresse, leur productivité et leur capacité à s'adapter.</p>
+        <p>Les indications sont données pour un climat tempéré français en évolution. Les besoins peuvent varier selon le sol, l'exposition et les pratiques culturales (paillage, ombrage des jeunes plants).</p>
+      </div>
+
+      <!-- EXCEPTIONNELS -->
+      <section class="category category-exceptionnel">
+        <div class="category-header">
+          <span class="category-badge">Exceptionnels</span>
+          <h2>Les champions de la sécheresse</h2>
+        </div>
+
+        <div class="trees-grid">
+          <article class="tree-card level-exceptionnel">
+            <h3 class="tree-name">Jujubier</h3>
+            <p class="tree-latin">Ziziphus jujuba</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Exceptionnelle</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Très élevée</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-15°C à -20°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Pauvre, drainant, calcaire toléré</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Septembre-octobre</span>
+            </div>
+
+            <div class="tree-note">
+              Arbre d'origine asiatique parfaitement adapté aux étés secs et chauds. Résiste remarquablement à la sécheresse une fois installé. Fruits riches en vitamine C, à consommer frais ou séchés. Croissance lente les premières années, puis très vigoureux.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Peu d'arrosage</span>
+              <span class="tree-tag">Sol pauvre</span>
+              <span class="tree-tag">Chaleur intense</span>
+            </div>
+          </article>
+
+          <article class="tree-card level-exceptionnel">
+            <h3 class="tree-name">Figuier</h3>
+            <p class="tree-latin">Ficus carica</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Exceptionnelle</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Élevée</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-12°C à -15°C (selon variété)</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Drainant, calcaire, rocailleux</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Juillet-septembre (2 récoltes)</span>
+            </div>
+
+            <div class="tree-note">
+              Arbre méditerranéen emblématique, parfaitement adapté aux climats secs. Supporte très bien la chaleur et la sécheresse. Racines puissantes qui explorent en profondeur. Variétés bifères (2 récoltes) ou unifères. Préférer les variétés autofertiles.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Zéro arrosage mature</span>
+              <span class="tree-tag">Murs chauds</span>
+              <span class="tree-tag">Sol pauvre</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TRÈS BONS -->
+      <section class="category category-tres-bon">
+        <div class="category-header">
+          <span class="category-badge">Très bons</span>
+          <h2>Excellente résistance à la sécheresse</h2>
+        </div>
+
+        <div class="trees-grid">
+          <article class="tree-card level-tres-bon">
+            <h3 class="tree-name">Amélanchier</h3>
+            <p class="tree-latin">Amelanchier spp.</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Très bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-25°C à -30°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Acide à neutre, drainant</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Juin-juillet</span>
+            </div>
+
+            <div class="tree-note">
+              Petit arbre ou arbuste très rustique et résistant. Floraison printanière décorative. Fruits sucrés rappelant la myrtille. Couvre plus de terrain que l'amandier, idéal en haie fruitière. Peu d'entretien, tolère bien la sécheresse estivale.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Très rustique</span>
+              <span class="tree-tag">Floraison décorative</span>
+              <span class="tree-tag">Peu d'entretien</span>
+            </div>
+          </article>
+
+          <article class="tree-card level-tres-bon">
+            <h3 class="tree-name">Amandier</h3>
+            <p class="tree-latin">Prunus dulcis</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Très bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne à très bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-15°C à -20°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Drainant, calcaire toléré, profond</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Septembre-octobre</span>
+            </div>
+
+            <div class="tree-note">
+              Arbre méditerranéen très résistant à la sécheresse estivale. Floraison très précoce (février-mars), sensible aux gelées tardives. Besoin de froid hivernal pour la fructification. Racines profondes. Préférer les variétés autofertiles ou planter par deux.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Floraison précoce</span>
+              <span class="tree-tag">Gelées tardives</span>
+              <span class="tree-tag">Sol profond</span>
+            </div>
+          </article>
+
+          <article class="tree-card level-tres-bon">
+            <h3 class="tree-name">Grenadier</h3>
+            <p class="tree-latin">Punica granatum</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Très bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-12°C à -15°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Tous types, drainant préféré</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Octobre-novembre</span>
+            </div>
+
+            <div class="tree-note">
+              Excellent compromis entre résistance à la sécheresse et tolérance au froid. Se débrouille remarquablement bien avec des hivers froids et des étés secs. Floraison décorative rouge-orangé. Fruits riches en antioxydants. Tolère bien la taille.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Chaleur + froid</span>
+              <span class="tree-tag">Floraison décorative</span>
+              <span class="tree-tag">Sol adaptable</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BONS -->
+      <section class="category category-bon">
+        <div class="category-header">
+          <span class="category-badge">Bons</span>
+          <h2>Bonne adaptation à la sécheresse</h2>
+        </div>
+
+        <div class="trees-grid">
+          <article class="tree-card level-bon">
+            <h3 class="tree-name">Abricotier</h3>
+            <p class="tree-latin">Prunus armeniaca</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne à très bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-15°C à -20°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Drainant, calcaire, profond</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Juillet-août</span>
+            </div>
+
+            <div class="tree-note">
+              Bonne résistance à la sécheresse, mais attention lors des canicules extrêmes : tendance à laisser tomber ses fruits si trop de stress hydrique pendant la maturation. Floraison précoce sensible aux gelées tardives. Préfère les expositions chaudes et ensoleillées.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Chaleur intense attention</span>
+              <span class="tree-tag">Gelées tardives</span>
+              <span class="tree-tag">Exposition sud</span>
+            </div>
+          </article>
+
+          <article class="tree-card level-bon">
+            <h3 class="tree-name">Cerisier</h3>
+            <p class="tree-latin">Prunus avium / Prunus cerasus</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-20°C à -25°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Profond, drainant, frais idéal</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Mai-juillet (selon variété)</span>
+            </div>
+
+            <div class="tree-note">
+              Résistance correcte à la sécheresse mais apprécie un sol frais. Les griottes (Prunus cerasus) sont plus tolérantes que les cerises douces. Prévoir un paillage conséquent et un arrosage en cas de sécheresse prolongée durant la maturation des fruits.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Sol frais préféré</span>
+              <span class="tree-tag">Paillage important</span>
+              <span class="tree-tag">Griotte > douce</span>
+            </div>
+          </article>
+
+          <article class="tree-card level-bon">
+            <h3 class="tree-name">Cognassier</h3>
+            <p class="tree-latin">Cydonia oblonga</p>
+
+            <div class="tree-property">
+              <span class="tree-property-label">Résistance</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Productivité</span>
+              <span class="tree-property-value">Bonne</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Rusticité</span>
+              <span class="tree-property-value">-20°C à -25°C</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Sol</span>
+              <span class="tree-property-value">Frais, profond, argileux toléré</span>
+            </div>
+            <div class="tree-property">
+              <span class="tree-property-label">Récolte</span>
+              <span class="tree-property-value">Octobre-novembre</span>
+            </div>
+
+            <div class="tree-note">
+              Petit arbre rustique et productif. Bonne résistance à la sécheresse mais production optimale avec un sol frais. Floraison tardive évitant les gelées. Fruits pour gelées, pâtes de fruits et confitures. Très parfumés. Peu sensible aux maladies.
+            </div>
+
+            <div class="tree-tags">
+              <span class="tree-tag">Sol frais idéal</span>
+              <span class="tree-tag">Floraison tardive</span>
+              <span class="tree-tag">Peu de maladies</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+</body>
+</html>

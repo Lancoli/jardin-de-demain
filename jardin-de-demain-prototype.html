@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jardin de demain — horticulture, agronomie, paysage et expérimentation." />
+  <title>Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: #f3efe2;
+      background-image:
+        radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.42), transparent 35%),
+        radial-gradient(ellipse at 85% 25%, rgba(212,222,204,.20), transparent 32%),
+        radial-gradient(ellipse at 45% 85%, rgba(255,255,255,.25), transparent 40%),
+        image-set(url("assets/textures/papier-grain.png") 2x);
+      background-blend-mode: normal, normal, normal, soft-light;
+      color: #285c42;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1180px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(40,92,66,.22);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2.5px solid #285c42;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #193f2d; text-decoration: underline; text-underline-offset: 4px; }
+
+    .hero {
+      text-align: center;
+      padding: 110px 20px 105px;
+      border-bottom: 1px solid rgba(40,92,66,.22);
+    }
+
+    .eyebrow {
+      color: #285c42;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.02;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(52px, 8vw, 105px); max-width: 900px; margin: 18px auto; color: #193f2d; }
+    h1 em, h2 em { color: #285c42; font-style: italic; }
+    h2 { color: #193f2d; }
+    h3 { color: #193f2d; }
+    .hero p { max-width: 580px; margin: 25px auto 0; color: #718078; font-size: 18px; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #285c42;
+      color: #fffdf5;
+      padding: 16px 25px;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-top: 30px;
+      transition: background .2s ease, box-shadow .2s ease;
+    }
+
+    .button:hover { background: #193f2d; box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
+
+    section { padding: 95px 0; }
+    .section-head { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: clamp(42px, 6vw, 70px); margin-top: 12px; }
+    .section-head p { color: #718078; margin-top: 18px; }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      border: 1px solid rgba(40,92,66,.18);
+      background: #fffdf5;
+      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+      padding: 28px;
+      min-height: 225px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: box-shadow .2s ease;
+    }
+
+    .service-card:hover { box-shadow: 0 12px 36px rgba(36,67,49,.08), 0 2px 4px rgba(36,67,49,.06); }
+
+    .service-icon {
+      flex: 0 0 105px;
+      height: 105px;
+      display: grid;
+      place-items: center;
+      background: #dce6d7;
+      color: #193f2d;
+      border-radius: 7px;
+      font-size: 47px;
+    }
+
+    .service-number { color: #285c42; font-size: 12px; letter-spacing: .1em; }
+    .service-card h3 { font-size: 34px; margin: 7px 0 12px; }
+    .service-card p { color: #718078; margin: 0; font-size: 14px; }
+
+    .method {
+      border-top: 1px solid rgba(40,92,66,.22);
+      border-bottom: 1px solid rgba(40,92,66,.22);
+      background: #faf7ed;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .method-step { padding-top: 22px; border-top: 2px solid #285c42; }
+    .method-step .number { color: #285c42; font-size: 46px; font-family: Georgia, serif; }
+    .method-step h3 { font-size: 30px; margin: 12px 0; }
+    .method-step p { color: #718078; font-size: 14px; }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .article {
+      border: 1px solid rgba(40,92,66,.18);
+      padding: 28px;
+      min-height: 190px;
+      background: #fffdf5;
+      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+      transition: box-shadow .2s ease;
+    }
+
+    .article:hover { box-shadow: 0 12px 36px rgba(36,67,49,.08), 0 2px 4px rgba(36,67,49,.06); }
+
+    .article .tag { color: #285c42; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+    .article h3 { font-size: 31px; margin: 14px 0; }
+    .article p { color: #718078; font-size: 14px; }
+
+    .cta-footer {
+      margin: 20px auto 70px;
+      padding: 95px 24px 105px;
+      text-align: center;
+      border: 1px solid rgba(40,92,66,.18);
+      background: #fffdf5;
+      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+    }
+
+    .cta-footer h2 { font-size: clamp(48px, 7vw, 92px); max-width: 900px; margin: 18px auto; }
+    .cta-footer p { color: #718078; max-width: 530px; margin: 0 auto; font-size: 17px; }
+
+    footer {
+      border-top: 1px solid rgba(40,92,66,.22);
+      padding: 25px 0;
+      color: #718078;
+      font-size: 12px;
+    }
+
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 760px) {
+      .container { width: min(calc(100% - 28px), 1180px); }
+      nav { display: none; }
+      .hero { padding: 75px 10px; }
+      section { padding: 65px 0; }
+      .service-grid, .articles-grid, .method-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 20px; gap: 17px; }
+      .service-icon { flex-basis: 82px; height: 82px; font-size: 36px; }
+      .service-card h3 { font-size: 30px; }
+      .cta-footer { padding: 65px 18px 75px; margin-bottom: 35px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="jardin-de-demain-prototype.html"><span class="brand-mark"></span>Jardin de demain</a>
+      <nav aria-label="Navigation principale">
+        <a href="temps-au-jardin.html">Temps au jardin</a>
+        <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+        <a href="arbres-secheresse.html">Arbres résistants</a>
+        <a href="pharmacopee.html">Pharmacopée</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Horticulture · Agronomie · Paysage</div>
+      <h1>Des jardins prêts pour <em>demain.</em></h1>
+      <p>Concevoir des jardins nourriciers et ornementaux, adaptés aux évolutions climatiques et à leur milieu.</p>
+      <a class="button" href="#services">Découvrir les services ↗</a>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">01 · Ce que je propose</div>
+          <h2>Des jardins à penser, planter et <em>faire évoluer.</em></h2>
+          <p>Une approche associant étude du milieu, conception végétale, accompagnement et bilan.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌕</div>
+            <div>
+              <div class="service-number">01</div>
+              <h3>Étude du jardin</h3>
+              <p>Comprendre le terrain, l'eau, le sol, l'exposition et les usages.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✳</div>
+            <div>
+              <div class="service-number">02</div>
+              <h3>Conception végétale</h3>
+              <p>Imaginer des plantations nourricières et ornementales adaptées au contexte.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⌁</div>
+            <div>
+              <div class="service-number">03</div>
+              <h3>Chantier participatif</h3>
+              <p>Planter, aménager et apprendre ensemble, selon les besoins du projet.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">▤</div>
+            <div>
+              <div class="service-number">04</div>
+              <h3>Bilan & impact</h3>
+              <p>Restituer les choix, les résultats et les indicateurs environnementaux pertinents.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="methode" class="method">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">02 · La méthode</div>
+          <h2>Observer avant <em>d'agir.</em></h2>
+          <p>Une démarche progressive, adaptée au terrain et aux objectifs du jardin.</p>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-step">
+            <div class="number">01</div>
+            <h3>Étudier</h3>
+            <p>Milieu, sol, eau, exposition et usages.</p>
+          </article>
+          <article class="method-step">
+            <div class="number">02</div>
+            <h3>Concevoir</h3>
+            <p>Définir les plantations et les priorités.</p>
+          </article>
+          <article class="method-step">
+            <div class="number">03</div>
+            <h3>Planter</h3>
+            <p>Mettre en œuvre progressivement, avec ou sans participation.</p>
+          </article>
+          <article class="method-step">
+            <div class="number">04</div>
+            <h3>Évaluer</h3>
+            <p>Livrer un bilan documenté et identifier les suites possibles.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="articles">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">03 · Articles & réflexions</div>
+          <h2>Cultiver <em>demain.</em></h2>
+          <p>Recherches, observations et pistes pour repenser le jardin.</p>
+        </div>
+
+        <div class="articles-grid">
+          <article class="article">
+            <div class="tag">CLIMAT & PAYSAGE</div>
+            <h3>Une nouvelle carte des variétés projetée sur les évolutions climatiques</h3>
+            <p>Anticiper les conditions futures et les choix végétaux.</p>
+          </article>
+          <article class="article">
+            <div class="tag">BIODIVERSITÉ</div>
+            <h3>Biodiversité et temps de travail au jardin</h3>
+            <p>Explorer les relations entre diversité, entretien et usages.</p>
+          </article>
+          <article class="article">
+            <div class="tag">ADAPTATION CLIMATIQUE</div>
+            <h3>Les plantes qui survivront aux canicules</h3>
+            <p>Observer les capacités d'adaptation et les limites des végétaux.</p>
+          </article>
+          <article class="article">
+            <div class="tag">EAU</div>
+            <h3>Récupération de l'eau au jardin</h3>
+            <p>Réfléchir à la ressource, au stockage et aux usages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos" class="container">
+      <div class="section-head">
+        <div class="eyebrow">04 · Profil</div>
+        <h2>Une pratique entre plantes, sols et <em>expérimentation.</em></h2>
+        <p>Le parcours personnel est développé dans une page annexe, accessible depuis le profil ou la navigation.</p>
+        <a class="button" href="#">Découvrir mon parcours ↗</a>
+      </div>
+    </section>
+
+    <!-- Unique CTA principal du site -->
+    <section class="container">
+      <div class="cta-footer">
+        <div class="eyebrow">Collaboration</div>
+        <h2>Construisons un jardin pour <em>demain.</em></h2>
+        <p>Une idée, un terrain ou un projet à étudier ? Échangeons sur les possibilités.</p>
+        <a class="button" href="mailto:bonjour@jardindemain.fr">Parler d’un projet ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© Jardin de demain</span>
+      <span>Mentions légales · RGPD · Contact</span>
+    </div>
+  </footer>
+    <!-- retours:debut --><script src="retours/retours-config.js"></script><script src="retours/retours.js" defer></script><!-- retours:fin -->
+</body>
+</html>

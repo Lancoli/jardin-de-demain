@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jardin de demain — Outils et ressources pour un jardinage résilient face au changement climatique." />
+  <title>Jardin de demain — Accueil</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      justify-content: center;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 2.5px solid #0b0d10;
+      border-radius: 50%;
+      top: 7px;
+      left: 7px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 90px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(48px, 8vw, 92px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(32px, 5vw, 52px); margin: 0 0 32px; }
+    h3 { font-size: 24px; margin: 0 0 12px; }
+
+    .lead {
+      font-size: 20px;
+      color: #a4a6aa;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    main { padding: 80px 0 120px; }
+
+    .section {
+      margin-bottom: 100px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      color: #f5f4ef;
+    }
+
+    .section-header p {
+      color: #a4a6aa;
+      max-width: 600px;
+      margin: 16px auto 0;
+      font-size: 16px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .tool-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 32px;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: currentColor;
+    }
+
+    .tool-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,.4);
+    }
+
+    .tool-card.type-calendrier { color: #d6f900; }
+    .tool-card.type-guide { color: #7bc96f; }
+    .tool-card.type-calculateur { color: #64b4ff; }
+    .tool-card.type-prototype { color: #ffb347; }
+
+    .tool-card.type-calendrier:hover { border-color: #d6f900; }
+    .tool-card.type-guide:hover { border-color: #7bc96f; }
+    .tool-card.type-calculateur:hover { border-color: #64b4ff; }
+    .tool-card.type-prototype:hover { border-color: #ffb347; }
+
+    .tool-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      line-height: 1;
+      color: inherit;
+    }
+
+    .tool-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin: 0 0 12px;
+      color: #f5f4ef;
+    }
+
+    .tool-desc {
+      color: #a4a6aa;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tool-tag {
+      background: #15191f;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #a4a6aa;
+    }
+
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      transition: gap .2s;
+    }
+
+    .tool-card:hover .tool-link {
+      gap: 12px;
+    }
+
+    .info-banner {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-left: 4px solid #d6f900;
+      padding: 32px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    .info-banner h3 {
+      color: #d6f900;
+      margin-bottom: 12px;
+    }
+
+    .info-banner p {
+      color: #a4a6aa;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+    }
+
+    .footer-content {
+      color: #a4a6aa;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer-content strong {
+      color: #f5f4ef;
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 80px 20px 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="brand">
+        <div class="brand-mark"></div>
+        <span>Jardin de demain</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Adaptation climatique</p>
+      <h1>Des jardins prêts pour demain</h1>
+      <p class="lead">Outils pratiques et ressources pour cultiver un jardin résilient face au changement climatique. Calendriers, guides techniques et fiches détaillées.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <!-- Outils interactifs -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Outils interactifs</h2>
+          <p>Calendriers et calculateurs pour planifier votre jardin</p>
+        </div>
+
+        <div class="tools-grid">
+          <article class="tool-card type-calendrier">
+            <div class="tool-icon">📅</div>
+            <h3 class="tool-name">Calendrier des récoltes</h3>
+            <p class="tool-desc">Découvre mois par mois quels légumes, fruits et plantes aromatiques récolter dans ton jardin.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">12 mois</span>
+              <span class="tool-tag">Icônes visuelles</span>
+              <span class="tool-tag">Ligne du temps</span>
+            </div>
+            <a href="calendrier-recoltes.html" class="tool-link">Ouvrir le calendrier →</a>
+          </article>
+
+          <article class="tool-card type-calendrier">
+            <div class="tool-icon">🌱</div>
+            <h3 class="tool-name">Calendrier des semis</h3>
+            <p class="tool-desc">Quoi semer et planter mois par mois pour un potager productif toute l'année.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Semis & plantations</span>
+              <span class="tool-tag">Sous abri / pleine terre</span>
+            </div>
+            <a href="calendrier-semis.html" class="tool-link">Ouvrir le calendrier →</a>
+          </article>
+
+          <article class="tool-card type-calculateur">
+            <div class="tool-icon">⏱️</div>
+            <h3 class="tool-name">Temps au jardin</h3>
+            <p class="tool-desc">Calculateur pour estimer le temps d'installation et d'entretien selon la surface de votre jardin.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Calculateur</span>
+              <span class="tool-tag">Notice détaillée</span>
+            </div>
+            <a href="temps-au-jardin.html" class="tool-link">Ouvrir le calculateur →</a>
+          </article>
+
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🤝</div>
+            <h3 class="tool-name">Associations de plantes</h3>
+            <p class="tool-desc">Guide du compagnonnage : bonnes et mauvaises associations, rotation des cultures sur 4 ans.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">15 légumes</span>
+              <span class="tool-tag">Recherche interactive</span>
+              <span class="tool-tag">Rotation</span>
+            </div>
+            <a href="associations-plantes.html" class="tool-link">Consulter le guide →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Guides techniques -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Guides techniques</h2>
+          <p>Fiches pratiques pour jardiner en climat sec</p>
+        </div>
+
+        <div class="tools-grid">
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🌳</div>
+            <h3 class="tool-name">Arbres résistants à la sécheresse</h3>
+            <p class="tool-desc">Classement et fiches détaillées de 8 arbres fruitiers adaptés aux étés chauds et secs.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Jujubier</span>
+              <span class="tool-tag">Figuier</span>
+              <span class="tool-tag">Grenadier</span>
+            </div>
+            <a href="arbres-secheresse.html" class="tool-link">Voir les fiches →</a>
+          </article>
+
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🌾</div>
+            <h3 class="tool-name">Guide du paillage</h3>
+            <p class="tool-desc">Types de paillis, épaisseurs, avantages et inconvénients. BRF, paille, foin, ce qu'il faut éviter.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">6 paillis recommandés</span>
+              <span class="tool-tag">3 à éviter</span>
+            </div>
+            <a href="guide-paillage.html" class="tool-link">Consulter le guide →</a>
+          </article>
+
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🌿</div>
+            <h3 class="tool-name">Plantes nurses</h3>
+            <p class="tool-desc">12 espèces pour protéger les jeunes arbres de la sécheresse et des canicules durant leurs premières années.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Arbustes</span>
+              <span class="tool-tag">Vivaces</span>
+              <span class="tool-tag">Graminées</span>
+            </div>
+            <a href="plantes-nurses.html" class="tool-link">Découvrir les plantes →</a>
+          </article>
+
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🌰</div>
+            <h3 class="tool-name">Semer ses arbres</h3>
+            <p class="tool-desc">Protocoles complets pour glands, châtaignes, aubépine. Stratification, semis, enracinement profond.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Chêne</span>
+              <span class="tool-tag">Châtaignier</span>
+              <span class="tool-tag">Aubépine</span>
+            </div>
+            <a href="semis-arbres.html" class="tool-link">Voir les protocoles →</a>
+          </article>
+
+          <article class="tool-card type-guide">
+            <div class="tool-icon">🏺</div>
+            <h3 class="tool-name">Pharmacopée</h3>
+            <p class="tool-desc">Bocaux de fleurs séchées, usages traditionnels, précautions et critères de qualité.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Plantes médicinales</span>
+              <span class="tool-tag">Séchage</span>
+            </div>
+            <a href="pharmacopee.html" class="tool-link">Explorer la pharmacopée →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Prototypes -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Prototypes</h2>
+          <p>Explorations et versions de test</p>
+        </div>
+
+        <div class="tools-grid">
+          <article class="tool-card type-prototype">
+            <div class="tool-icon">🎨</div>
+            <h3 class="tool-name">Site vitrine (prototype)</h3>
+            <p class="tool-desc">Landing page avec services, méthode et articles. Design papier beige avec grain de texture.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Landing page</span>
+              <span class="tool-tag">Thème clair</span>
+            </div>
+            <a href="jardin-de-demain-prototype.html" class="tool-link">Voir le prototype →</a>
+          </article>
+
+          <article class="tool-card type-prototype">
+            <div class="tool-icon">🌸</div>
+            <h3 class="tool-name">Jardins vivants</h3>
+            <p class="tool-desc">Prototype exploratoire avec design papier et texture organique.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Exploration</span>
+              <span class="tool-tag">Thème papier</span>
+            </div>
+            <a href="jardins-vivants.html" class="tool-link">Voir la page →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bannière info -->
+      <div class="info-banner">
+        <h3>Projet en développement</h3>
+        <p>Jardin de demain rassemble des outils et ressources pour un jardinage adapté au changement climatique. Les contenus sont basés sur des observations terrain et des notes de recherche en cours.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p><strong>Jardin de demain</strong></p>
+        <p>Pour une agriculture résiliente et nourricière</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

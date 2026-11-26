@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calendrier des récoltes : quels légumes et fruits récolter chaque mois de l'année." />
+  <title>Calendrier des récoltes — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1480px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.02;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 24px; }
+    h3 { font-size: 20px; margin: 0 0 12px; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 580px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .calendar-grid {
+      max-width: 900px;
+      margin: 60px auto 0;
+      position: relative;
+    }
+
+    .calendar-grid::before {
+      content: "";
+      position: absolute;
+      left: 40px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(100, 180, 255, .4) 0%,
+        rgba(100, 180, 255, .4) 16.66%,
+        rgba(214, 249, 0, .4) 16.66%,
+        rgba(214, 249, 0, .4) 50%,
+        rgba(255, 179, 71, .4) 50%,
+        rgba(255, 179, 71, .4) 75%,
+        rgba(214, 120, 0, .4) 75%,
+        rgba(214, 120, 0, .4) 91.66%,
+        rgba(100, 180, 255, .4) 91.66%,
+        rgba(100, 180, 255, .4) 100%
+      );
+    }
+
+    .month-card {
+      position: relative;
+      padding: 28px 0 28px 90px;
+      margin-bottom: 10px;
+    }
+
+    .month-card::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 32px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 3px solid #0b0d10;
+    }
+
+    .month-card.season-printemps::before { background: rgba(214, 249, 0, .9); box-shadow: 0 0 0 2px rgba(214, 249, 0, .9); }
+    .month-card.season-ete::before { background: rgba(255, 179, 71, .9); box-shadow: 0 0 0 2px rgba(255, 179, 71, .9); }
+    .month-card.season-automne::before { background: rgba(214, 120, 0, .9); box-shadow: 0 0 0 2px rgba(214, 120, 0, .9); }
+    .month-card.season-hiver::before { background: rgba(100, 180, 255, .9); box-shadow: 0 0 0 2px rgba(100, 180, 255, .9); }
+
+    .month-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      color: #f5f4ef;
+      margin: 0 0 4px;
+      font-weight: 400;
+    }
+
+    .season-label {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 600;
+      margin-bottom: 16px;
+      opacity: .6;
+    }
+
+    .harvest-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .harvest-item {
+      background: #111419;
+      border: 1px solid #30343a;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+    }
+
+    .harvest-item:hover {
+      background: #15191f;
+    }
+
+    .month-card.season-printemps .harvest-item:hover { border-color: rgba(214, 249, 0, .9); }
+    .month-card.season-ete .harvest-item:hover { border-color: rgba(255, 179, 71, .9); }
+    .month-card.season-automne .harvest-item:hover { border-color: rgba(214, 120, 0, .9); }
+    .month-card.season-hiver .harvest-item:hover { border-color: rgba(100, 180, 255, .9); }
+
+    .harvest-icon {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .harvest-item strong {
+      color: #f5f4ef;
+      font-weight: 500;
+    }
+
+    .harvest-item small {
+      color: #718078;
+      font-size: 12px;
+    }
+
+    .harvest-item small::before {
+      content: "·";
+      margin-right: 6px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+    }
+
+    .intro p:last-child {
+      margin: 0;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .calendar-grid::before {
+        left: 20px;
+      }
+      .month-card {
+        padding-left: 60px;
+      }
+      .month-card::before {
+        left: 12px;
+      }
+      .month-name {
+        font-size: 26px;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Fonctionnalité phare</p>
+      <h1>Calendrier des récoltes</h1>
+      <p class="lead">Découvre mois par mois quels légumes, fruits et plantes aromatiques récolter dans ton jardin.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Comment utiliser ce calendrier :</strong></p>
+        <p>Chaque mois indique les cultures principales à récolter. Les périodes peuvent varier selon ta région et le climat. Ce calendrier est indicatif et basé sur un climat tempéré français.</p>
+        <p>Les récoltes listées sont celles qui arrivent à maturité ce mois-ci. Certaines cultures peuvent être récoltées sur plusieurs mois.</p>
+      </div>
+
+      <div class="calendar-grid" id="calendar"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+
+  <script>
+    // Icônes pour chaque type de récolte
+    const icones = {
+      'Poireaux': '🥬',
+      'Choux (tous types)': '🥬',
+      'Choux': '🥬',
+      'Mâche': '🥗',
+      'Épinards d\'hiver': '🥬',
+      'Épinards': '🥬',
+      'Topinambours': '🥔',
+      'Panais': '🥕',
+      'Carottes de conservation': '🥕',
+      'Carottes': '🥕',
+      'Betteraves': '🫐',
+      'Laitues de printemps': '🥬',
+      'Laitues': '🥬',
+      'Radis': '🔴',
+      'Oseille': '🌿',
+      'Ciboulette': '🌿',
+      'Rhubarbe': '🌿',
+      'Asperges': '🌱',
+      'Roquette': '🥬',
+      'Petits pois': '🫛',
+      'Fèves': '🫘',
+      'Fraises': '🍓',
+      'Cerises': '🍒',
+      'Courgettes': '🥒',
+      'Tomates': '🍅',
+      'Pommes de terre nouvelles': '🥔',
+      'Aubergines': '🍆',
+      'Poivrons': '🫑',
+      'Haricots verts': '🫛',
+      'Abricots': '🍑',
+      'Framboises': '🫐',
+      'Melons': '🍈',
+      'Pastèques': '🍉',
+      'Pêches': '🍑',
+      'Prunes': '🟣',
+      'Maïs doux': '🌽',
+      'Courges': '🎃',
+      'Raisins': '🍇',
+      'Figues': '🫐',
+      'Pommes': '🍎',
+      'Poires': '🍐',
+      'Châtaignes': '🌰',
+      'Noix': '🥜',
+      'Navets': '🫚',
+      'Kiwis': '🥝'
+    };
+
+    // Données du calendrier des récoltes
+    const calendrier = {
+      1: {
+        nom: 'Janvier',
+        saison: 'hiver',
+        recoltes: [
+          { nom: 'Poireaux', note: 'dernières récoltes' },
+          { nom: 'Choux (tous types)', note: 'chou de Bruxelles, chou frisé' },
+          { nom: 'Mâche', note: '' },
+          { nom: 'Épinards d\'hiver', note: '' },
+          { nom: 'Topinambours', note: '' },
+          { nom: 'Panais', note: '' }
+        ]
+      },
+      2: {
+        nom: 'Février',
+        saison: 'hiver',
+        recoltes: [
+          { nom: 'Poireaux', note: 'fin de récolte' },
+          { nom: 'Choux', note: 'chou de Bruxelles' },
+          { nom: 'Mâche', note: '' },
+          { nom: 'Épinards', note: '' },
+          { nom: 'Carottes de conservation', note: '' },
+          { nom: 'Betteraves', note: 'stockées' }
+        ]
+      },
+      3: {
+        nom: 'Mars',
+        saison: 'printemps',
+        recoltes: [
+          { nom: 'Épinards', note: 'premières pousses' },
+          { nom: 'Laitues de printemps', note: '' },
+          { nom: 'Radis', note: 'sous abri' },
+          { nom: 'Oseille', note: '' },
+          { nom: 'Ciboulette', note: 'reprend' },
+          { nom: 'Rhubarbe', note: 'premières tiges' }
+        ]
+      },
+      4: {
+        nom: 'Avril',
+        saison: 'printemps',
+        recoltes: [
+          { nom: 'Asperges', note: 'pic de saison' },
+          { nom: 'Radis', note: '' },
+          { nom: 'Laitues', note: '' },
+          { nom: 'Épinards', note: '' },
+          { nom: 'Roquette', note: '' },
+          { nom: 'Petits pois', note: 'début' }
+        ]
+      },
+      5: {
+        nom: 'Mai',
+        saison: 'printemps',
+        recoltes: [
+          { nom: 'Petits pois', note: '' },
+          { nom: 'Fèves', note: '' },
+          { nom: 'Laitues', note: '' },
+          { nom: 'Radis', note: '' },
+          { nom: 'Fraises', note: 'début' },
+          { nom: 'Cerises', note: 'précoces' }
+        ]
+      },
+      6: {
+        nom: 'Juin',
+        saison: 'ete',
+        recoltes: [
+          { nom: 'Fraises', note: 'pleine saison' },
+          { nom: 'Cerises', note: '' },
+          { nom: 'Petits pois', note: '' },
+          { nom: 'Courgettes', note: 'début' },
+          { nom: 'Tomates', note: 'premières' },
+          { nom: 'Pommes de terre nouvelles', note: '' }
+        ]
+      },
+      7: {
+        nom: 'Juillet',
+        saison: 'ete',
+        recoltes: [
+          { nom: 'Tomates', note: 'abondance' },
+          { nom: 'Courgettes', note: '' },
+          { nom: 'Aubergines', note: '' },
+          { nom: 'Poivrons', note: '' },
+          { nom: 'Haricots verts', note: '' },
+          { nom: 'Abricots', note: '' },
+          { nom: 'Framboises', note: '' }
+        ]
+      },
+      8: {
+        nom: 'Août',
+        saison: 'ete',
+        recoltes: [
+          { nom: 'Tomates', note: 'pic' },
+          { nom: 'Courgettes', note: '' },
+          { nom: 'Melons', note: '' },
+          { nom: 'Pastèques', note: '' },
+          { nom: 'Pêches', note: '' },
+          { nom: 'Prunes', note: '' },
+          { nom: 'Maïs doux', note: '' }
+        ]
+      },
+      9: {
+        nom: 'Septembre',
+        saison: 'automne',
+        recoltes: [
+          { nom: 'Tomates', note: 'fin de saison' },
+          { nom: 'Courges', note: 'butternut, potimarrons' },
+          { nom: 'Raisins', note: '' },
+          { nom: 'Figues', note: '' },
+          { nom: 'Pommes', note: 'début' },
+          { nom: 'Poires', note: '' }
+        ]
+      },
+      10: {
+        nom: 'Octobre',
+        saison: 'automne',
+        recoltes: [
+          { nom: 'Courges', note: 'toutes variétés' },
+          { nom: 'Pommes', note: 'pic' },
+          { nom: 'Poires', note: '' },
+          { nom: 'Châtaignes', note: '' },
+          { nom: 'Noix', note: '' },
+          { nom: 'Carottes', note: 'conservation' }
+        ]
+      },
+      11: {
+        nom: 'Novembre',
+        saison: 'automne',
+        recoltes: [
+          { nom: 'Courges', note: 'dernières' },
+          { nom: 'Choux', note: 'tous types' },
+          { nom: 'Poireaux', note: 'début' },
+          { nom: 'Betteraves', note: '' },
+          { nom: 'Navets', note: '' },
+          { nom: 'Kiwis', note: '' }
+        ]
+      },
+      12: {
+        nom: 'Décembre',
+        saison: 'hiver',
+        recoltes: [
+          { nom: 'Poireaux', note: '' },
+          { nom: 'Choux', note: 'chou de Bruxelles, chou frisé' },
+          { nom: 'Mâche', note: '' },
+          { nom: 'Épinards d\'hiver', note: '' },
+          { nom: 'Carottes', note: 'stockées' },
+          { nom: 'Pommes', note: 'conservation' }
+        ]
+      }
+    };
+
+    const saisonLabels = {
+      printemps: 'Printemps',
+      ete: 'Été',
+      automne: 'Automne',
+      hiver: 'Hiver'
+    };
+
+    // Générer le calendrier
+    const container = document.getElementById('calendar');
+    for (let mois = 1; mois <= 12; mois++) {
+      const data = calendrier[mois];
+
+      const card = document.createElement('div');
+      card.className = `month-card season-${data.saison}`;
+
+      const label = document.createElement('div');
+      label.className = 'season-label';
+      label.textContent = saisonLabels[data.saison];
+
+      const title = document.createElement('h3');
+      title.className = 'month-name';
+      title.textContent = data.nom;
+
+      const list = document.createElement('ul');
+      list.className = 'harvest-list';
+
+      data.recoltes.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'harvest-item';
+
+        // Ajouter l'icône
+        const icon = document.createElement('span');
+        icon.className = 'harvest-icon';
+        icon.textContent = icones[item.nom] || '🌱';
+        li.appendChild(icon);
+
+        const strong = document.createElement('strong');
+        strong.textContent = item.nom;
+        li.appendChild(strong);
+        if (item.note) {
+          const small = document.createElement('small');
+          small.textContent = item.note;
+          li.appendChild(small);
+        }
+        list.appendChild(li);
+      });
+
+      card.appendChild(label);
+      card.appendChild(title);
+      card.appendChild(list);
+      container.appendChild(card);
+    }
+  </script>
+</body>
+</html>

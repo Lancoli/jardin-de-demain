@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide des associations de plantes au potager : compagnonnage, bonnes et mauvaises associations, rotation des cultures." />
+  <title>Associations de plantes — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 32px; }
+    h3 { font-size: 26px; margin: 0 0 16px; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+      line-height: 1.7;
+    }
+
+    .intro strong {
+      color: #f5f4ef;
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 60px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 50px 16px 20px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      color: #f5f4ef;
+      font-size: 16px;
+      font-family: inherit;
+      transition: border-color .2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #d6f900;
+    }
+
+    .search-input::placeholder {
+      color: #718078;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #718078;
+      font-size: 20px;
+    }
+
+    .plant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    .plant-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 28px;
+      transition: all .2s;
+    }
+
+    .plant-card:hover {
+      border-color: #d6f900;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    .plant-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .plant-icon {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .plant-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin: 0;
+      color: #f5f4ef;
+    }
+
+    .plant-latin {
+      font-size: 13px;
+      color: #718078;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .associations-section {
+      margin-bottom: 20px;
+    }
+
+    .associations-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .associations-title.good { color: #7bc96f; }
+    .associations-title.bad { color: #ff6b6b; }
+
+    .associations-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .association-tag {
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      border: 1px solid;
+    }
+
+    .association-tag.good {
+      background: rgba(123, 201, 111, .15);
+      border-color: rgba(123, 201, 111, .3);
+      color: #7bc96f;
+    }
+
+    .association-tag.bad {
+      background: rgba(255, 107, 107, .15);
+      border-color: rgba(255, 107, 107, .3);
+      color: #ff6b6b;
+    }
+
+    .plant-note {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #30343a;
+      font-size: 14px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    .rotation-section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .rotation-section h2 {
+      color: #d6f900;
+      margin-bottom: 24px;
+    }
+
+    .rotation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: #30343a;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .rotation-cell {
+      background: #15191f;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .rotation-cell.header {
+      background: #111419;
+      font-weight: 600;
+      color: #d6f900;
+      font-size: 14px;
+    }
+
+    .rotation-cell .year {
+      font-size: 12px;
+      color: #718078;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+
+    .rotation-cell .crops {
+      font-size: 14px;
+      color: #f5f4ef;
+      line-height: 1.6;
+    }
+
+    .rotation-note {
+      margin-top: 24px;
+      padding: 20px;
+      background: #15191f;
+      border-left: 4px solid #d6f900;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .plant-grid {
+        grid-template-columns: 1fr;
+      }
+      .rotation-grid {
+        grid-template-columns: 1fr;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="associations-plantes.html">Associations</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Compagnonnage & rotation</p>
+      <h1>Associations de plantes</h1>
+      <p class="lead">Optimiser les cultures du potager grâce aux associations bénéfiques et éviter les incompatibilités.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Pourquoi associer les plantes :</strong></p>
+        <p>Certaines plantes cultivées ensemble se protègent mutuellement (répulsion de ravageurs), s'entraident (fixation d'azote, ombrage), ou optimisent l'espace (racines à différentes profondeurs). À l'inverse, certaines associations sont néfastes : compétition pour nutriments, allélopathie, attraction des mêmes maladies.</p>
+        <p><strong>Rotation des cultures :</strong> Ne jamais cultiver la même famille au même endroit deux années de suite. Évite épuisement du sol et accumulation de maladies spécifiques.</p>
+      </div>
+
+      <div class="search-box">
+        <input type="text" class="search-input" id="search" placeholder="Rechercher une plante (tomate, carotte...)">
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div class="plant-grid" id="plants"></div>
+
+      <div class="rotation-section">
+        <h2>Rotation sur 4 ans</h2>
+        <p style="color: #718078; margin-bottom: 24px;">Exemple de rotation classique pour un potager divisé en 4 parcelles. Chaque famille tourne d'une parcelle chaque année.</p>
+
+        <div class="rotation-grid">
+          <div class="rotation-cell header">Parcelle 1</div>
+          <div class="rotation-cell header">Parcelle 2</div>
+          <div class="rotation-cell header">Parcelle 3</div>
+          <div class="rotation-cell header">Parcelle 4</div>
+
+          <div class="rotation-cell">
+            <div class="year">Année 1</div>
+            <div class="crops">Légumes-feuilles<br><small>(Choux, salades, épinards)</small></div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 1</div>
+            <div class="crops">Légumes-fruits<br><small>(Tomates, courges, poivrons)</small></div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 1</div>
+            <div class="crops">Légumes-racines<br><small>(Carottes, betteraves, radis)</small></div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 1</div>
+            <div class="crops">Légumineuses<br><small>(Haricots, pois, fèves)</small></div>
+          </div>
+
+          <div class="rotation-cell">
+            <div class="year">Année 2</div>
+            <div class="crops">Légumineuses</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 2</div>
+            <div class="crops">Légumes-feuilles</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 2</div>
+            <div class="crops">Légumes-fruits</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 2</div>
+            <div class="crops">Légumes-racines</div>
+          </div>
+
+          <div class="rotation-cell">
+            <div class="year">Année 3</div>
+            <div class="crops">Légumes-racines</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 3</div>
+            <div class="crops">Légumineuses</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 3</div>
+            <div class="crops">Légumes-feuilles</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 3</div>
+            <div class="crops">Légumes-fruits</div>
+          </div>
+
+          <div class="rotation-cell">
+            <div class="year">Année 4</div>
+            <div class="crops">Légumes-fruits</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 4</div>
+            <div class="crops">Légumes-racines</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 4</div>
+            <div class="crops">Légumineuses</div>
+          </div>
+          <div class="rotation-cell">
+            <div class="year">Année 4</div>
+            <div class="crops">Légumes-feuilles</div>
+          </div>
+        </div>
+
+        <div class="rotation-note">
+          <strong>Avantages :</strong> Prévention des maladies, équilibre nutritif du sol (légumineuses enrichissent en azote pour les feuilles gourmandes), rupture du cycle des ravageurs spécifiques. Engrais vert possible en hiver sur parcelles légumes-racines.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+
+  <script>
+    const plantes = [
+      {
+        nom: 'Tomate',
+        latin: 'Solanum lycopersicum',
+        icon: '🍅',
+        bonnes: ['Basilic', 'Œillet d\'Inde', 'Persil', 'Carotte', 'Oignon', 'Céleri'],
+        mauvaises: ['Pomme de terre', 'Fenouil', 'Chou', 'Betterave'],
+        note: 'Le basilic repousse les pucerons et mouches blanches. Œillet d\'Inde contre nématodes. Éviter solanacées ensemble (maladies communes).'
+      },
+      {
+        nom: 'Carotte',
+        latin: 'Daucus carota',
+        icon: '🥕',
+        bonnes: ['Poireau', 'Oignon', 'Tomate', 'Laitue', 'Radis', 'Pois'],
+        mauvaises: ['Aneth', 'Menthe', 'Betterave'],
+        note: 'Poireau et carotte se protègent mutuellement (mouche de la carotte / teigne du poireau). Oignon repousse la mouche de la carotte.'
+      },
+      {
+        nom: 'Courgette',
+        latin: 'Cucurbita pepo',
+        icon: '🥒',
+        bonnes: ['Haricot', 'Maïs', 'Capucine', 'Radis', 'Oignon'],
+        mauvaises: ['Pomme de terre', 'Concombre (trop proche)'],
+        note: 'Association "trois sœurs" : maïs (tuteur) + haricot (azote) + courge (couvre-sol). Capucine attire pucerons loin des courgettes.'
+      },
+      {
+        nom: 'Haricot',
+        latin: 'Phaseolus vulgaris',
+        icon: '🫛',
+        bonnes: ['Carotte', 'Chou', 'Courgette', 'Maïs', 'Aubergine', 'Pomme de terre'],
+        mauvaises: ['Oignon', 'Ail', 'Poireau', 'Pois'],
+        note: 'Fixateur d\'azote qui enrichit le sol. Éviter alliacées qui inhibent les nodosités fixatrices. Ne pas planter avec d\'autres légumineuses.'
+      },
+      {
+        nom: 'Laitue',
+        latin: 'Lactuca sativa',
+        icon: '🥬',
+        bonnes: ['Carotte', 'Radis', 'Fraise', 'Concombre', 'Chou', 'Betterave'],
+        mauvaises: ['Persil', 'Céleri'],
+        note: 'Pousse rapide entre cultures lentes (carottes). Radis protège des pucerons. Association classique fraise-laitue (ombrage mutuel).'
+      },
+      {
+        nom: 'Oignon',
+        latin: 'Allium cepa',
+        icon: '🧅',
+        bonnes: ['Carotte', 'Betterave', 'Laitue', 'Tomate', 'Fraise'],
+        mauvaises: ['Pois', 'Haricot', 'Fève', 'Chou'],
+        note: 'Repousse mouche de la carotte, pucerons. Incompatible avec légumineuses (inhibe fixation azote). Éviter avec choux (croissance ralentie).'
+      },
+      {
+        nom: 'Chou',
+        latin: 'Brassica oleracea',
+        icon: '🥬',
+        bonnes: ['Laitue', 'Céleri', 'Aneth', 'Menthe', 'Thym', 'Sauge'],
+        mauvaises: ['Fraise', 'Tomate', 'Oignon', 'Ail'],
+        note: 'Aromatiques repoussent piéride et altises. Céleri contre piéride. Éviter solanacées et alliacées. Rotation stricte (maladies du sol).'
+      },
+      {
+        nom: 'Pomme de terre',
+        latin: 'Solanum tuberosum',
+        icon: '🥔',
+        bonnes: ['Haricot', 'Pois', 'Chou', 'Maïs', 'Capucine'],
+        mauvaises: ['Tomate', 'Aubergine', 'Courge', 'Concombre'],
+        note: 'Éviter absolument autres solanacées (mildiou). Capucine attire doryphores loin des pommes de terre. Lin éloigne doryphore.'
+      },
+      {
+        nom: 'Radis',
+        latin: 'Raphanus sativus',
+        icon: '🔴',
+        bonnes: ['Laitue', 'Carotte', 'Épinard', 'Tomate', 'Haricot'],
+        mauvaises: ['Chou', 'Courge'],
+        note: 'Pousse rapide, marque les lignes de semis. Repousse altises des laitues. Récolter avant que les cultures lentes ne prennent trop de place.'
+      },
+      {
+        nom: 'Poireau',
+        latin: 'Allium porrum',
+        icon: '🥬',
+        bonnes: ['Carotte', 'Céleri', 'Tomate', 'Fraise'],
+        mauvaises: ['Pois', 'Haricot', 'Fève', 'Chou'],
+        note: 'Association emblématique carotte-poireau (protection mutuelle contre mouches). Éviter légumineuses comme tous les alliacées.'
+      },
+      {
+        nom: 'Aubergine',
+        latin: 'Solanum melongena',
+        icon: '🍆',
+        bonnes: ['Haricot', 'Pois', 'Thym', 'Estragon'],
+        mauvaises: ['Pomme de terre', 'Tomate (trop proche)', 'Concombre'],
+        note: 'Solanacée : rotation stricte, ne pas cultiver après tomate ou pomme de terre. Thym et estragon repoussent pucerons.'
+      },
+      {
+        nom: 'Betterave',
+        latin: 'Beta vulgaris',
+        icon: '🫐',
+        bonnes: ['Oignon', 'Chou', 'Laitue', 'Haricot nain'],
+        mauvaises: ['Tomate', 'Poireau', 'Carotte'],
+        note: 'Racine profonde peu concurrentielle. Éviter avec autres racines. Compatible avec choux et alliacées. Supporte mi-ombre.'
+      },
+      {
+        nom: 'Concombre',
+        latin: 'Cucumis sativus',
+        icon: '🥒',
+        bonnes: ['Laitue', 'Chou', 'Haricot', 'Pois', 'Aneth'],
+        mauvaises: ['Tomate', 'Pomme de terre', 'Radis', 'Courge'],
+        note: 'Aneth améliore croissance et saveur. Éviter cucurbitacées trop proches (maladies). Radis épuise sol trop vite pour concombre.'
+      },
+      {
+        nom: 'Épinard',
+        latin: 'Spinacia oleracea',
+        icon: '🥬',
+        bonnes: ['Fraise', 'Haricot', 'Pois', 'Chou', 'Radis'],
+        mauvaises: ['Betterave'],
+        note: 'Pousse rapide entre cultures lentes. Protège fraisiers (ombrage, humidité). Éviter avec betterave (même famille : chénopodiacées).'
+      },
+      {
+        nom: 'Poivron',
+        latin: 'Capsicum annuum',
+        icon: '🫑',
+        bonnes: ['Basilic', 'Oignon', 'Carotte', 'Tomate'],
+        mauvaises: ['Fenouil', 'Chou', 'Haricot à rame'],
+        note: 'Solanacée comme tomate : mêmes associations. Basilic repousse pucerons. Rotation stricte (maladies cryptogamiques du sol).'
+      }
+    ];
+
+    const container = document.getElementById('plants');
+    const searchInput = document.getElementById('search');
+
+    function renderPlants(filter = '') {
+      container.innerHTML = '';
+      const filtered = filter ? plantes.filter(p =>
+        p.nom.toLowerCase().includes(filter.toLowerCase()) ||
+        p.bonnes.some(b => b.toLowerCase().includes(filter.toLowerCase())) ||
+        p.mauvaises.some(m => m.toLowerCase().includes(filter.toLowerCase()))
+      ) : plantes;
+
+      filtered.forEach(plante => {
+        const card = document.createElement('article');
+        card.className = 'plant-card';
+
+        const header = document.createElement('div');
+        header.className = 'plant-header';
+        header.innerHTML = `
+          <span class="plant-icon">${plante.icon}</span>
+          <h3 class="plant-name">${plante.nom}</h3>
+        `;
+
+        const latin = document.createElement('p');
+        latin.className = 'plant-latin';
+        latin.textContent = plante.latin;
+
+        const goodSection = document.createElement('div');
+        goodSection.className = 'associations-section';
+        goodSection.innerHTML = `
+          <div class="associations-title good">Bonnes associations</div>
+          <div class="associations-list">
+            ${plante.bonnes.map(a => `<span class="association-tag good">${a}</span>`).join('')}
+          </div>
+        `;
+
+        const badSection = document.createElement('div');
+        badSection.className = 'associations-section';
+        badSection.innerHTML = `
+          <div class="associations-title bad">À éviter</div>
+          <div class="associations-list">
+            ${plante.mauvaises.map(a => `<span class="association-tag bad">${a}</span>`).join('')}
+          </div>
+        `;
+
+        const note = document.createElement('div');
+        note.className = 'plant-note';
+        note.textContent = plante.note;
+
+        card.appendChild(header);
+        card.appendChild(latin);
+        card.appendChild(goodSection);
+        card.appendChild(badSection);
+        card.appendChild(note);
+
+        container.appendChild(card);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #718078; padding: 40px;">Aucune plante trouvée.</p>';
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      renderPlants(e.target.value);
+    });
+
+    renderPlants();
+  </script>
+</body>
+</html>

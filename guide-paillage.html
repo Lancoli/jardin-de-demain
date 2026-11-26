@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide complet du paillage pour arbres fruitiers : types de paillis, épaisseurs, avantages et inconvénients." />
+  <title>Guide du paillage — Jardin de demain</title>
+  <style>
+
+* { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0b0d10;
+      color: #f5f4ef;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid #30343a;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #d6f900;
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border: 2px solid #0b0d10;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+
+    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
+    nav a:hover { color: #d6f900; }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px 85px;
+      border-bottom: 1px solid #30343a;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+    }
+
+    .eyebrow {
+      color: #d6f900;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
+    h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 32px; }
+    h3 { font-size: 22px; margin: 0 0 12px; }
+
+    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+
+    main { padding: 60px 0 120px; }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 60px;
+      padding: 32px;
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+      color: #718078;
+      line-height: 1.7;
+    }
+
+    .intro strong {
+      color: #f5f4ef;
+    }
+
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #30343a;
+    }
+
+    .mulch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 20px;
+    }
+
+    .mulch-card {
+      background: #111419;
+      border: 1px solid #30343a;
+      border-radius: 8px;
+      padding: 28px;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mulch-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .mulch-card.rating-excellent::before { background: #7bc96f; }
+    .mulch-card.rating-bon::before { background: #64b4ff; }
+    .mulch-card.rating-attention::before { background: #ffb347; }
+    .mulch-card.rating-eviter::before { background: #ff6b6b; }
+
+    .mulch-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+
+    .mulch-card.rating-excellent:hover { border-color: #7bc96f; }
+    .mulch-card.rating-bon:hover { border-color: #64b4ff; }
+    .mulch-card.rating-attention:hover { border-color: #ffb347; }
+    .mulch-card.rating-eviter:hover { border-color: #ff6b6b; }
+
+    .mulch-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      margin: 0 0 20px;
+      color: #f5f4ef;
+    }
+
+    .rating-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 20px;
+    }
+
+    .rating-excellent { background: rgba(123, 201, 111, .2); color: #7bc96f; }
+    .rating-bon { background: rgba(100, 180, 255, .2); color: #64b4ff; }
+    .rating-attention { background: rgba(255, 179, 71, .2); color: #ffb347; }
+    .rating-eviter { background: rgba(255, 107, 107, .2); color: #ff6b6b; }
+
+    .mulch-property {
+      margin: 12px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .mulch-property-label {
+      color: #718078;
+      min-width: 110px;
+      font-size: 13px;
+    }
+
+    .mulch-property-value {
+      color: #f5f4ef;
+      flex: 1;
+    }
+
+    .mulch-note {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #30343a;
+      font-size: 14px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    .pros-cons {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .pros, .cons {
+      font-size: 13px;
+    }
+
+    .pros h4, .cons h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .pros h4 { color: #7bc96f; }
+    .cons h4 { color: #ff6b6b; }
+
+    .pros ul, .cons ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #718078;
+      line-height: 1.6;
+    }
+
+    .tips {
+      background: #15191f;
+      border: 1px solid #30343a;
+      border-left: 4px solid #d6f900;
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .tips h3 {
+      color: #d6f900;
+      margin-top: 0;
+    }
+
+    .tips ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #718078;
+      line-height: 1.8;
+    }
+
+    .tips li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #30343a;
+      text-align: center;
+      color: #718078;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .mulch-grid {
+        grid-template-columns: 1fr;
+      }
+      .pros-cons {
+        grid-template-columns: 1fr;
+      }
+      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a href="jardin-de-demain-prototype.html" class="brand">
+          <div class="brand-mark"></div>
+          <span>Jardin de demain</span>
+        </a>
+        <nav>
+          <a href="temps-au-jardin.html">Temps au jardin</a>
+          <a href="calendrier-recoltes.html">Calendrier récoltes</a>
+          <a href="arbres-secheresse.html">Arbres résistants</a>
+          <a href="guide-paillage.html">Guide paillage</a>
+          <a href="pharmacopee.html">Pharmacopée</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <p class="eyebrow">Technique essentielle</p>
+      <h1>Guide du paillage</h1>
+      <p class="lead">Choisir le bon paillis pour protéger vos arbres fruitiers de la sécheresse, conserver l'humidité du sol et nourrir la terre.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="intro">
+        <p><strong>Pourquoi pailler :</strong></p>
+        <p>Le paillage est une technique fondamentale pour les jardins en climat sec. Il limite l'évaporation de l'eau du sol (jusqu'à 70% d'économie), maintient la fraîcheur racinaire, nourrit le sol en se décomposant, limite les adventices et protège contre l'érosion et le tassement lors des pluies.</p>
+        <p><strong>Pour les jeunes arbres fruitiers :</strong> Un paillage de 10-15cm sur 1m de rayon autour du tronc (sans toucher l'écorce) réduit drastiquement les besoins en arrosage et favorise l'enracinement profond.</p>
+      </div>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Paillis recommandés</h2>
+        </div>
+
+        <div class="mulch-grid">
+          <!-- BRF -->
+          <article class="mulch-card rating-excellent">
+            <span class="rating-badge rating-excellent">Excellent</span>
+            <h3 class="mulch-name">BRF (Bois Raméal Fragmenté)</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">5-8cm (tasse à 3-4cm)</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">12-18 mois</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Printemps ou automne</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Gratuit à modéré</span>
+            </div>
+
+            <div class="mulch-note">
+              Broyat de jeunes rameaux (< 7cm de diamètre) de feuillus. Se décompose lentement en enrichissant le sol (faim d'azote temporaire la première année). Favorise la vie du sol et les champignons mycorhiziens. Idéal pour arbres fruitiers.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Enrichit durablement le sol</li>
+                  <li>Favorise les mycorhizes</li>
+                  <li>Excellente rétention d'eau</li>
+                  <li>Longue durée</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Faim d'azote année 1</li>
+                  <li>Broyeur nécessaire</li>
+                  <li>Éviter résineux purs</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Paille -->
+          <article class="mulch-card rating-excellent">
+            <span class="rating-badge rating-excellent">Excellent</span>
+            <h3 class="mulch-name">Paille</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">10-15cm (tasse beaucoup)</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">6-12 mois</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Toute l'année</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Faible (3-5€/botte)</span>
+            </div>
+
+            <div class="mulch-note">
+              Paille de céréales (blé, orge, avoine). Très aérée, claire (ne chauffe pas le sol), pauvre en azote (pas de faim d'azote). Idéale pour jeunes plants et climat chaud. Privilégier paille bio sans graines d'adventices.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Très bon paillage universel</li>
+                  <li>Pas de faim d'azote</li>
+                  <li>Facile à trouver</li>
+                  <li>Aérée, claire</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Se tasse rapidement</li>
+                  <li>Sensible au vent</li>
+                  <li>Graines si non bio</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Foin -->
+          <article class="mulch-card rating-bon">
+            <span class="rating-badge rating-bon">Bon</span>
+            <h3 class="mulch-name">Foin</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">10-15cm</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">4-8 mois</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Toute l'année</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Gratuit à faible</span>
+            </div>
+
+            <div class="mulch-note">
+              Herbes de prairie fauchées puis séchées. Plus riche que la paille (légumineuses, graminées). Se décompose plus vite. Risque de graines d'adventices selon la fauche. Idéal en fin d'été sur sol encore chaud.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Enrichit bien le sol</li>
+                  <li>Souvent gratuit</li>
+                  <li>Diversité végétale</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Graines d'adventices</li>
+                  <li>Durée moyenne</li>
+                  <li>Chauffe si trop épais</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tontes de gazon -->
+          <article class="mulch-card rating-attention">
+            <span class="rating-badge rating-attention">Avec précaution</span>
+            <h3 class="mulch-name">Tontes de gazon</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">2-3cm max (risque fermentation)</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">2-4 semaines</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Printemps-été, par couches fines</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Gratuit</span>
+            </div>
+
+            <div class="mulch-note">
+              Herbe fraîche tondue. Très riche en azote, se décompose rapidement. Risque de fermentation et d'acidification si couche trop épaisse. À mélanger avec matière carbonée (paille, feuilles sèches) ou étaler en fine couche et renouveler.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Gratuit et disponible</li>
+                  <li>Riche en azote</li>
+                  <li>Décomposition rapide</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Risque fermentation</li>
+                  <li>Couche fine obligatoire</li>
+                  <li>Renouveler souvent</li>
+                  <li>Éviter si pesticides</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Carton -->
+          <article class="mulch-card rating-bon">
+            <span class="rating-badge rating-bon">Bon (temporaire)</span>
+            <h3 class="mulch-name">Carton brun</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">1-2 épaisseurs, recouvert</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">6-12 mois</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Automne, sous autre paillis</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Gratuit (récup)</span>
+            </div>
+
+            <div class="mulch-note">
+              Carton brun ondulé non imprimé (ou encres végétales). Excellente barrière anti-adventices. Toujours recouvrir d'un autre paillis (paille, BRF) pour maintenir au sol et esthétisme. Idéal en installation de jeune verger.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Barrière adventices totale</li>
+                  <li>Gratuit (récup)</li>
+                  <li>Installation rapide</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Peu esthétique seul</li>
+                  <li>Éviter encres chimiques</li>
+                  <li>Doit être recouvert</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Compost -->
+          <article class="mulch-card rating-bon">
+            <span class="rating-badge rating-bon">Bon (en complément)</span>
+            <h3 class="mulch-name">Compost mûr</h3>
+
+            <div class="mulch-property">
+              <span class="mulch-property-label">Épaisseur</span>
+              <span class="mulch-property-value">2-5cm (sous autre paillis)</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Durabilité</span>
+              <span class="mulch-property-value">3-6 mois</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Application</span>
+              <span class="mulch-property-value">Printemps ou automne</span>
+            </div>
+            <div class="mulch-property">
+              <span class="mulch-property-label">Coût</span>
+              <span class="mulch-property-value">Gratuit (maison)</span>
+            </div>
+
+            <div class="mulch-note">
+              Compost bien décomposé (noir, terreux, inodore). Excellente source de nutriments mais peu protecteur seul. Utiliser en fine couche au contact du sol, recouvert de paille ou BRF. Nourrit intensément la vie du sol.
+            </div>
+
+            <div class="pros-cons">
+              <div class="pros">
+                <h4>Avantages</h4>
+                <ul>
+                  <li>Très nutritif</li>
+                  <li>Vie du sol intense</li>
+                  <li>Gratuit si fait maison</li>
+                </ul>
+              </div>
+              <div class="cons">
+                <h4>Inconvénients</h4>
+                <ul>
+                  <li>Peu protecteur seul</li>
+                  <li>Durée courte</li>
+                  <li>Doit être recouvert</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Paillis à éviter</h2>
+        </div>
+
+        <div class="mulch-grid">
+          <!-- Écorces de pin -->
+          <article class="mulch-card rating-eviter">
+            <span class="rating-badge rating-eviter">À éviter</span>
+            <h3 class="mulch-name">Écorces de pin / résineux</h3>
+
+            <div class="mulch-note">
+              Acidifient fortement le sol (pH 4-5). Contiennent des terpènes toxiques pour certaines plantes. Très lents à se décomposer (3-5 ans). Réserver aux plantes acidophiles (myrtilles, rhododendrons). Incompatibles avec la plupart des arbres fruitiers.
+            </div>
+
+            <div class="pros-cons">
+              <div class="cons">
+                <h4>Pourquoi éviter</h4>
+                <ul>
+                  <li>Acidifie trop le sol</li>
+                  <li>Composés toxiques</li>
+                  <li>Incompatible fruitiers</li>
+                  <li>Très longue décomposition</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Copeaux de noyer -->
+          <article class="mulch-card rating-eviter">
+            <span class="rating-badge rating-eviter">À éviter</span>
+            <h3 class="mulch-name">Copeaux de noyer</h3>
+
+            <div class="mulch-note">
+              Le noyer contient de la juglone, substance allélopathique toxique pour de nombreuses plantes (tomates, pommes de terre, pommiers, poiriers, etc.). Peut inhiber la croissance ou tuer les jeunes arbres fruitiers. Ne jamais utiliser en paillage.
+            </div>
+
+            <div class="pros-cons">
+              <div class="cons">
+                <h4>Pourquoi éviter</h4>
+                <ul>
+                  <li>Juglone toxique</li>
+                  <li>Inhibe la croissance</li>
+                  <li>Toxique pour fruitiers</li>
+                  <li>Effets durables</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Bâche plastique -->
+          <article class="mulch-card rating-eviter">
+            <span class="rating-badge rating-eviter">À éviter</span>
+            <h3 class="mulch-name">Bâche plastique / géotextile</h3>
+
+            <div class="mulch-note">
+              Bloque les échanges eau-air avec le sol. Favorise asphyxie racinaire et pourriture. Accumule chaleur excessive. Microplastiques dans le sol. Empêche la vie du sol et les mycorhizes. Ne nourrit pas le sol. Incompatible avec jardinage vivant.
+            </div>
+
+            <div class="pros-cons">
+              <div class="cons">
+                <h4>Pourquoi éviter</h4>
+                <ul>
+                  <li>Asphyxie le sol</li>
+                  <li>Tue la vie du sol</li>
+                  <li>Pollution plastique</li>
+                  <li>Surchauffe l'été</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="tips">
+        <h3>Conseils pratiques</h3>
+        <ul>
+          <li><strong>Ne jamais pailler contre le tronc</strong> : laisser 10-15cm d'espace libre autour pour éviter pourriture et maladies cryptogamiques.</li>
+          <li><strong>Pailler sur sol humide</strong> : après une pluie ou un arrosage copieux, pour conserver cette eau dans le sol.</li>
+          <li><strong>Renouveler régulièrement</strong> : compléter l'épaisseur 1-2 fois par an (printemps et/ou automne) au fur et à mesure de la décomposition.</li>
+          <li><strong>Mélanger les paillis</strong> : carton + paille + compost en couches = synergie efficace (barrière + nutrition + protection).</li>
+          <li><strong>Adapter selon le climat</strong> : paillis clair (paille) en climat chaud pour réfléchir le soleil, paillis sombre (compost, BRF) en climat frais pour accumuler chaleur.</li>
+          <li><strong>Sol pauvre : compléter l'azote</strong> : avec BRF ou foin, apporter un engrais organique azoté (sang séché, compost) la première année pour compenser la faim d'azote.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Jardin de demain — Pour une agriculture résiliente et nourricière</p>
+    </div>
+  </footer>
+</body>
+</html>
