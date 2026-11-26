@@ -24,14 +24,15 @@
       "texte": "N0 · dépôt git propre (rien en attente de commit)",
       "pour": "git",
       "preuve": "2 fichier(s) non commité(s)",
-      "fait": false,
-      "auto": true
+      "fait": true,
+      "auto": true,
+      "fait_le": "2026-11-26T20:05:34.143Z"
     },
     {
       "id": "auto-github",
       "texte": "N0 · sur GitHub, à jour (origin, 0 commit non poussé)",
       "pour": "github",
-      "preuve": "pas de remote origin",
+      "preuve": "branche main jamais poussée",
       "fait": false,
       "auto": true
     },
@@ -46,26 +47,25 @@
     }
   ],
   "etat": {
-    "date": "2026-11-26T18:20:26.123Z",
+    "date": "2026-11-26T20:05:34.143Z",
     "niveau": null,
     "prochain": "N0",
     "bloque": [
-      "git",
       "github"
     ],
     "humain": {},
     "criteres": {
       "git": {
-        "ok": false,
-        "preuve": "2 fichier(s) non commité(s)"
+        "ok": true,
+        "preuve": "propre"
       },
       "github": {
         "ok": false,
-        "preuve": "pas de remote origin"
+        "preuve": "branche main jamais poussée"
       },
       "readme": {
         "ok": true,
-        "preuve": "827 caractères"
+        "preuve": "910 caractères"
       },
       "conforme": {
         "ok": true,
@@ -77,11 +77,11 @@
       },
       "console": {
         "ok": true,
-        "preuve": "11 page(s) sans erreur"
+        "preuve": "11 page(s) sans erreur (dernier passage)"
       },
       "mobile": {
         "ok": true,
-        "preuve": "11 page(s) à 375 px"
+        "preuve": "11 page(s) à 375 px (dernier passage)"
       },
       "remplissage": {
         "ok": true,
