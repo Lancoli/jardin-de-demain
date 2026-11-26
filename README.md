@@ -1,5 +1,9 @@
 # Jardin de demain
 
+<!-- badges : généré par tools/kit-github.mjs -->
+[![qualité](https://github.com/Lancoli/jardin-de-demain/actions/workflows/qualite.yml/badge.svg)](https://github.com/Lancoli/jardin-de-demain/actions/workflows/qualite.yml) [![release](https://img.shields.io/github/v/release/Lancoli/jardin-de-demain?include_prereleases&label=version)](https://github.com/Lancoli/jardin-de-demain/releases) [![Conventional Commits](https://img.shields.io/badge/commits-conventionnels%20%2B%20gitmoji-ff69b4)](https://www.conventionalcommits.org/fr/) [![dernier commit](https://img.shields.io/github/last-commit/Lancoli/jardin-de-demain)](https://github.com/Lancoli/jardin-de-demain/commits)
+<!-- /badges -->
+
 > Approche low-cost de la transformation agronome et agricole des espaces privés.
 
 Des guides pour jardiner face au climat qui change : calendriers des semis et des récoltes, associations de plantes,
