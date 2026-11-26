@@ -1,16 +1,19 @@
-# Jardin de demain — règles de l'app
+# Jardin de demain — app rules
 
-Des guides pour jardiner face au climat qui change (voir [README.md](README.md)). Règles communes : [../CLAUDE.md](../CLAUDE.md).
+Guides to garden for a changing climate (see [README.md](README.md)). Shared rules: [../CLAUDE.md](../CLAUDE.md).
 
-## Règles propres
+## Own rules
 
-- **Approche low-cost** : chaque guide doit pouvoir s'appliquer sans matériel coûteux, sur un jardin privé.
-- **Ne rien inventer en botanique** : une date de semis, une association ou une propriété médicinale vient d'une source
-  citée. Dans le doute, on écrit moins.
-- **Les styles sont dans les pages** (pas de `css/`) : la prochaine étape design est de les sortir dans `css/` avec des
-  jetons, pour que `node tools/design-lint.mjs JardinDeDemain` puisse mesurer.
-- `tools/replace-css-vars.mjs` et `tools/finish-css-vars.mjs` : les outils de la migration des variables CSS.
+- **Low-cost approach**: every guide must be doable without expensive equipment, in a private garden.
+- **Invent nothing in botany**: a sowing date, a companion planting or a medicinal property comes from a cited
+  source. When in doubt, write less.
+- **Styles live in the pages** (no `css/`): the next design step is to move them to `css/` with tokens, so that
+  `node tools/design-lint.mjs JardinDeDemain` can measure them.
+- `tools/replace-css-vars.mjs` and `tools/finish-css-vars.mjs`: the tools of the CSS variable migration.
+- **Languages**: code, comments and docs in English. The pages are French; their move to `i18n/` (fr default, en)
+  is pending a decision on translating the guides (root rule "Language", translate-en skill, step 4).
+- The page data keys (`nom`, `saison`, `usages`…) stay French until that step: they mirror ids used in the HTML.
 
-## Vérifier
+## Check
 
-`node tools/jalons.mjs JardinDeDemain` · `lancer liens JardinDeDemain` (depuis la racine).
+`node tools/jalons.mjs JardinDeDemain` · `lancer liens JardinDeDemain` (from the root).

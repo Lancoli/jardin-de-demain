@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Script pour remplacer toutes les variables CSS (custom properties)
- * par leurs valeurs directes dans les fichiers HTML
+ * Script that replaces every CSS variable (custom property)
+ * with its direct value in the HTML files
  */
 
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-// Fichiers à traiter (tous les HTML à la racine sauf archive)
+// Files to process (every HTML at the root except the archive)
 const files = [
   'index.html',
   'jardins-vivants.html',
@@ -25,7 +25,7 @@ const files = [
 ];
 
 function extractVariables(content) {
-  // Trouver le bloc :root { ... }
+  // Find the :root { ... } block
   const match = content.match(/:root\s*\{([^}]*)\}/s);
   if (!match) {
     return null;
@@ -34,7 +34,7 @@ function extractVariables(content) {
   const block = match[1];
   const variables = {};
 
-  // Extraire chaque --variable: valeur;
+  // Extract each --variable: value;
   const lines = block.split(/;|\n/);
   for (const line of lines) {
     const varMatch = line.match(/(--[a-z0-9-]+)\s*:\s*([^;]+)/);
@@ -55,21 +55,21 @@ function replaceVariables(content, variables) {
 
   let result = content;
 
-  // Remplacer toutes les occurrences de var(--variable) par la valeur
-  // On trie par longueur décroissante pour traiter d'abord les plus spécifiques
+  // Replace every var(--variable) with its value
+  // Sort by decreasing length to handle the most specific first
   const entries = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
 
   for (const [variable, value] of entries) {
-    // Échapper les caractères spéciaux pour la regex
+    // Escape the regex special characters
     const escapedVar = variable.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`var\\(\\s*${escapedVar}\\s*\\)`, 'g');
     result = result.replace(regex, value);
   }
 
-  // Supprimer le bloc :root { ... }
+  // Remove the :root { ... } block
   result = result.replace(/:root\s*\{[^}]*\}/gs, '');
 
-  // Supprimer les lignes de commentaires sur les variables si elles sont isolées
+  // Remove comment lines about the variables when they stand alone
   result = result.replace(/\/\*\s*=+\s*\n\s*\d+\.\s*VARIABLES\s*\n\s*=+\s*\*\/\s*\n*/g, '');
 
   return result;
@@ -80,41 +80,41 @@ function processFile(fileName) {
     const filePath = join(process.cwd(), fileName);
     const content = readFileSync(filePath, 'utf-8');
 
-    // Extraire les variables définies dans ce fichier
+    // Extract the variables defined in this file
     const variables = extractVariables(content);
 
     if (!variables) {
-      console.log(`✓ ${fileName} : aucune variable CSS trouvée`);
+      console.log(`✓ ${fileName} : no CSS variable found`);
       return;
     }
 
-    // Remplacer les variables
+    // Replace the variables
     const newContent = replaceVariables(content, variables);
 
-    // Vérifier qu'il ne reste plus de var()
+    // Check that no var() is left
     const remaining = (newContent.match(/var\(--/g) || []).length;
 
     if (remaining > 0) {
-      console.warn(`⚠ ${fileName} : ${remaining} var() restantes !`);
+      console.warn(`⚠ ${fileName} : ${remaining} var() left!`);
     }
 
-    // Écrire le résultat
+    // Write the result
     if (newContent !== content) {
       writeFileSync(filePath, newContent, 'utf-8');
-      console.log(`✓ ${fileName} : ${Object.keys(variables).length} variables remplacées`);
+      console.log(`✓ ${fileName} : ${Object.keys(variables).length} variables replaced`);
     } else {
-      console.log(`✓ ${fileName} : aucun changement`);
+      console.log(`✓ ${fileName} : no change`);
     }
   } catch (err) {
     console.error(`✗ ${fileName} : ${err.message}`);
   }
 }
 
-// Traiter tous les fichiers
-console.log('Remplacement des variables CSS...\n');
+// Process every file
+console.log('Replacing CSS variables...\n');
 
 for (const file of files) {
   processFile(file);
 }
 
-console.log('\nTerminé !');
+console.log('\nDone!');

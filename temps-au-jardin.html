@@ -162,7 +162,7 @@
       color: #718078;
     }
 
-    /* Calculateur */
+    /* Calculator */
     .calc {
       border-top: 1px solid #30343a;
       border-bottom: 1px solid #30343a;
@@ -484,14 +484,14 @@
   </footer>
 
   <script>
-    // Ratios de la notice
-    const H_INSTALL_M2 = 1;      // heures par m², une fois
-    const H_OUTDOOR_M2 = 2;       // heures par m² et par an, plein air
-    const H_GREENHOUSE_M2 = 3;        // heures par m² et par an, sous serre
+    // Ratios from the guide
+    const H_INSTALL_M2 = 1;      // hours per m², once
+    const H_OUTDOOR_M2 = 2;       // hours per m² per year, outdoors
+    const H_GREENHOUSE_M2 = 3;        // hours per m² per year, in a greenhouse
     const HARVEST_SHARE = 0.5;
-    const INSTALL_WEEKS = 8;  // janvier-février
+    const INSTALL_WEEKS = 8;  // January-February
     const DAYS_PER_MONTH = 365 / 12;
-    const KG_PER_ADULT = 800;   // kg de nourriture par adulte et par an
+    const KG_PER_ADULT = 800;   // kg of food per adult per year
 
     const $ = (id) => document.getElementById(id);
     const fields = ["dehors", "serre", "mois", "dispo", "adultes", "rendement"];
@@ -506,7 +506,7 @@
 
     const hours = (h) => nf.format(Math.round(h)) + " h";
 
-    // Durée courte : « 45 min », « 1 h 05 »
+    // Short duration: "45 min", "1 h 05"
     function duration(h) {
       const total = Math.round(h * 60);
       if (total < 60) return total + " min";
@@ -546,7 +546,7 @@
       $("r-dehors").textContent = nf1.format(outdoor) + " m² · " + hours(hOutdoor);
       $("r-serre").textContent = nf1.format(greenhouse) + " m² · " + hours(hGreenhouse);
 
-      // Production, à rendement identique en plein air et sous serre
+      // Production, with the same yield outdoors and in a greenhouse
       const adults = Math.max(num("adultes"), 1);
       const yieldRate = num("rendement");
       const needs = adults * KG_PER_ADULT;
@@ -556,7 +556,7 @@
       $("r-part").textContent = nf.format(Math.round(production / needs * 100)) + " %";
       if (yieldRate > 0) {
         const areaAuto = needs / yieldRate;
-        // Même proportion plein air / serre que la surface saisie
+        // Same outdoor / greenhouse ratio as the area entered
         const hPerM2 = surface > 0 ? annual / surface : H_OUTDOOR_M2;
         const annualAuto = areaAuto * hPerM2;
         $("r-surface-auto").textContent = nf.format(Math.ceil(areaAuto)) + " m²";
@@ -568,7 +568,7 @@
 
       const verdict = $("verdict");
       if (available > 0 && surface > 0) {
-        // Surface tenable, à proportion plein air / serre constante
+        // Manageable area, at a constant outdoor / greenhouse ratio
         const manageable = surface * (available / perWeek);
         const ok = available >= perWeek;
         verdict.hidden = false;
@@ -584,7 +584,7 @@
       }
     }
 
-    // Synchronisation curseur ↔ champ numérique
+    // Sync slider ↔ number field
     fields.forEach((id) => {
       const input = $(id);
       const range = $(id + "-range");

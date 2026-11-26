@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 /**
- * Script pour finaliser le remplacement des var() restantes
- * en utilisant les valeurs des thèmes connus
+ * Script that finishes replacing the remaining var()
+ * using the values of the known themes
  */
 
 import { readFileSync, writeFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { join } from 'path';
 
-// Thèmes connus
+// Known themes
 const themes = {
   dark: {
     '--bg': '#0b0d10',
@@ -38,7 +38,7 @@ const themes = {
   }
 };
 
-// Pour calendar/temps, --max peut être différent
+// For calendar/temps, --max may differ
 const themesDarkVariants = {
   '--max-1480': { ...themes.dark, '--max': '1480px' }
 };
@@ -70,7 +70,7 @@ function extractVariablesFromGit(fileName) {
     const block = match[1];
     const variables = {};
 
-    // Extraire chaque --variable: valeur;
+    // Extract each --variable: value;
     const lines = block.split(/;|\n/);
     for (const line of lines) {
       const varMatch = line.match(/(--[a-z0-9-]+)\s*:\s*([^;]+)/);
@@ -90,7 +90,7 @@ function extractVariablesFromGit(fileName) {
 function replaceVarsInContent(content, variables) {
   let result = content;
 
-  // Trier par longueur décroissante
+  // Sort by decreasing length
   const entries = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
 
   for (const [variable, value] of entries) {
@@ -106,40 +106,40 @@ function processFile(fileName) {
   try {
     const filePath = join(process.cwd(), fileName);
 
-    // Lire le fichier actuel
+    // Read the current file
     let content = readFileSync(filePath, 'utf-8');
 
-    // Vérifier s'il y a des var()
+    // Check whether there are var()
     const hasVar = content.includes('var(--');
 
     if (!hasVar) {
-      console.log(`✓ ${fileName} : déjà traité`);
+      console.log(`✓ ${fileName} : already done`);
       return;
     }
 
-    // Extraire les variables depuis git
+    // Extract the variables from git
     const variables = extractVariablesFromGit(fileName);
 
     if (!variables) {
-      console.warn(`⚠ ${fileName} : impossible d'extraire les variables`);
+      console.warn(`⚠ ${fileName} : cannot extract the variables`);
       return;
     }
 
-    console.log(`  ${Object.keys(variables).length} variables trouvées`);
+    console.log(`  ${Object.keys(variables).length} variables found`);
 
-    // Remplacer les var()
+    // Replace the var()
     const newContent = replaceVarsInContent(content, variables);
 
-    // Vérifier s'il reste des var()
+    // Check whether any var() is left
     const remaining = (newContent.match(/var\(--/g) || []).length;
 
     if (remaining > 0) {
-      console.warn(`⚠ ${fileName} : ${remaining} var() restantes`);
+      console.warn(`⚠ ${fileName} : ${remaining} var() left`);
     } else {
-      console.log(`✓ ${fileName} : toutes les var() remplacées`);
+      console.log(`✓ ${fileName} : every var() replaced`);
     }
 
-    // Écrire
+    // Write
     writeFileSync(filePath, newContent, 'utf-8');
 
   } catch (err) {
@@ -147,10 +147,10 @@ function processFile(fileName) {
   }
 }
 
-console.log('Finalisation du remplacement des var()...\n');
+console.log('Finishing the var() replacement...\n');
 
 for (const file of files) {
   processFile(file);
 }
 
-console.log('\nTerminé !');
+console.log('\nDone!');

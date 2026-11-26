@@ -1,18 +1,18 @@
 // =========================================================
-// GÉNÉRATEUR DE PAPIER À GRAIN (tuile raccordable)
+// GRAINED PAPER GENERATOR (seamless tile)
 // ---------------------------------------------------------
-// Usage :  node JardinDeDemain/tools/generate-grain.mjs
-// Produit : JardinDeDemain/assets/textures/paper-grain.png
+// Usage:  node JardinDeDemain/tools/generate-grain.mjs
+// Output: JardinDeDemain/assets/textures/paper-grain.png
 //
-// Principe (comme une texture de jeu vidéo) :
-//   1. une carte de hauteur = bruit « périodique » : il boucle
-//      sur lui-même, donc la tuile se répète sans couture ;
-//   2. on éclaire ce relief avec une lumière rasante ;
-//   3. on enregistre le résultat en gris centré sur 128 :
-//      gris moyen = aucun effet en mode soft-light,
-//      plus clair = bosse éclairée, plus foncé = creux.
+// Principle (like a video game texture):
+//   1. a height map = "periodic" noise: it wraps
+//      around itself, so the tile repeats without a seam;
+//   2. light this relief with a grazing light;
+//   3. save the result as grey centred on 128:
+//      mid grey = no effect in soft-light mode,
+//      lighter = lit bump, darker = hollow.
 //
-// Aucune dépendance : l'encodeur PNG utilise zlib de Node.
+// No dependency: the PNG encoder uses Node's zlib.
 // =========================================================
 
 import { deflateSync } from 'node:zlib';
@@ -21,36 +21,36 @@ import { fileURLToPath } from 'node:url';
 
 
 // ---------------------------------------------------------
-// RÉGLAGES
+// SETTINGS
 // ---------------------------------------------------------
 
 const CONFIG = {
-  size: 512,            // côté de la tuile en pixels (affichée à 256px CSS = net sur écran Retina)
+  size: 512,            // tile side in pixels (shown at 256 CSS px = sharp on a Retina screen)
   seed: 7,
 
-  // relief : bosses rondes semées au hasard (aucune direction privilégiée)
-  // [rayon en px, densité (bosses par rayon²), poids]
+  // relief: round bumps scattered at random (no preferred direction)
+  // [radius in px, density (bumps per radius²), weight]
   bumps: [
-    [14,  .5, .5],      // ondulation large de la feuille
-    [6,   .9, 1.0],     // le grain proprement dit
-    [3,   .9, .45],     // détail
+    [14,  .5, .5],      // broad waviness of the sheet
+    [6,   .9, 1.0],     // the grain itself
+    [3,   .9, .45],     // detail
     [1.5, .8, .15]      // micro-texture
   ],
 
-  fibers: 260,          // petites fibres allongées dans la pâte
+  fibers: 260,          // small elongated fibres in the pulp
   fiberStrength: .14,
-  softness: 1,          // passes de flou sur le relief (adoucit le grain)
+  softness: 1,          // blur passes over the relief (softens the grain)
 
-  relief: 1.2,          // hauteur du relief (plus = grain plus marqué)
-  azimuth: 225,         // direction de la lumière (225 = haut-gauche)
-  elevation: 64,        // hauteur de la lumière (plus bas = plus rasant)
-  cavity: .55,          // creux plus sombres, sans direction (0 = lumière seule)
-  contrast: 120         // amplitude finale autour du gris 128
+  relief: 1.2,          // relief height (more = stronger grain)
+  azimuth: 225,         // light direction (225 = top-left)
+  elevation: 64,        // light height (lower = more grazing)
+  cavity: .55,          // darker hollows, without direction (0 = light only)
+  contrast: 120         // final amplitude around grey 128
 };
 
 
 // ---------------------------------------------------------
-// ALÉATOIRE REPRODUCTIBLE
+// REPRODUCIBLE RANDOMNESS
 // ---------------------------------------------------------
 
 function mulberry32(a){
@@ -68,14 +68,14 @@ const wrap = i => ((i % N) + N) % N;
 
 
 // ---------------------------------------------------------
-// 1. CARTE DE HAUTEUR PÉRIODIQUE
+// 1. PERIODIC HEIGHT MAP
 // ---------------------------------------------------------
 
 const height = new Float32Array(N * N);
 
-// chaque bosse est une petite cloche (gaussienne) ;
-// les coordonnées bouclent, donc une bosse coupée par un bord
-// réapparaît de l'autre côté : la tuile se raccorde parfaitement
+// each bump is a small bell (Gaussian);
+// the coordinates wrap, so a bump cut by an edge
+// reappears on the other side: the tile joins perfectly
 for(const [radius, density, weight] of CONFIG.bumps){
   const count = Math.round(density * N * N / (radius * radius));
   const reach = Math.ceil(radius * 2.5);
@@ -97,7 +97,7 @@ for(const [radius, density, weight] of CONFIG.bumps){
   }
 }
 
-// fibres : courts traits en creux ou en relief, orientés au hasard
+// fibres: short strokes, hollow or raised, randomly oriented
 for(let f = 0; f < CONFIG.fibers; f++){
   let x = rand() * N, y = rand() * N;
   const angle = rand() * Math.PI;
@@ -112,7 +112,7 @@ for(let f = 0; f < CONFIG.fibers; f++){
 }
 
 
-// flou 3×3 bouclé : arrondit les bosses sans créer de couture
+// wrapped 3×3 blur: rounds the bumps without creating a seam
 for(let pass = 0; pass < CONFIG.softness; pass++){
   const copy = height.slice();
   for(let y = 0; y < N; y++){
@@ -128,20 +128,20 @@ for(let pass = 0; pass < CONFIG.softness; pass++){
 
 
 // ---------------------------------------------------------
-// 2. ÉCLAIRAGE DU RELIEF
+// 2. LIGHTING THE RELIEF
 // ---------------------------------------------------------
 
 const az = CONFIG.azimuth * Math.PI / 180;
 const el = CONFIG.elevation * Math.PI / 180;
 const light = [Math.cos(el) * Math.cos(az), Math.cos(el) * Math.sin(az), Math.sin(el)];
-const flat = light[2];                        // éclairage d'une surface parfaitement plane
+const flat = light[2];                        // lighting of a perfectly flat surface
 
 const h = (x, y) => height[wrap(y) * N + wrap(x)];
 const shades = new Float32Array(N * N);
 
 for(let y = 0; y < N; y++){
   for(let x = 0; x < N; x++){
-    // pente (voisins bouclés : pas de couture sur les bords)
+    // slope (wrapped neighbours: no seam on the edges)
     const dx = (h(x + 1, y) - h(x - 1, y)) * CONFIG.relief / 2;
     const dy = (h(x, y + 1) - h(x, y - 1)) * CONFIG.relief / 2;
     const len = Math.hypot(dx, dy, 1);
@@ -149,7 +149,7 @@ for(let y = 0; y < N; y++){
   }
 }
 
-// creux / bosses : le ton suit directement la hauteur
+// hollows / bumps: the tone follows the height directly
 let hMin = Infinity, hMax = -Infinity;
 for(const v of height){ if(v < hMin) hMin = v; if(v > hMax) hMax = v; }
 const hRange = (hMax - hMin) || 1;
@@ -159,8 +159,8 @@ for(let i = 0; i < shades.length; i++){
   shades[i] = shades[i] * (1 - CONFIG.cavity) + tone * CONFIG.cavity * .5;
 }
 
-// recentrage : la moyenne tombe pile sur le gris neutre (128),
-// la tuile n'assombrit ni n'éclaircit la page dans son ensemble
+// re-centring: the mean lands exactly on neutral grey (128),
+// so the tile neither darkens nor lightens the page as a whole
 const mean = shades.reduce((a, b) => a + b, 0) / shades.length;
 const pixels = new Uint8Array(N * N);
 
@@ -171,7 +171,7 @@ for(let i = 0; i < shades.length; i++){
 
 
 // ---------------------------------------------------------
-// 3. ENCODAGE PNG (niveaux de gris 8 bits)
+// 3. PNG ENCODING (8-bit greyscale)
 // ---------------------------------------------------------
 
 const CRC_TABLE = Array.from({length: 256}, (_, n) => {
@@ -199,11 +199,11 @@ const ihdr = Buffer.alloc(13);
 ihdr.writeUInt32BE(N, 0);
 ihdr.writeUInt32BE(N, 4);
 ihdr[8] = 8;    // 8 bits
-ihdr[9] = 0;    // niveaux de gris
+ihdr[9] = 0;    // greyscale
 
 const raw = Buffer.alloc(N * (N + 1));
 for(let y = 0; y < N; y++){
-  raw[y * (N + 1)] = 0;                       // pas de filtre de ligne
+  raw[y * (N + 1)] = 0;                       // no line filter
   raw.set(pixels.subarray(y * N, (y + 1) * N), y * (N + 1) + 1);
 }
 
@@ -216,4 +216,4 @@ const png = Buffer.concat([
 
 const out = fileURLToPath(new URL('../assets/textures/paper-grain.png', import.meta.url));
 writeFileSync(out, png);
-console.log(`Tuile écrite : ${out} (${N}×${N}, ${(png.length / 1024).toFixed(0)} Ko)`);
+console.log(`Tile written: ${out} (${N}×${N}, ${(png.length / 1024).toFixed(0)} KB)`);

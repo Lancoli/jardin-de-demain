@@ -1,26 +1,26 @@
 
-[Possibilité d'offres]
+[Possible offers]
 
-- Se former sur les arbres
-- toruver un stage plantation d'arbres
+- Get trained on trees
+- find a tree-planting internship
 
-Lesquels ressitent le mieux à la sécherresse?
+Which ones resist drought best?
 
-- ++ Semer des arbres (gland, aubépine, chateigne)
-- Greffage sur arbre sauvage
-- Si plantation, orientations vers de jeune scions
-- bien pailler le sol
-- planter à proximité de trognes
-- Ombrager les jeunes arbres (plante à mi-ombre)
+- ++ Sow trees (acorn, hawthorn, chestnut)
+- Grafting onto wild trees
+- If planting, go for young whips
+- mulch the soil well
+- plant near pollards
+- Shade the young trees (plant in partial shade)
 
-Classement arbres resistance été chaud & sec:
-- Jujubier (Exceptionnel, très prod)
-- Figuier (Exceptionnel)
-- Abricotier, Bon (quand tres chaud, peut avoir tendance à laisser tomber ces fruits)
-- Amélanchier Tres bon (couvre plus de terrain que l'amndier)
-- Amandier Très bon ()
-- Grenadier Très bon (se debrouille bien avec le froid)
-- Asiminier (mauvais, pousse plus tot au bord rivière)
-- Cerisier, Bon
-- Cognasier, Bon
-Voir fiche complete
+Tree ranking for hot & dry summers:
+- Jujube (Exceptional, very productive)
+- Fig (Exceptional)
+- Apricot, Good (when very hot, may tend to drop its fruit)
+- Serviceberry Very good (covers more ground than the almond)
+- Almond Very good ()
+- Pomegranate Very good (copes well with cold)
+- Pawpaw (poor, grows rather by rivers)
+- Cherry, Good
+- Quince, Good
+See the full sheet

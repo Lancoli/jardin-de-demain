@@ -26,7 +26,7 @@ body{
     radial-gradient(circle at 88% 30%, rgba(40,92,66,.035), transparent 30%),
     image-set(url("assets/textures/paper-grain.png") 2x);
   background-size:auto, auto, 256px 256px;
-  /* le grain est un gris centré : il ne marque qu'en soft-light */
+  /* the grain is a centred grey: it only shows in soft-light */
   background-blend-mode:normal, normal, soft-light;
 }
 
@@ -62,7 +62,7 @@ h1 em, h2 em{ font-style:italic; }
 
 
 /* =========================================================
-   03. EN-TÊTE
+   03. HEADER
 ========================================================= */
 
 .topbar{
@@ -129,7 +129,7 @@ h1 em, h2 em{ font-style:italic; }
 
 
 /* =========================================================
-   04. FILTRES
+   04. FILTERS
 ========================================================= */
 
 .filtres{
@@ -177,7 +177,7 @@ h1 em, h2 em{ font-style:italic; }
 
 
 /* =========================================================
-   05. OFFICINE : ARMOIRE + FICHE
+   05. APOTHECARY: CABINET + SHEET
 ========================================================= */
 
 .officine{
@@ -192,7 +192,7 @@ h1 em, h2 em{ font-style:italic; }
   .officine{ grid-template-columns:1fr; }
 }
 
-/* L'armoire : un cadre en bois, un fond de papier ombré. */
+/* The cabinet: a wooden frame, a shaded paper back. */
 .armoire{
   padding:14px;
   border-radius:10px 10px 6px 6px;
@@ -233,7 +233,7 @@ h1 em, h2 em{ font-style:italic; }
   box-shadow:0 1px 2px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.5);
 }
 
-/* Une étagère = une rangée de bocaux posée sur une planche. */
+/* A shelf = a row of jars standing on a board. */
 .etagere{
   position:relative;
   display:grid;
@@ -254,7 +254,7 @@ h1 em, h2 em{ font-style:italic; }
   box-shadow:0 10px 14px -4px rgba(40,25,10,.35);
 }
 
-/* Le bocal est un bouton : on le choisit, la fiche s'ouvre. */
+/* The jar is a button: choose it, the sheet opens. */
 .bocal{
   appearance:none;
   position:relative;
@@ -281,7 +281,7 @@ h1 em, h2 em{ font-style:italic; }
   transition:filter .25s;
 }
 
-/* Survol : lumière et ombre, jamais de déplacement. */
+/* Hover: light and shadow, never movement. */
 .bocal::before{
   content:"";
   position:absolute;
@@ -311,7 +311,7 @@ h1 em, h2 em{ font-style:italic; }
 
 
 /* =========================================================
-   06. FICHE
+   06. SHEET
 ========================================================= */
 
 .fiche{
@@ -418,7 +418,7 @@ h1 em, h2 em{ font-style:italic; }
 
 
 /* =========================================================
-   07. QUALITÉ + AVERTISSEMENT
+   07. QUALITY + WARNING
 ========================================================= */
 
 .bande{
@@ -607,9 +607,9 @@ footer{
 <script>
 
 /* =========================================================
-   DONNÉES
-   Les préparations sont des compositions proposées :
-   rien n'est en vente pour l'instant.
+   DATA
+   The preparations are suggested blends:
+   nothing is on sale yet.
 ========================================================= */
 
 const USAGES = {
@@ -767,7 +767,7 @@ const PREPARATIONS = [
 
 
 /* =========================================================
-   DESSIN DES BOCAUX
+   DRAWING THE JARS
 ========================================================= */
 
 const NS = "http://www.w3.org/2000/svg";
@@ -790,7 +790,7 @@ function seedOf(text){
 
 const choose = (r, items) => items[Math.floor(r() * items.length)];
 
-/* Une fleur séchée, selon la forme de la plante. */
+/* A dried flower, shaped after the plant. */
 function flower(d, r, x, y){
   const rot = Math.round(r() * 360);
   const c = choose(r, d.couleurs);
@@ -844,7 +844,7 @@ function svgJar(p, i){
   const r = seededRandom(seedOf(p.id));
   const id = `b${i}`;
 
-  // Remplissage : entre 55 % et 85 % du bocal.
+  // Fill: between 55 % and 85 % of the jar.
   const bottomY = 131, topY = 28;
   const level = bottomY - (bottomY - topY) * (.55 + r() * .3);
   let flowers = "";
@@ -884,7 +884,7 @@ function svgJar(p, i){
   </svg>`;
 }
 
-/* Les préparations : sachet kraft, flacon ambré, vaporisateur. */
+/* The preparations: kraft bag, amber bottle, spray. */
 function svgPreparationIcon(p){
   const tag = (y) => `
     <rect class="etiquette" x="27" y="${y}" width="46" height="26" rx="2" fill="#f7f0db" stroke="rgba(60,45,25,.25)" stroke-width=".6"/>
@@ -925,7 +925,7 @@ function svgPreparationIcon(p){
 
 
 /* =========================================================
-   RENDU
+   RENDER
 ========================================================= */
 
 const state = { filtre: "tout", choix: null };
@@ -965,7 +965,7 @@ function arrange(){
   arrangeOn(document.getElementById("etageres-preparations"), preparationButtons);
 }
 
-/* Motif de liège, partagé par tous les bocaux. */
+/* Cork pattern, shared by every jar. */
 document.body.insertAdjacentHTML("afterbegin", `
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
@@ -977,7 +977,7 @@ document.body.insertAdjacentHTML("afterbegin", `
   </svg>`);
 
 
-/* Filtres d'usage : les bocaux hors sujet pâlissent. */
+/* Use filters: the jars off topic fade. */
 function filtersBar(){
   const zone = document.getElementById("filtres");
   const options = { tout: "Tout", ...USAGES };
@@ -1058,7 +1058,7 @@ function renderSheet(item){
   }
 }
 
-/* Un seul point d'entrée pour changer de bocal ; le choix vit dans l'URL. */
+/* A single entry point to change jar; the choice lives in the URL. */
 function chooseItem(id, fromClick){
   const item = find(id);
   if (!item) return;

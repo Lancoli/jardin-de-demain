@@ -26,9 +26,9 @@ body{
   font-family:Arial, Helvetica, sans-serif;
 
   /*
-    Base papier.
-    Plusieurs gradients très subtils donnent une variation
-    naturelle avant même d'ajouter le grain.
+    Paper base.
+    Several very subtle gradients give a natural
+    variation before the grain is even added.
   */
   background-color:#f3efe2;
 
@@ -53,9 +53,9 @@ body{
     ),
 
     /*
-      Grain papier.
-      feTurbulence génère directement une texture.
-      Pas d'image externe, pas de fichier à charger.
+      Paper grain.
+      feTurbulence generates the texture directly.
+      No external image, no file to load.
     */
     image-set(url("assets/textures/paper-grain.png") 2x);
 
@@ -135,8 +135,8 @@ header{
   padding:18px 0 16px;
 
   /*
-    Une seule ligne très discrète.
-    Elle évite l'effet "interface".
+    A single, very discreet line.
+    It avoids the "interface" look.
   */
   border-bottom:1px solid rgba(40,92,66,.20);
 }
@@ -190,13 +190,13 @@ nav{
 
 
 /*
-  SURFACES PAPIER
+  PAPER SURFACES
   ---------------------------------------------------------
-  Toutes les cartes utilisent le même principe :
-  - couleur papier
-  - micro variation de lumière
+  Every card uses the same principle:
+  - paper colour
+  - micro variation of light
   - texture
-  - ombre extrêmement douce
+  - extremely soft shadow
 */
 
 .paper-surface{
@@ -231,8 +231,8 @@ nav{
 
 
 /*
-  Le pseudo élément donne une très légère irrégularité
-  lumineuse sur les bords du papier.
+  The pseudo-element gives a very slight unevenness
+  of light on the paper edges.
 */
 
 .paper-surface::after{
@@ -332,7 +332,7 @@ nav{
 }
 
 
-/* petit motif botanique */
+/* small botanical motif */
 
 .hero-profile::after{
   content:"";
@@ -471,8 +471,8 @@ nav{
   border-radius:19px;
 
   /*
-    Pas de bordure.
-    L'ombre fait le découpage.
+    No border.
+    The shadow does the separation.
   */
   position:relative;
   overflow:hidden;
@@ -873,7 +873,7 @@ footer{
 
 
 /* =========================================================
-   15. LISTES & SUIVI
+   15. LISTS & FOLLOW-UP
 ========================================================= */
 
 .list{
@@ -909,7 +909,7 @@ footer{
 
 
 /* =========================================================
-   16. PARCOURS (CHRONOLOGIE)
+   16. JOURNEY (TIMELINE)
 ========================================================= */
 
 .manifesto{
@@ -1003,7 +1003,7 @@ footer{
 
 
 /* =========================================================
-   17. CARTE DE VISITE 3D
+   17. 3D BUSINESS CARD
 ========================================================= */
 
 .intro{
@@ -1166,7 +1166,7 @@ footer{
 
 
 /* =========================================================
-   18. JOURNAL & LECTEUR
+   18. JOURNAL & READER
 ========================================================= */
 
 .journal{
@@ -1212,8 +1212,8 @@ a.article.feature p{
 }
 
 .reader{
-  /* .paper-surface met position:relative et overflow:hidden :
-     on rétablit le comportement d'une boîte de dialogue. */
+  /* .paper-surface sets position:relative and overflow:hidden:
+     restore the normal behaviour of a dialog. */
   position:fixed;
   overflow-y:auto;
   overscroll-behavior:contain;
@@ -1348,7 +1348,7 @@ a.article.feature p{
 
 
 /* =========================================================
-   19. ESTIMATEUR
+   19. ESTIMATOR
 ========================================================= */
 
 .estimator{
@@ -1470,10 +1470,10 @@ a.article.feature p{
 
 
 /* =========================================================
-   20. PAGES & MOTEUR D'ANIMATION
+   20. PAGES & ANIMATION ENGINE
    ---------------------------------------------------------
-   Chaque bloc [data-view] est une page. Une seule page est
-   visible à la fois ; l'accueil tient sur un écran.
+   Each [data-view] block is a page. Only one page is
+   visible at a time; the home page fits on one screen.
 ========================================================= */
 
 .js [data-view]{
@@ -1484,7 +1484,7 @@ a.article.feature p{
   display:block;
 }
 
-/* Accueil : un écran, pas de défilement */
+/* Home: one screen, no scrolling */
 
 .hero.is-active{
   display:flex;
@@ -1533,7 +1533,7 @@ a.article.feature p{
   padding-top:60px;
 }
 
-/* Navigation : page active + pousse sur les pages visitées */
+/* Navigation: active page + a sprout on visited pages */
 
 nav a{
   position:relative;
@@ -1588,7 +1588,7 @@ nav a.visited::before{
   }
 }
 
-/* Récompense au clic : graines et feuilles */
+/* Click reward: seeds and leaves */
 
 .seed{
   position:fixed;
@@ -1617,10 +1617,10 @@ button,
 
 
 /* =========================================================
-   23. AQUARELLE
+   23. WATERCOLOUR
    ---------------------------------------------------------
-   Le bloc garde son contenu net ; seul le calque .wash
-   passe dans le filtre SVG #aquarelle.
+   The block keeps its content sharp; only the .wash layer
+   goes through the #aquarelle SVG filter.
 ========================================================= */
 
 .fx-defs{
@@ -1644,7 +1644,7 @@ button,
 
   border-radius:22px;
 
-  /* un vert un peu plus chaud que --green, comme la gouache de la charte */
+  /* a slightly warmer green than --green, like the gouache of the brand guide */
   background:image-set(url("assets/textures/paper-grain.png") 2x), #2b6141;
   background-blend-mode:soft-light;
 
@@ -1666,10 +1666,10 @@ button,
 
 
 /* =========================================================
-   22. PLANCHES D'HERBIER (SERVICES)
+   22. HERBARIUM PLATES (SERVICES)
    ---------------------------------------------------------
-   Pas de numéro, pas de pictogramme, pas d'étiquette :
-   un dessin au trait, un titre, une phrase.
+   No number, no pictogram, no label:
+   a line drawing, a title, a sentence.
 ========================================================= */
 
 .plates{
@@ -1689,7 +1689,7 @@ button,
     box-shadow .5s ease;
 }
 
-/* filet intérieur, comme une étiquette d'herbier */
+/* inner rule, like a herbarium label */
 .plate::before{
   content:"";
 
@@ -1751,7 +1751,7 @@ button,
   line-height:1.6;
 }
 
-/* le dessin se trace à l'ouverture de la page, et de nouveau au survol */
+/* the drawing traces itself when the page opens, and again on hover */
 
 .plate svg *{
   stroke-dasharray:1;
@@ -1803,7 +1803,7 @@ button,
 
 
 /* =========================================================
-   21. TABLEAU DE SEMIS
+   21. SOWING TABLE
 ========================================================= */
 
 .table-scroll{
@@ -1856,7 +1856,7 @@ button,
 </style>
 
 <script>
-  // Active le mode « pages » avant l'affichage, pour éviter un flash.
+  // Turns on "pages" mode before display, to avoid a flash.
   document.documentElement.classList.add('js');
 </script>
 </head>
@@ -1866,22 +1866,22 @@ button,
 
 
 <!-- ======================================================
-     FILTRE AQUARELLE
+     WATERCOLOUR FILTER
      ---------------------------------------------------------
-     Cinq couches, comme un pinceau sur papier :
-     1. contour déformé (bords irréguliers)
-     2. lavis inégal (zones plus claires / plus foncées)
-     3. pigment accumulé sur les bords
-     4. granulation fine
-     Appliqué via filter:url(#aquarelle) sur un calque .wash,
-     jamais sur le texte.
+     Five layers, like a brush on paper:
+     1. distorted outline (uneven edges)
+     2. uneven wash (lighter / darker areas)
+     3. pigment gathered on the edges
+     4. fine granulation
+     Applied through filter:url(#aquarelle) on a .wash layer,
+     never on the text.
 ====================================================== -->
 
 <svg class="fx-defs" width="0" height="0" aria-hidden="true" focusable="false">
 
   <filter id="aquarelle" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
 
-    <!-- 1. contour : grandes ondulations puis petites dents -->
+    <!-- 1. outline: large waves then small teeth -->
     <feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="2" seed="3" result="warpLarge"/>
     <feDisplacementMap in="SourceGraphic" in2="warpLarge" scale="13" xChannelSelector="R" yChannelSelector="G" result="shapeA"/>
     <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="8" result="warpMid"/>
@@ -1889,13 +1889,13 @@ button,
     <feTurbulence type="fractalNoise" baseFrequency=".22" numOctaves="2" seed="13" result="warpFine"/>
     <feDisplacementMap in="shapeB" in2="warpFine" scale="3" xChannelSelector="R" yChannelSelector="G" result="shapeRaw"/>
 
-    <!-- anticrénelage : flou léger puis courbe sur l'alpha = bord net mais lisse -->
+    <!-- anti-aliasing: light blur then a curve on alpha = sharp but smooth edge -->
     <feGaussianBlur in="shapeRaw" stdDeviation=".8" result="shapeSoft"/>
     <feComponentTransfer in="shapeSoft" result="shape">
       <feFuncA type="linear" slope="1.9" intercept="-.4"/>
     </feComponentTransfer>
 
-    <!-- 2. lavis : plaques douces, plus claires ou plus foncées -->
+    <!-- 2. wash: soft patches, lighter or darker -->
     <feTurbulence type="fractalNoise" baseFrequency=".0045" numOctaves="3" seed="11" result="washNoise"/>
     <feColorMatrix in="washNoise" type="matrix" result="washLight"
       values="0 0 0 0 .92
@@ -1910,7 +1910,7 @@ button,
               0 0 -1.1 0 .52"/>
     <feComposite in="washDark" in2="shape" operator="in" result="washDarkIn"/>
 
-    <!-- traces de pinceau : bruit étiré à l'horizontale -->
+    <!-- brush strokes: noise stretched horizontally -->
     <feTurbulence type="fractalNoise" baseFrequency=".004 .014" numOctaves="3" seed="21" result="brushNoise"/>
     <feColorMatrix in="brushNoise" type="matrix" result="brush"
       values="0 0 0 0 .9
@@ -1919,7 +1919,7 @@ button,
               .34 0 0 0 -.17"/>
     <feComposite in="brush" in2="shape" operator="in" result="brushIn"/>
 
-    <!-- 3. bords : le pigment s'accumule en séchant -->
+    <!-- 3. edges: the pigment gathers as it dries -->
     <feMorphology in="shape" operator="erode" radius="1" result="inner"/>
     <feGaussianBlur in="inner" stdDeviation="4.5" result="innerSoft"/>
     <feComposite in="shape" in2="innerSoft" operator="out" result="rim"/>
@@ -1929,8 +1929,8 @@ button,
               0 0 0 0 .09
               0 0 0 1 0"/>
 
-    <!-- 4. le grain du papier vient de la tuile PNG posée sur .wash
-            (image-set(url("assets/textures/paper-grain.png") 2x)) : il traverse le filtre avec la forme -->
+    <!-- 4. the paper grain comes from the PNG tile set on .wash
+            (image-set(url("assets/textures/paper-grain.png") 2x)): it goes through the filter with the shape -->
 
     <feMerge>
       <feMergeNode in="shape"/>
@@ -1943,7 +1943,7 @@ button,
   </filter>
 
 
-  <!-- Variante papier : même écriture, pigments beiges, plus discrète -->
+  <!-- Paper variant: same hand, beige pigments, more discreet -->
   <filter id="aquarelle-papier" x="-4%" y="-4%" width="108%" height="108%" color-interpolation-filters="sRGB">
 
     <feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="2" seed="17" result="warpLarge"/>
@@ -2260,7 +2260,7 @@ button,
 
 
 <!-- ======================================================
-     SUIVI
+     FOLLOW-UP
 ====================================================== -->
 
 <section data-view="suivi">
@@ -2325,7 +2325,7 @@ button,
 
 
 <!-- ======================================================
-     APPROCHE
+     APPROACH
 ====================================================== -->
 
 <section class="band" data-view="services">
@@ -2424,7 +2424,7 @@ button,
 
 
 <!-- ======================================================
-     À PROPOS
+     ABOUT
 ====================================================== -->
 
 <section data-view="apropos">
@@ -2814,7 +2814,7 @@ button,
 
 
 <!-- ======================================================
-     ARTICLES (LECTEUR)
+     ARTICLES (READER)
 ====================================================== -->
 
 <dialog class="reader paper-surface" id="art-planter">
@@ -3348,11 +3348,11 @@ button,
 <script>
 
 /* =========================================================
-   MOTEUR DE PAGES
+   PAGE ENGINE
    ---------------------------------------------------------
-   Chaque clic de navigation est récompensé : la page sort,
-   la suivante entre en cascade, et l'onglet visité pousse
-   une petite feuille.
+   Every navigation click is rewarded: the page leaves,
+   the next one cascades in, and the visited tab grows
+   a small leaf.
 ========================================================= */
 
 (function(){
@@ -3373,12 +3373,12 @@ button,
     contact:  'Contact — Jardin de demain'
   };
 
-  // éléments qui entrent en cascade à l'arrivée sur une page
+  // elements that cascade in when a page arrives
   const REVEAL =
     '.hero-copy, .hero-profile, .head, .manifesto, .card-stage,' +
     '.grid > *, .plates > *, .step, .timeline li, .articles > *, .cta > *';
 
-  // longueur normalisée : le tracé animé des planches marche pour toute forme
+  // normalised length: the animated stroke of the plates works for any shape
   document.querySelectorAll('.plate svg *')
     .forEach(el => el.setAttribute('pathLength', 1));
 
@@ -3444,12 +3444,12 @@ button,
   window.addEventListener('hashchange', () => show(location.hash.slice(1)));
   show(location.hash.slice(1));
 
-  // le navigateur défile vers l'ancre au chargement : on revient en haut
+  // the browser scrolls to the anchor on load: go back to the top
   history.scrollRestoration = 'manual';
   window.addEventListener('load', () => window.scrollTo(0, 0));
 
 
-  /* Récompense : une gerbe de graines et de feuilles au clic */
+  /* Reward: a burst of seeds and leaves on click */
 
   const COLORS = ['#8fb07a', '#285c42', '#e4edc8', '#c9a96a'];
 
@@ -3482,7 +3482,7 @@ button,
     const target = e.target.closest('a, button, [role="button"]');
     if(!target) return;
 
-    // dans une fenêtre d'article, les graines doivent rester au-dessus
+    // inside an article window, the seeds must stay on top
     burst(e.clientX, e.clientY, target.closest('dialog') || document.body);
 
     if(!target.classList.contains('vcard')){
@@ -3497,11 +3497,11 @@ button,
 
 
 /* =========================================================
-   CARTE DE VISITE 3D
+   3D BUSINESS CARD
    ---------------------------------------------------------
-   La carte tourne lentement. Au survol, elle se redresse et
-   suit la souris. Au clic, elle fait un tour et demi pour
-   montrer le contact au dos.
+   The card turns slowly. On hover it straightens up and
+   follows the mouse. On click it spins one and a half turns
+   to show the contact on the back.
 ========================================================= */
 
 (function(){
@@ -3511,14 +3511,14 @@ button,
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let angle = 0;        // rotation Y actuelle
-  let target = null;    // rotation Y visée (null = rotation libre)
+  let angle = 0;        // current Y rotation
+  let target = null;    // target Y rotation (null = free rotation)
   let tiltX = 0, tiltY = 0, aimX = 0, aimY = 0;
   let hover = false;
   let flipped = false;
   let last = performance.now();
 
-  const SPIN = 22;      // degrés par seconde en rotation libre
+  const SPIN = 22;      // degrees per second in free rotation
 
   function nextTurn(from, offset){
     return Math.ceil((from - offset) / 360) * 360 + offset;
@@ -3529,7 +3529,7 @@ button,
     card.setAttribute('aria-pressed', flipped);
 
     if(flipped){
-      // un tour complet de plus, pour l'effet
+      // one more full turn, for the effect
       target = nextTurn(angle, 180) + 360;
     }else{
       target = nextTurn(angle, 0);
@@ -3570,7 +3570,7 @@ button,
   });
 
   if(reduce){
-    // pas d'animation : on bascule simplement de face
+    // no animation: simply flip to the front
     card.addEventListener('click', () => {
       card.style.transform = `rotateY(${flipped ? 180 : 0}deg)`;
     });
@@ -3584,7 +3584,7 @@ button,
     if(target === null){
       angle += SPIN * dt;
     }else{
-      // amortissement exponentiel : fluide quel que soit le framerate
+      // exponential damping: smooth whatever the frame rate
       angle += (target - angle) * (1 - Math.exp(-dt * 4));
       if(!hover && !flipped && Math.abs(target - angle) < .5) target = null;
     }
@@ -3604,7 +3604,7 @@ button,
 
 
 /* =========================================================
-   JOURNAL : OUVERTURE DES ARTICLES
+   JOURNAL: OPENING ARTICLES
 ========================================================= */
 
 document.querySelectorAll('a.article[href^="#art-"]').forEach(link => {
@@ -3621,7 +3621,7 @@ document.querySelectorAll('.reader').forEach(dialog => {
   dialog.querySelector('.reader-close')
     .addEventListener('click', () => dialog.close());
 
-  // clic en dehors de l'article = fermer
+  // click outside the article = close
   dialog.addEventListener('click', e => {
     if(e.target === dialog) dialog.close();
   });
@@ -3629,10 +3629,10 @@ document.querySelectorAll('.reader').forEach(dialog => {
 
 
 /* =========================================================
-   ESTIMATEUR : HAIE (AU MÈTRE) / FORÊT (AU M²)
+   ESTIMATOR: HEDGE (PER METRE) / FOREST (PER M²)
    ---------------------------------------------------------
-   Valeurs par défaut = ordres de grandeur. À ajuster avec
-   les vrais prix de pépinière et le tarif journalier.
+   Default values = orders of magnitude. To adjust with
+   real nursery prices and the day rate.
 ========================================================= */
 
 const ESTIMATOR = {

@@ -302,7 +302,7 @@
   </footer>
 
   <script>
-    // Icônes pour chaque type de récolte
+    // Icons for each kind of harvest
     const icons = {
       'Poireaux': '🥬',
       'Choux (tous types)': '🥬',
@@ -351,7 +351,7 @@
       'Kiwis': '🥝'
     };
 
-    // Données du calendrier des récoltes
+    // Harvest calendar data
     const calendar = {
       1: {
         nom: 'Janvier',
@@ -508,7 +508,7 @@
       hiver: 'Hiver'
     };
 
-    // Générer le calendrier
+    // Build the calendar
     const container = document.getElementById('calendar');
     for (let months = 1; months <= 12; months++) {
       const data = calendar[months];
@@ -531,7 +531,7 @@
         const li = document.createElement('li');
         li.className = 'harvest-item';
 
-        // Ajouter l'icône
+        // Add the icon
         const icon = document.createElement('span');
         icon.className = 'harvest-icon';
         icon.textContent = icons[item.nom] || '🌱';
