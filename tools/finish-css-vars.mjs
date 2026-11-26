@@ -33,17 +33,17 @@ const themes = {
     '--ink': '#254b38',
     '--muted': '#718078',
     '--white': '#fffdf5',
-    '--grain': 'image-set(url("assets/textures/papier-grain.png") 2x)',
+    '--grain': 'image-set(url("assets/textures/paper-grain.png") 2x)',
     '--shadow': '0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045)'
   }
 };
 
 // Pour calendar/temps, --max peut être différent
-const themesDarkVariantes = {
+const themesDarkVariants = {
   '--max-1480': { ...themes.dark, '--max': '1480px' }
 };
 
-const fichiers = [
+const files = [
   'index.html',
   'jardins-vivants.html',
   'arbres-secheresse.html',
@@ -58,26 +58,26 @@ const fichiers = [
   'associations-plantes.html'
 ];
 
-function extraireVariablesDepuisGit(nomFichier) {
+function extractVariablesFromGit(fileName) {
   try {
-    const contenuOriginal = execSync(`git show HEAD:"${nomFichier}"`, { encoding: 'utf-8' });
-    const match = contenuOriginal.match(/:root\s*\{([^}]*)\}/s);
+    const originalContent = execSync(`git show HEAD:"${fileName}"`, { encoding: 'utf-8' });
+    const match = originalContent.match(/:root\s*\{([^}]*)\}/s);
 
     if (!match) {
       return null;
     }
 
-    const bloc = match[1];
+    const block = match[1];
     const variables = {};
 
     // Extraire chaque --variable: valeur;
-    const lignes = bloc.split(/;|\n/);
-    for (const ligne of lignes) {
-      const varMatch = ligne.match(/(--[a-z0-9-]+)\s*:\s*([^;]+)/);
+    const lines = block.split(/;|\n/);
+    for (const line of lines) {
+      const varMatch = line.match(/(--[a-z0-9-]+)\s*:\s*([^;]+)/);
       if (varMatch) {
-        const nom = varMatch[1].trim();
-        const valeur = varMatch[2].trim();
-        variables[nom] = valeur;
+        const name = varMatch[1].trim();
+        const value = varMatch[2].trim();
+        variables[name] = value;
       }
     }
 
@@ -87,70 +87,70 @@ function extraireVariablesDepuisGit(nomFichier) {
   }
 }
 
-function remplacerVarDansContenu(contenu, variables) {
-  let resultat = contenu;
+function replaceVarsInContent(content, variables) {
+  let result = content;
 
   // Trier par longueur décroissante
   const entries = Object.entries(variables).sort((a, b) => b[0].length - a[0].length);
 
-  for (const [variable, valeur] of entries) {
-    const varEscapee = variable.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`var\\(\\s*${varEscapee}\\s*\\)`, 'g');
-    resultat = resultat.replace(regex, valeur);
+  for (const [variable, value] of entries) {
+    const escapedVar = variable.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`var\\(\\s*${escapedVar}\\s*\\)`, 'g');
+    result = result.replace(regex, value);
   }
 
-  return resultat;
+  return result;
 }
 
-function traiterFichier(nomFichier) {
+function processFile(fileName) {
   try {
-    const chemin = join(process.cwd(), nomFichier);
+    const filePath = join(process.cwd(), fileName);
 
     // Lire le fichier actuel
-    let contenu = readFileSync(chemin, 'utf-8');
+    let content = readFileSync(filePath, 'utf-8');
 
     // Vérifier s'il y a des var()
-    const hasVar = contenu.includes('var(--');
+    const hasVar = content.includes('var(--');
 
     if (!hasVar) {
-      console.log(`✓ ${nomFichier} : déjà traité`);
+      console.log(`✓ ${fileName} : déjà traité`);
       return;
     }
 
     // Extraire les variables depuis git
-    const variables = extraireVariablesDepuisGit(nomFichier);
+    const variables = extractVariablesFromGit(fileName);
 
     if (!variables) {
-      console.warn(`⚠ ${nomFichier} : impossible d'extraire les variables`);
+      console.warn(`⚠ ${fileName} : impossible d'extraire les variables`);
       return;
     }
 
     console.log(`  ${Object.keys(variables).length} variables trouvées`);
 
     // Remplacer les var()
-    const nouveauContenu = remplacerVarDansContenu(contenu, variables);
+    const newContent = replaceVarsInContent(content, variables);
 
     // Vérifier s'il reste des var()
-    const restantes = (nouveauContenu.match(/var\(--/g) || []).length;
+    const remaining = (newContent.match(/var\(--/g) || []).length;
 
-    if (restantes > 0) {
-      console.warn(`⚠ ${nomFichier} : ${restantes} var() restantes`);
+    if (remaining > 0) {
+      console.warn(`⚠ ${fileName} : ${remaining} var() restantes`);
     } else {
-      console.log(`✓ ${nomFichier} : toutes les var() remplacées`);
+      console.log(`✓ ${fileName} : toutes les var() remplacées`);
     }
 
     // Écrire
-    writeFileSync(chemin, nouveauContenu, 'utf-8');
+    writeFileSync(filePath, newContent, 'utf-8');
 
   } catch (err) {
-    console.error(`✗ ${nomFichier} : ${err.message}`);
+    console.error(`✗ ${fileName} : ${err.message}`);
   }
 }
 
 console.log('Finalisation du remplacement des var()...\n');
 
-for (const fichier of fichiers) {
-  traiterFichier(fichier);
+for (const file of files) {
+  processFile(file);
 }
 
 console.log('\nTerminé !');

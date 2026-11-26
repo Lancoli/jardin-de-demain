@@ -1,8 +1,8 @@
 // =========================================================
 // GÉNÉRATEUR DE PAPIER À GRAIN (tuile raccordable)
 // ---------------------------------------------------------
-// Usage :  node JardinDeDemain/tools/generer-grain.mjs
-// Produit : JardinDeDemain/assets/textures/papier-grain.png
+// Usage :  node JardinDeDemain/tools/generate-grain.mjs
+// Produit : JardinDeDemain/assets/textures/paper-grain.png
 //
 // Principe (comme une texture de jeu vidéo) :
 //   1. une carte de hauteur = bruit « périodique » : il boucle
@@ -214,6 +214,6 @@ const png = Buffer.concat([
   chunk('IEND', Buffer.alloc(0))
 ]);
 
-const out = fileURLToPath(new URL('../assets/textures/papier-grain.png', import.meta.url));
+const out = fileURLToPath(new URL('../assets/textures/paper-grain.png', import.meta.url));
 writeFileSync(out, png);
 console.log(`Tuile écrite : ${out} (${N}×${N}, ${(png.length / 1024).toFixed(0)} Ko)`);

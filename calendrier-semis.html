@@ -311,7 +311,7 @@
   </footer>
 
   <script>
-    const icones = {
+    const icons = {
       'Tomates': '🍅',
       'Poivrons': '🫑',
       'Aubergines': '🍆',
@@ -355,7 +355,7 @@
       'Fraisiers': '🍓'
     };
 
-    const calendrier = {
+    const calendar = {
       1: {
         nom: 'Janvier',
         saison: 'hiver',
@@ -565,7 +565,7 @@
       }
     };
 
-    const saisonLabels = {
+    const seasonLabels = {
       printemps: 'Printemps',
       ete: 'Été',
       automne: 'Automne',
@@ -573,15 +573,15 @@
     };
 
     const container = document.getElementById('calendar');
-    for (let mois = 1; mois <= 12; mois++) {
-      const data = calendrier[mois];
+    for (let months = 1; months <= 12; months++) {
+      const data = calendar[months];
 
       const card = document.createElement('div');
       card.className = `month-card season-${data.saison}`;
 
       const label = document.createElement('div');
       label.className = 'season-label';
-      label.textContent = saisonLabels[data.saison];
+      label.textContent = seasonLabels[data.saison];
 
       const title = document.createElement('h3');
       title.className = 'month-name';
@@ -606,7 +606,7 @@
 
           const icon = document.createElement('span');
           icon.className = 'seed-icon';
-          icon.textContent = icones[item.nom] || '🌱';
+          icon.textContent = icons[item.nom] || '🌱';
           li.appendChild(icon);
 
           const strong = document.createElement('strong');
@@ -641,7 +641,7 @@
 
           const icon = document.createElement('span');
           icon.className = 'seed-icon';
-          icon.textContent = icones[item.nom] || '🌱';
+          icon.textContent = icons[item.nom] || '🌱';
           li.appendChild(icon);
 
           const strong = document.createElement('strong');

@@ -465,7 +465,7 @@
   </footer>
 
   <script>
-    const plantes = [
+    const plantsList = [
       {
         nom: 'Tomate',
         latin: 'Solanum lycopersicum',
@@ -593,33 +593,33 @@
 
     function renderPlants(filter = '') {
       container.innerHTML = '';
-      const filtered = filter ? plantes.filter(p =>
+      const filtered = filter ? plantsList.filter(p =>
         p.nom.toLowerCase().includes(filter.toLowerCase()) ||
         p.bonnes.some(b => b.toLowerCase().includes(filter.toLowerCase())) ||
         p.mauvaises.some(m => m.toLowerCase().includes(filter.toLowerCase()))
-      ) : plantes;
+      ) : plantsList;
 
-      filtered.forEach(plante => {
+      filtered.forEach(plant => {
         const card = document.createElement('article');
         card.className = 'plant-card';
 
         const header = document.createElement('div');
         header.className = 'plant-header';
         header.innerHTML = `
-          <span class="plant-icon">${plante.icon}</span>
-          <h3 class="plant-name">${plante.nom}</h3>
+          <span class="plant-icon">${plant.icon}</span>
+          <h3 class="plant-name">${plant.nom}</h3>
         `;
 
         const latin = document.createElement('p');
         latin.className = 'plant-latin';
-        latin.textContent = plante.latin;
+        latin.textContent = plant.latin;
 
         const goodSection = document.createElement('div');
         goodSection.className = 'associations-section';
         goodSection.innerHTML = `
           <div class="associations-title good">Bonnes associations</div>
           <div class="associations-list">
-            ${plante.bonnes.map(a => `<span class="association-tag good">${a}</span>`).join('')}
+            ${plant.bonnes.map(a => `<span class="association-tag good">${a}</span>`).join('')}
           </div>
         `;
 
@@ -628,13 +628,13 @@
         badSection.innerHTML = `
           <div class="associations-title bad">À éviter</div>
           <div class="associations-list">
-            ${plante.mauvaises.map(a => `<span class="association-tag bad">${a}</span>`).join('')}
+            ${plant.mauvaises.map(a => `<span class="association-tag bad">${a}</span>`).join('')}
           </div>
         `;
 
         const note = document.createElement('div');
         note.className = 'plant-note';
-        note.textContent = plante.note;
+        note.textContent = plant.note;
 
         card.appendChild(header);
         card.appendChild(latin);

@@ -486,12 +486,12 @@
   <script>
     // Ratios de la notice
     const H_INSTALL_M2 = 1;      // heures par m², une fois
-    const H_DEHORS_M2 = 2;       // heures par m² et par an, plein air
-    const H_SERRE_M2 = 3;        // heures par m² et par an, sous serre
-    const PART_RECOLTE = 0.5;
-    const SEMAINES_INSTALL = 8;  // janvier-février
-    const JOURS_PAR_MOIS = 365 / 12;
-    const KG_PAR_ADULTE = 800;   // kg de nourriture par adulte et par an
+    const H_OUTDOOR_M2 = 2;       // heures par m² et par an, plein air
+    const H_GREENHOUSE_M2 = 3;        // heures par m² et par an, sous serre
+    const HARVEST_SHARE = 0.5;
+    const INSTALL_WEEKS = 8;  // janvier-février
+    const DAYS_PER_MONTH = 365 / 12;
+    const KG_PER_ADULT = 800;   // kg de nourriture par adulte et par an
 
     const $ = (id) => document.getElementById(id);
     const fields = ["dehors", "serre", "mois", "dispo", "adultes", "rendement"];
@@ -504,10 +504,10 @@
     const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
     const nf1 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
 
-    const heures = (h) => nf.format(Math.round(h)) + " h";
+    const hours = (h) => nf.format(Math.round(h)) + " h";
 
     // Durée courte : « 45 min », « 1 h 05 »
-    function duree(h) {
+    function duration(h) {
       const total = Math.round(h * 60);
       if (total < 60) return total + " min";
       const hh = Math.floor(total / 60);
@@ -515,70 +515,70 @@
       return mm === 0 ? hh + " h" : hh + " h " + String(mm).padStart(2, "0");
     }
 
-    function calculer() {
-      const dehors = num("dehors");
-      const serre = num("serre");
-      const mois = Math.min(Math.max(num("mois"), 1), 12);
-      const dispo = num("dispo");
+    function compute() {
+      const outdoor = num("dehors");
+      const greenhouse = num("serre");
+      const months = Math.min(Math.max(num("mois"), 1), 12);
+      const available = num("dispo");
 
-      const surface = dehors + serre;
+      const surface = outdoor + greenhouse;
       const install = surface * H_INSTALL_M2;
-      const hDehors = dehors * H_DEHORS_M2;
-      const hSerre = serre * H_SERRE_M2;
-      const annuel = hDehors + hSerre;
+      const hOutdoor = outdoor * H_OUTDOOR_M2;
+      const hGreenhouse = greenhouse * H_GREENHOUSE_M2;
+      const annual = hOutdoor + hGreenhouse;
 
-      const jours = mois * JOURS_PAR_MOIS;
-      const parJour = annuel / jours;
-      const parSemaine = parJour * 7;
+      const days = months * DAYS_PER_MONTH;
+      const perDay = annual / days;
+      const perWeek = perDay * 7;
 
-      $("r-install").textContent = heures(install);
+      $("r-install").textContent = hours(install);
       $("r-install-sub").textContent = surface > 0
-        ? "soit " + duree(install / SEMAINES_INSTALL) + " par semaine sur " + SEMAINES_INSTALL + " semaines"
+        ? "soit " + duration(install / INSTALL_WEEKS) + " par semaine sur " + INSTALL_WEEKS + " semaines"
         : "";
-      $("r-annuel").textContent = heures(annuel);
+      $("r-annuel").textContent = hours(annual);
       $("r-annuel-sub").textContent = surface > 0
         ? "pour " + nf1.format(surface) + " m² cultivés"
         : "";
 
-      $("r-jour").textContent = surface > 0 ? duree(parJour) : "—";
-      $("r-semaine").textContent = surface > 0 ? duree(parSemaine) : "—";
-      $("r-recolte").textContent = surface > 0 ? heures(annuel * PART_RECOLTE) + " par an" : "—";
-      $("r-dehors").textContent = nf1.format(dehors) + " m² · " + heures(hDehors);
-      $("r-serre").textContent = nf1.format(serre) + " m² · " + heures(hSerre);
+      $("r-jour").textContent = surface > 0 ? duration(perDay) : "—";
+      $("r-semaine").textContent = surface > 0 ? duration(perWeek) : "—";
+      $("r-recolte").textContent = surface > 0 ? hours(annual * HARVEST_SHARE) + " par an" : "—";
+      $("r-dehors").textContent = nf1.format(outdoor) + " m² · " + hours(hOutdoor);
+      $("r-serre").textContent = nf1.format(greenhouse) + " m² · " + hours(hGreenhouse);
 
       // Production, à rendement identique en plein air et sous serre
-      const adultes = Math.max(num("adultes"), 1);
-      const rendement = num("rendement");
-      const besoins = adultes * KG_PAR_ADULTE;
-      const production = surface * rendement;
+      const adults = Math.max(num("adultes"), 1);
+      const yieldRate = num("rendement");
+      const needs = adults * KG_PER_ADULT;
+      const production = surface * yieldRate;
       $("r-production").textContent = nf.format(Math.round(production)) + " kg";
-      $("r-besoins").textContent = nf.format(besoins) + " kg";
-      $("r-part").textContent = nf.format(Math.round(production / besoins * 100)) + " %";
-      if (rendement > 0) {
-        const surfaceAuto = besoins / rendement;
+      $("r-besoins").textContent = nf.format(needs) + " kg";
+      $("r-part").textContent = nf.format(Math.round(production / needs * 100)) + " %";
+      if (yieldRate > 0) {
+        const areaAuto = needs / yieldRate;
         // Même proportion plein air / serre que la surface saisie
-        const hParM2 = surface > 0 ? annuel / surface : H_DEHORS_M2;
-        const annuelAuto = surfaceAuto * hParM2;
-        $("r-surface-auto").textContent = nf.format(Math.ceil(surfaceAuto)) + " m²";
-        $("r-temps-auto").textContent = heures(annuelAuto) + " par an · " + duree(annuelAuto / jours) + " par jour";
+        const hPerM2 = surface > 0 ? annual / surface : H_OUTDOOR_M2;
+        const annualAuto = areaAuto * hPerM2;
+        $("r-surface-auto").textContent = nf.format(Math.ceil(areaAuto)) + " m²";
+        $("r-temps-auto").textContent = hours(annualAuto) + " par an · " + duration(annualAuto / days) + " par jour";
       } else {
         $("r-surface-auto").textContent = "—";
         $("r-temps-auto").textContent = "—";
       }
 
       const verdict = $("verdict");
-      if (dispo > 0 && surface > 0) {
+      if (available > 0 && surface > 0) {
         // Surface tenable, à proportion plein air / serre constante
-        const tenable = surface * (dispo / parSemaine);
-        const ok = dispo >= parSemaine;
+        const manageable = surface * (available / perWeek);
+        const ok = available >= perWeek;
         verdict.hidden = false;
         verdict.classList.toggle("warn", !ok);
         $("verdict-title").textContent = ok
           ? "Cette surface correspond à votre temps disponible."
           : "Cette surface dépasse votre temps disponible.";
         $("verdict-text").textContent = ok
-          ? "Il faut " + duree(parSemaine) + " par semaine et vous disposez de " + duree(dispo) + ". Avec ce temps, vous pourriez entretenir jusqu'à environ " + nf.format(Math.floor(tenable)) + " m²."
-          : "Il faut " + duree(parSemaine) + " par semaine et vous disposez de " + duree(dispo) + ". Avec ce temps, visez plutôt environ " + nf.format(Math.floor(tenable)) + " m² pour commencer.";
+          ? "Il faut " + duration(perWeek) + " par semaine et vous disposez de " + duration(available) + ". Avec ce temps, vous pourriez entretenir jusqu'à environ " + nf.format(Math.floor(manageable)) + " m²."
+          : "Il faut " + duration(perWeek) + " par semaine et vous disposez de " + duration(available) + ". Avec ce temps, visez plutôt environ " + nf.format(Math.floor(manageable)) + " m² pour commencer.";
       } else {
         verdict.hidden = true;
       }
@@ -588,19 +588,19 @@
     fields.forEach((id) => {
       const input = $(id);
       const range = $(id + "-range");
-      input.addEventListener("input", () => { range.value = num(id); calculer(); });
-      range.addEventListener("input", () => { input.value = range.value; calculer(); });
+      input.addEventListener("input", () => { range.value = num(id); compute(); });
+      range.addEventListener("input", () => { input.value = range.value; compute(); });
     });
 
     document.querySelectorAll("[data-dehors]").forEach((btn) => {
       btn.addEventListener("click", () => {
         $("dehors").value = btn.dataset.dehors;
         $("dehors-range").value = btn.dataset.dehors;
-        calculer();
+        compute();
       });
     });
 
-    calculer();
+    compute();
   </script>
     <!-- retours:debut --><script src="retours/retours-config.js"></script><script src="retours/retours.js" defer></script><!-- retours:fin -->
 </body>

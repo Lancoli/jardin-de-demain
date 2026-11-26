@@ -293,7 +293,7 @@
   </footer>
 
   <script>
-    const plantes = [
+    const plantsList = [
       {
         type: 'arbuste',
         nom: 'Sureau noir',
@@ -433,39 +433,39 @@
 
     function renderPlants(filter = 'tous') {
       container.innerHTML = '';
-      const filtered = filter === 'tous' ? plantes : plantes.filter(p => p.type === filter);
+      const filtered = filter === 'tous' ? plantsList : plantsList.filter(p => p.type === filter);
 
-      filtered.forEach(plante => {
+      filtered.forEach(plant => {
         const card = document.createElement('article');
         card.className = 'plant-card';
-        card.setAttribute('data-type', plante.type);
+        card.setAttribute('data-type', plant.type);
 
         card.innerHTML = `
-          <h3 class="plant-name">${plante.nom}</h3>
-          <p class="plant-latin">${plante.latin}</p>
+          <h3 class="plant-name">${plant.nom}</h3>
+          <p class="plant-latin">${plant.latin}</p>
 
           <div class="plant-property">
             <span class="plant-property-label">Hauteur</span>
-            <span class="plant-property-value">${plante.hauteur}</span>
+            <span class="plant-property-value">${plant.hauteur}</span>
           </div>
           <div class="plant-property">
             <span class="plant-property-label">Besoin en eau</span>
-            <span class="plant-property-value">${plante.eau}</span>
+            <span class="plant-property-value">${plant.eau}</span>
           </div>
           <div class="plant-property">
             <span class="plant-property-label">Exposition</span>
-            <span class="plant-property-value">${plante.exposition}</span>
+            <span class="plant-property-value">${plant.exposition}</span>
           </div>
           <div class="plant-property">
             <span class="plant-property-label">Sol</span>
-            <span class="plant-property-value">${plante.sol}</span>
+            <span class="plant-property-value">${plant.sol}</span>
           </div>
 
-          <div class="plant-note">${plante.note}</div>
+          <div class="plant-note">${plant.note}</div>
 
           <div class="plant-tags">
-            <span class="plant-tag type-${plante.type}">${plante.type.charAt(0).toUpperCase() + plante.type.slice(1)}</span>
-            ${plante.tags.map(tag => `<span class="plant-tag">${tag}</span>`).join('')}
+            <span class="plant-tag type-${plant.type}">${plant.type.charAt(0).toUpperCase() + plant.type.slice(1)}</span>
+            ${plant.tags.map(tag => `<span class="plant-tag">${tag}</span>`).join('')}
           </div>
         `;
 
