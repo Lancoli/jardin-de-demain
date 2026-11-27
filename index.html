@@ -15,6 +15,8 @@
       --text: #f5f4ef;
       --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);
       --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
+      --shadow-1: 0 8px 24px rgba(0, 0, 0, .3);
+      --shadow-2: 0 12px 32px rgba(0, 0, 0, .4);
       --text-sm: 0.75rem;
       --text-base: 1rem;
       --text-lg: 1.25rem;
@@ -158,7 +160,7 @@
     }
 
     .tool-card:hover {
-      box-shadow: 0 12px 32px rgba(0,0,0,.4);
+      box-shadow: var(--shadow-2);
     }
 
     .tool-card.type-calendrier { color: var(--accent); }
