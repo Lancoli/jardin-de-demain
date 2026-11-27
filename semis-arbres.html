@@ -8,7 +8,7 @@
   <style>
     :root {
       --hue: 76;
-      --accent: #d6f900;
+      --accent: oklch(93% 0.28 var(--hue));
       --bg-0: oklch(16% 0.01 var(--hue));
       --bg-1: oklch(18% 0.01 var(--hue));
       --bg-2: oklch(20% 0.01 var(--hue));
@@ -19,7 +19,7 @@
     body {
       margin: 0;
       background: var(--bg-0);
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
     }
@@ -29,7 +29,7 @@
 
     header {
       padding: 18px 0;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
     }
 
     .nav {
@@ -60,27 +60,27 @@
       position: absolute;
       width: 13px;
       height: 13px;
-      border: 2px solid #0b0d10;
+      border: 2px solid oklch(8% 0.01 var(--hue));
       border-radius: 50%;
       top: 5px;
       left: 5px;
     }
 
-    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
-    nav a:hover { color: #d6f900; }
+    nav { display: flex; gap: 26px; color: var(--text-muted); font-size: 14px; }
+    nav a:hover { color: oklch(93% 0.28 var(--hue)); }
 
     .hero {
       text-align: center;
       padding: 90px 20px 85px;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
-        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+        radial-gradient(circle at 20% 20%, oklch(100% 0 var(--hue) / .08), transparent 24%),
+        radial-gradient(circle at 80% 15%, oklch(100% 0 var(--hue) / .07), transparent 25%),
+        radial-gradient(circle at 50% 80%, oklch(93% 0.28 var(--hue) / .04), transparent 35%);
     }
 
     .eyebrow {
-      color: #d6f900;
+      color: oklch(93% 0.28 var(--hue));
       text-transform: uppercase;
       letter-spacing: .06em;
       font-size: 11px;
@@ -97,9 +97,9 @@
     h1 { font-size: clamp(44px, 7vw, 72px); margin: 20px 0 18px; }
     h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 32px; }
     h3 { font-size: 26px; margin: 0 0 16px; }
-    h4 { font-size: 16px; margin: 20px 0 12px; text-transform: uppercase; letter-spacing: .06em; color: #d6f900; font-weight: 500; }
+    h4 { font-size: 16px; margin: 20px 0 12px; text-transform: uppercase; letter-spacing: .06em; color: oklch(93% 0.28 var(--hue)); font-weight: 500; }
 
-    .lead { font-size: 18px; color: #718078; max-width: 640px; margin: 0 auto; }
+    .lead { font-size: 18px; color: var(--text-muted); max-width: 640px; margin: 0 auto; }
 
     main { padding: 60px 0 120px; }
 
@@ -108,18 +108,18 @@
       margin: 0 auto 60px;
       padding: 32px;
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 8px;
     }
 
     .intro p {
       margin: 0 0 16px;
-      color: #718078;
+      color: var(--text-muted);
       line-height: 1.7;
     }
 
     .intro strong {
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
     }
 
     .section {
@@ -129,7 +129,7 @@
     .section-header {
       margin-bottom: 32px;
       padding-bottom: 16px;
-      border-bottom: 2px solid #30343a;
+      border-bottom: 2px solid var(--border);
     }
 
     .species-grid {
@@ -141,15 +141,15 @@
 
     .species-card {
       background: var(--bg-1);
-      border: 1px solid #30343a;
-      border-left: 4px solid #d6f900;
+      border: 1px solid var(--border);
+      border-left: 4px solid oklch(93% 0.28 var(--hue));
       border-radius: 8px;
       padding: 32px;
       transition: all .2s;
     }
 
     .species-card:hover {
-      border-left-color: #d6f900;
+      border-left-color: oklch(93% 0.28 var(--hue));
       box-shadow: 0 8px 24px rgba(0,0,0,.3);
     }
 
@@ -157,19 +157,19 @@
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
       font-size: 28px;
       margin: 0 0 8px;
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
     }
 
     .species-latin {
       font-size: 14px;
-      color: #718078;
+      color: var(--text-muted);
       font-style: italic;
       margin-bottom: 24px;
     }
 
     .protocol-step {
       background: var(--bg-2);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 6px;
       padding: 20px;
       margin-bottom: 16px;
@@ -181,7 +181,7 @@
 
     .protocol-step p {
       margin: 0;
-      color: #718078;
+      color: var(--text-muted);
       line-height: 1.6;
       font-size: 14px;
     }
@@ -189,14 +189,14 @@
     .protocol-step ul {
       margin: 12px 0 0;
       padding-left: 20px;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 14px;
       line-height: 1.6;
     }
 
     .info-box {
       background: var(--bg-2);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-left: 4px solid #ffb347;
       padding: 20px;
       border-radius: 6px;
@@ -205,7 +205,7 @@
 
     .info-box p {
       margin: 0;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 14px;
       line-height: 1.6;
     }
@@ -216,14 +216,14 @@
 
     .advantages {
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 32px;
       margin-top: 40px;
     }
 
     .advantages h3 {
-      color: #d6f900;
+      color: oklch(93% 0.28 var(--hue));
       margin-bottom: 24px;
     }
 
@@ -254,7 +254,7 @@
     .advantage-content h4 {
       font-size: 15px;
       margin: 0 0 8px;
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
       text-transform: none;
       letter-spacing: 0;
       font-weight: 600;
@@ -262,14 +262,14 @@
 
     .advantage-content p {
       margin: 0;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 13px;
       line-height: 1.6;
     }
 
     .timeline {
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 32px;
     }
@@ -279,7 +279,7 @@
       gap: 24px;
       margin-bottom: 24px;
       padding-bottom: 24px;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
     }
 
     .timeline-item:last-child {
@@ -293,21 +293,21 @@
       width: 120px;
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
       font-size: 18px;
-      color: #d6f900;
+      color: oklch(93% 0.28 var(--hue));
     }
 
     .timeline-content p {
       margin: 0;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 14px;
       line-height: 1.6;
     }
 
     footer {
       padding: 40px 0;
-      border-top: 1px solid #30343a;
+      border-top: 1px solid var(--border);
       text-align: center;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 14px;
     }
 

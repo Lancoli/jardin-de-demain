@@ -8,7 +8,7 @@
   <style>
     :root {
       --hue: 76;
-      --accent: #d6f900;
+      --accent: oklch(93% 0.28 var(--hue));
       --bg-0: oklch(16% 0.01 var(--hue));
       --bg-1: oklch(18% 0.01 var(--hue));
       --bg-2: oklch(20% 0.01 var(--hue));
@@ -19,7 +19,7 @@
     body {
       margin: 0;
       background: var(--bg-0);
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
     }
@@ -29,7 +29,7 @@
 
     header {
       padding: 18px 0;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
     }
 
     .nav {
@@ -60,27 +60,27 @@
       position: absolute;
       width: 13px;
       height: 13px;
-      border: 2px solid #0b0d10;
+      border: 2px solid oklch(8% 0.01 var(--hue));
       border-radius: 50%;
       top: 5px;
       left: 5px;
     }
 
-    nav { display: flex; gap: 26px; color: #718078; font-size: 14px; }
-    nav a:hover { color: #d6f900; }
+    nav { display: flex; gap: 26px; color: var(--text-muted); font-size: 14px; }
+    nav a:hover { color: oklch(93% 0.28 var(--hue)); }
 
     .hero {
       text-align: center;
       padding: 90px 20px 85px;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
-        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+        radial-gradient(circle at 20% 20%, oklch(100% 0 var(--hue) / .08), transparent 24%),
+        radial-gradient(circle at 80% 15%, oklch(100% 0 var(--hue) / .07), transparent 25%),
+        radial-gradient(circle at 50% 80%, oklch(93% 0.28 var(--hue) / .04), transparent 35%);
     }
 
     .eyebrow {
-      color: #d6f900;
+      color: oklch(93% 0.28 var(--hue));
       text-transform: uppercase;
       letter-spacing: .06em;
       font-size: 11px;
@@ -98,7 +98,7 @@
     h2 { font-size: clamp(28px, 4.5vw, 42px); margin: 0 0 24px; }
     h3 { font-size: 20px; margin: 0 0 12px; }
 
-    .lead { font-size: 18px; color: #718078; max-width: 580px; margin: 0 auto; }
+    .lead { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto; }
 
     main { padding: 60px 0 120px; }
 
@@ -119,8 +119,8 @@
         to bottom,
         rgba(100, 180, 255, .4) 0%,
         rgba(100, 180, 255, .4) 16.66%,
-        rgba(214, 249, 0, .4) 16.66%,
-        rgba(214, 249, 0, .4) 50%,
+        oklch(93% 0.28 var(--hue) / .4) 16.66%,
+        oklch(93% 0.28 var(--hue) / .4) 50%,
         rgba(255, 179, 71, .4) 50%,
         rgba(255, 179, 71, .4) 75%,
         rgba(214, 120, 0, .4) 75%,
@@ -144,10 +144,10 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      border: 3px solid #0b0d10;
+      border: 3px solid oklch(8% 0.01 var(--hue));
     }
 
-    .month-card.season-printemps::before { background: rgba(214, 249, 0, .9); box-shadow: 0 0 0 2px rgba(214, 249, 0, .9); }
+    .month-card.season-printemps::before { background: oklch(93% 0.28 var(--hue) / .9); box-shadow: 0 0 0 2px oklch(93% 0.28 var(--hue) / .9); }
     .month-card.season-ete::before { background: rgba(255, 179, 71, .9); box-shadow: 0 0 0 2px rgba(255, 179, 71, .9); }
     .month-card.season-automne::before { background: rgba(214, 120, 0, .9); box-shadow: 0 0 0 2px rgba(214, 120, 0, .9); }
     .month-card.season-hiver::before { background: rgba(100, 180, 255, .9); box-shadow: 0 0 0 2px rgba(100, 180, 255, .9); }
@@ -155,7 +155,7 @@
     .month-name {
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
       font-size: 32px;
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
       margin: 0 0 4px;
       font-weight: 400;
     }
@@ -181,7 +181,7 @@
 
     .harvest-item {
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       padding: 8px 14px;
       border-radius: 20px;
       font-size: 14px;
@@ -195,7 +195,7 @@
       background: var(--bg-2);
     }
 
-    .month-card.season-printemps .harvest-item:hover { border-color: rgba(214, 249, 0, .9); }
+    .month-card.season-printemps .harvest-item:hover { border-color: oklch(93% 0.28 var(--hue) / .9); }
     .month-card.season-ete .harvest-item:hover { border-color: rgba(255, 179, 71, .9); }
     .month-card.season-automne .harvest-item:hover { border-color: rgba(214, 120, 0, .9); }
     .month-card.season-hiver .harvest-item:hover { border-color: rgba(100, 180, 255, .9); }
@@ -207,12 +207,12 @@
     }
 
     .harvest-item strong {
-      color: #f5f4ef;
+      color: oklch(96% 0.01 var(--hue));
       font-weight: 500;
     }
 
     .harvest-item small {
-      color: #718078;
+      color: var(--text-muted);
       font-size: 12px;
     }
 
@@ -226,13 +226,13 @@
       margin: 0 auto 60px;
       padding: 32px;
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 8px;
     }
 
     .intro p {
       margin: 0 0 16px;
-      color: #718078;
+      color: var(--text-muted);
     }
 
     .intro p:last-child {
@@ -241,9 +241,9 @@
 
     footer {
       padding: 40px 0;
-      border-top: 1px solid #30343a;
+      border-top: 1px solid var(--border);
       text-align: center;
-      color: #718078;
+      color: var(--text-muted);
       font-size: 14px;
     }
 

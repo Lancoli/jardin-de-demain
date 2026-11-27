@@ -8,13 +8,14 @@
   <style>
     :root {
       --hue: 76;
-      --accent: #d6f900;
+      --accent: oklch(93% 0.28 var(--hue));
       --bg-0: oklch(16% 0.01 var(--hue));
       --bg-1: oklch(18% 0.01 var(--hue));
       --bg-2: oklch(20% 0.01 var(--hue));
-      --text: #f5f4ef;
+      --text: oklch(96% 0.01 var(--hue));
       --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);
       --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
+      --border: oklch(22% 0.01 var(--hue));
       --shadow-1: 0 8px 24px rgba(0, 0, 0, .3);
       --shadow-2: 0 12px 32px rgba(0, 0, 0, .4);
       --text-sm: 0.75rem;
@@ -42,7 +43,7 @@
 
     header {
       padding: 24px 0;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
     }
 
     .brand {
@@ -68,7 +69,7 @@
       position: absolute;
       width: 16px;
       height: 16px;
-      border: 2.5px solid #0b0d10;
+      border: 2.5px solid oklch(8% 0.01 var(--hue));
       border-radius: 50%;
       top: 7px;
       left: 7px;
@@ -77,11 +78,11 @@
     .hero {
       text-align: center;
       padding: 100px 20px 90px;
-      border-bottom: 1px solid #30343a;
+      border-bottom: 1px solid var(--border);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 24%),
-        radial-gradient(circle at 80% 15%, rgba(255,255,255,.07), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(214,249,0,.04), transparent 35%);
+        radial-gradient(circle at 20% 20%, oklch(100% 0 var(--hue) / .08), transparent 24%),
+        radial-gradient(circle at 80% 15%, oklch(100% 0 var(--hue) / .07), transparent 25%),
+        radial-gradient(circle at 50% 80%, oklch(93% 0.28 var(--hue) / .04), transparent 35%);
     }
 
     .eyebrow {
@@ -141,7 +142,7 @@
 
     .tool-card {
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 32px;
       transition: all .2s;
@@ -220,7 +221,7 @@
 
     .info-banner {
       background: var(--bg-1);
-      border: 1px solid #30343a;
+      border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       padding: 32px;
       border-radius: 8px;
@@ -242,7 +243,7 @@
 
     footer {
       padding: 60px 0;
-      border-top: 1px solid #30343a;
+      border-top: 1px solid var(--border);
       text-align: center;
     }
 
