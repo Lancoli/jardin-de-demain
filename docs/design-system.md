@@ -131,7 +131,31 @@ by it. Same URL ⇒ same screen. Tests and audits navigate by URL only.
 
 ---
 
-## 3. Visual identity
+## 3. Color scheme
+
+**Single scheme: dark only.**
+
+Jardin de demain uses a **dark-only color scheme** by design choice, not as a temporary state. The rationale:
+
+1. **Nature context**: Gardening is a grounded, earthy activity. The dark background (`#0b0d10`) evokes soil and
+   night, creating a calm, natural atmosphere that fits the subject matter.
+2. **Accent visibility**: The lime green accent (`#d6f900`) is vibrant and highly visible against the dark
+   background, creating strong contrast that works well for highlighting key information and categories.
+3. **Simplicity over configurability**: Adding a light scheme would double the design system's surface area
+   (every color token needs a light variant) without clear user benefit. The app is content-focused, not a
+   workspace tool where users spend hours.
+4. **Accessibility via contrast**: The dark scheme already meets WCAG AA contrast ratios. Text is light
+   (`#e8e8e8`, `#b8b8b8`) on dark backgrounds, ensuring readability.
+
+**Decision**: Ship dark scheme only. No `prefers-color-scheme` media query. Users who prefer light backgrounds can
+use browser extensions or OS-level color inversion if needed.
+
+**Future review trigger**: If user feedback specifically requests a light scheme (via the feedback widget or
+GitHub issues), revisit this decision. Otherwise, the single dark scheme is considered final for this app.
+
+---
+
+## 4. Visual identity
 
 **Brand color:** `#d6f900` (lime green) — used for the brand mark, eyebrows, and category highlights.
 
@@ -159,7 +183,7 @@ These will migrate to `--hue` variables once tokens are extracted.
 
 ---
 
-## 4. Next steps (migration to token system)
+## 5. Next steps (migration to token system)
 
 1. **Extract styles to `css/` folder**: create `css/tokens.css`, `css/base.css`, `css/components.css`, `css/layout.css`
 2. **Define color tokens in `:root`**: `--bg`, `--ink`, `--accent`, `--hue` per category
@@ -170,7 +194,7 @@ These will migrate to `--hue` variables once tokens are extracted.
 
 ---
 
-## 5. References
+## 6. References
 
 - Common method: [../../docs/DESIGN-SYSTEM.md](../../docs/DESIGN-SYSTEM.md)
 - UX principles: [../../docs/UX-PRINCIPLES.md](../../docs/UX-PRINCIPLES.md)
