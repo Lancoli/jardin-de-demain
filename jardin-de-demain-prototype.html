@@ -42,7 +42,7 @@
     .container { width: min(calc(100% - 40px), 1180px); margin: 0 auto; }
 
     header {
-      padding: 18px 0;
+      padding: 16px 0;
       border-bottom: 1px solid rgba(40,92,66,.22);
     }
 
@@ -58,22 +58,22 @@
       align-items: center;
       gap: 12px;
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
-      font-size: 28px;
+      font-size: 32px;
     }
 
     .brand-mark {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       border: 2.5px solid #285c42;
     }
 
-    nav { display: flex; gap: 26px; color: var(--text-muted); font-size: 14px; }
+    nav { display: flex; gap: 24px; color: var(--text-muted); font-size: 14px; }
     nav a:hover { color: #193f2d; text-decoration: underline; text-underline-offset: 4px; }
 
     .hero {
       text-align: center;
-      padding: 110px 20px 105px;
+      padding: 110px 24px 105px;
       border-bottom: 1px solid rgba(40,92,66,.22);
     }
 
@@ -92,11 +92,11 @@
       margin: 0;
     }
 
-    h1 { font-size: clamp(52px, 8vw, 105px); max-width: 900px; margin: 18px auto; color: #193f2d; }
+    h1 { font-size: clamp(52px, 8vw, 105px); max-width: 900px; margin: 16px auto; color: #193f2d; }
     h1 em, h2 em { color: #285c42; font-style: italic; }
     h2 { color: #193f2d; }
     h3 { color: #193f2d; }
-    .hero p { max-width: 580px; margin: 25px auto 0; color: var(--text-muted); font-size: 18px; }
+    .hero p { max-width: 580px; margin: 25px auto 0; color: var(--text-muted); font-size: 16px; }
 
     .button {
       display: inline-flex;
@@ -112,12 +112,12 @@
       transition: background .2s ease, box-shadow .2s ease;
     }
 
-    .button:hover { background: var(--accent); box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
+    .button:hover { background: var(--accent); box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
 
     section { padding: 95px 0; }
     .section-head { text-align: center; max-width: 650px; margin: 0 auto 50px; }
     .section-head h2 { font-size: clamp(42px, 6vw, 70px); margin-top: 12px; }
-    .section-head p { color: var(--text-muted); margin-top: 18px; }
+    .section-head p { color: var(--text-muted); margin-top: 16px; }
 
     .service-grid {
       display: grid;
@@ -128,8 +128,8 @@
     .service-card {
       border: 1px solid rgba(40,92,66,.18);
       background: var(--bg-1);
-      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
-      padding: 28px;
+      box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+      padding: 32px;
       min-height: 225px;
       display: flex;
       gap: 24px;
@@ -179,10 +179,10 @@
 
     .article {
       border: 1px solid rgba(40,92,66,.18);
-      padding: 28px;
+      padding: 32px;
       min-height: 190px;
       background: var(--bg-1);
-      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+      box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
       transition: box-shadow .2s ease;
     }
 
@@ -193,15 +193,15 @@
     .article p { color: var(--text-muted); font-size: 14px; }
 
     .cta-footer {
-      margin: 20px auto 70px;
+      margin: 24px auto 70px;
       padding: 95px 24px 105px;
       text-align: center;
       border: 1px solid rgba(40,92,66,.18);
       background: var(--bg-1);
-      box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
+      box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
     }
 
-    .cta-footer h2 { font-size: clamp(48px, 7vw, 92px); max-width: 900px; margin: 18px auto; }
+    .cta-footer h2 { font-size: clamp(48px, 7vw, 92px); max-width: 900px; margin: 16px auto; }
     .cta-footer p { color: var(--text-muted); max-width: 530px; margin: 0 auto; font-size: 17px; }
 
     footer {
@@ -211,18 +211,18 @@
       font-size: 12px;
     }
 
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
 
     @media (max-width: 760px) {
-      .container { width: min(calc(100% - 28px), 1180px); }
+      .container { width: min(calc(100% - 32px), 1180px); }
       nav { display: none; }
       .hero { padding: 75px 10px; }
       section { padding: 65px 0; }
       .service-grid, .articles-grid, .method-grid { grid-template-columns: 1fr; }
-      .service-card { padding: 20px; gap: 17px; }
+      .service-card { padding: 24px; gap: 17px; }
       .service-icon { flex-basis: 82px; height: 82px; font-size: 36px; }
       .service-card h3 { font-size: 30px; }
-      .cta-footer { padding: 65px 18px 75px; margin-bottom: 35px; }
+      .cta-footer { padding: 65px 16px 75px; margin-bottom: 35px; }
       .footer-inner { flex-direction: column; }
     }
   </style>
