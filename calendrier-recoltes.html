@@ -72,7 +72,7 @@
       align-items: center;
       gap: 12px;
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
-      font-size: 32px;
+      font-size: var(--text-xl);
     }
 
     .brand-mark {
@@ -94,7 +94,7 @@
       left: 5px;
     }
 
-    nav { display: flex; gap: 24px; color: var(--text-muted); font-size: 14px; }
+    nav { display: flex; gap: 24px; color: var(--text-muted); font-size: var(--text-base); }
     nav a:hover { color: oklch(93% 0.28 var(--hue)); }
 
     .hero {
@@ -110,7 +110,7 @@
       color: oklch(93% 0.28 var(--hue));
       text-transform: uppercase;
       letter-spacing: .06em;
-      font-size: 11px;
+      font-size: var(--text-sm);
       font-weight: 500;
     }
 
@@ -121,11 +121,11 @@
       margin: 0;
     }
 
-    h1 { font-size: clamp(44px, 7vw, 72px); margin: 24px 0 16px; }
-    h2 { font-size: clamp(32px, 4.5vw, 42px); margin: 0 0 24px; }
-    h3 { font-size: 24px; margin: 0 0 12px; }
+    h1 { font-size: clamp(calc(var(--text-xl) * 1.75), 7vw, calc(var(--text-xl) * 2.88)); margin: 24px 0 16px; }
+    h2 { font-size: clamp(calc(var(--text-xl) * 1.28), 4.5vw, calc(var(--text-xl) * 1.68)); margin: 0 0 24px; }
+    h3 { font-size: var(--text-lg); margin: 0 0 12px; }
 
-    .lead { font-size: 16px; color: var(--text-muted); max-width: 580px; margin: 0 auto; }
+    .lead { font-size: var(--text-base); color: var(--text-muted); max-width: 580px; margin: 0 auto; }
 
     main { padding: 64px 0 128px; }
 
@@ -181,7 +181,7 @@
 
     .month-name {
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
-      font-size: 32px;
+      font-size: var(--text-xl);
       color: var(--text);
       margin: 0 0 4px;
       font-weight: 400;
@@ -189,7 +189,7 @@
 
     .season-label {
       display: inline-block;
-      font-size: 11px;
+      font-size: var(--text-sm);
       text-transform: uppercase;
       letter-spacing: .06em;
       font-weight: 600;
@@ -211,7 +211,7 @@
       border: 1px solid var(--border);
       padding: 8px 14px;
       border-radius: 24px;
-      font-size: 14px;
+      font-size: var(--text-base);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -228,7 +228,7 @@
     .month-card.season-hiver .harvest-item:hover { border-color: rgba(100, 180, 255, .9); }
 
     .harvest-icon {
-      font-size: 16px;
+      font-size: var(--text-base);
       line-height: 1;
       flex-shrink: 0;
     }
@@ -240,7 +240,7 @@
 
     .harvest-item small {
       color: var(--text-muted);
-      font-size: 12px;
+      font-size: var(--text-sm);
     }
 
     .harvest-item small::before {
@@ -271,7 +271,7 @@
       border-top: 1px solid var(--border);
       text-align: center;
       color: var(--text-muted);
-      font-size: 14px;
+      font-size: var(--text-base);
     }
 
     @media (max-width: 768px) {
@@ -285,9 +285,9 @@
         left: 12px;
       }
       .month-name {
-        font-size: 24px;
+        font-size: var(--text-lg);
       }
-      nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
+      nav { flex-wrap: wrap; gap: 16px; font-size: var(--text-sm); }
     }
   
     @media (prefers-reduced-motion: reduce) {
