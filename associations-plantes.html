@@ -17,6 +17,8 @@
       --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
       --border: var(--border);
       --text-muted: oklch(56% 0.01 var(--hue));
+      --shadow-1: 0 8px 24px rgba(0, 0, 0, .3);
+      --shadow-2: 0 12px 32px rgba(0, 0, 0, .4);
     }
 
     * { box-sizing: border-box; }
@@ -178,7 +180,7 @@
 
     .plant-card:hover {
       border-color: oklch(93% 0.28 var(--hue));
-      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      box-shadow: var(--shadow-1);
     }
 
     .plant-header {

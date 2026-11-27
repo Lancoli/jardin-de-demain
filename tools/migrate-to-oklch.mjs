@@ -110,6 +110,22 @@ function updateRootBlock(content) {
     );
   }
 
+  // Add --shadow-1 if missing
+  if (!rootBlock.includes('--shadow-1:')) {
+    rootBlock = rootBlock.replace(
+      /(--text-muted:[^;]+;)/,
+      '$1\n      --shadow-1: 0 8px 24px rgba(0, 0, 0, .3);'
+    );
+  }
+
+  // Add --shadow-2 if missing
+  if (!rootBlock.includes('--shadow-2:')) {
+    rootBlock = rootBlock.replace(
+      /(--shadow-1:[^;]+;)/,
+      '$1\n      --shadow-2: 0 12px 32px rgba(0, 0, 0, .4);'
+    );
+  }
+
   return content.replace(/:root\s*\{[^}]*\}/s, `:root {${rootBlock}}`);
 }
 
@@ -141,6 +157,19 @@ function replaceColors(content) {
   result = result.replace(
     /(border(?:-\w+)?:\s*[^;]*?)oklch\(22%\s+0\.01\s+var\(--hue\)\)/gi,
     '$1var(--border)'
+  );
+
+  // Replace elevation box-shadow with tokens (not semantic color shadows)
+  // --shadow-1: 0 8px 24px rgba(0, 0, 0, .3)
+  result = result.replace(
+    /box-shadow:\s*0\s+8px\s+24px\s+rgba\(0\s*,\s*0\s*,\s*0\s*,\s*\.3\)/gi,
+    'box-shadow: var(--shadow-1)'
+  );
+
+  // --shadow-2: 0 12px 32px rgba(0, 0, 0, .4)
+  result = result.replace(
+    /box-shadow:\s*0\s+12px\s+32px\s+rgba\(0\s*,\s*0\s*,\s*0\s*,\s*\.4\)/gi,
+    'box-shadow: var(--shadow-2)'
   );
 
   return result;
