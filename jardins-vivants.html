@@ -432,8 +432,7 @@ nav{
   font-size:12px;
   font-weight:bold;
 
-  transition:
-    transform .25s ease,
+  transition: transform .25s cubic-bezier(.2,.8,.2,1),
     box-shadow .25s ease;
 }
 
@@ -522,8 +521,7 @@ nav{
 }
 
 .card{
-  transition:
-    transform .25s ease,
+  transition: transform .25s cubic-bezier(.2,.8,.2,1),
     box-shadow .25s ease;
 }
 
@@ -1211,8 +1209,7 @@ a.article{
   display:flex;
   flex-direction:column;
 
-  transition:
-    transform .25s ease,
+  transition: transform .25s cubic-bezier(.2,.8,.2,1),
     box-shadow .25s ease;
 }
 
@@ -1574,7 +1571,7 @@ nav a{
 
   padding:6px 0;
 
-  transition:opacity 160ms ease;
+  transition: opacity 160ms cubic-bezier(.2,.8,.2,1);
 }
 
 nav a::after{
@@ -1718,9 +1715,8 @@ button,
 
   border-radius:14px;
 
-  transition:
-    transform .5s cubic-bezier(.2,.8,.2,1),
-    box-shadow .5s ease;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1),
+    box-shadow .5s cubic-bezier(.2,.8,.2,1);
 }
 
 /* inner rule, like a herbarium label */
@@ -1736,7 +1732,7 @@ button,
 
   pointer-events:none;
 
-  transition:border-color .5s ease;
+  transition: border-color .5s cubic-bezier(.2,.8,.2,1);
 }
 
 .plate > *{

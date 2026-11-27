@@ -109,7 +109,7 @@
       border-radius: 6px;
       font-size: 14px;
       margin-top: 30px;
-      transition: background .2s ease, box-shadow .2s ease;
+      transition: background .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease;
     }
 
     .button:hover { background: var(--accent); box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
@@ -134,7 +134,7 @@
       display: flex;
       gap: 24px;
       align-items: flex-start;
-      transition: box-shadow .2s ease;
+      transition: box-shadow .2s cubic-bezier(.2,.8,.2,1);
     }
 
     .service-card:hover { box-shadow: 0 12px 36px rgba(36,67,49,.08), 0 2px 4px rgba(36,67,49,.06); }
@@ -183,7 +183,7 @@
       min-height: 190px;
       background: var(--bg-1);
       box-shadow: 0 8px 32px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
-      transition: box-shadow .2s ease;
+      transition: box-shadow .2s cubic-bezier(.2,.8,.2,1);
     }
 
     .article:hover { box-shadow: 0 12px 36px rgba(36,67,49,.08), 0 2px 4px rgba(36,67,49,.06); }
