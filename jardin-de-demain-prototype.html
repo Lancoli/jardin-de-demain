@@ -225,6 +225,11 @@
       .cta-footer { padding: 65px 16px 75px; margin-bottom: 35px; }
       .footer-inner { flex-direction: column; }
     }
+  
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
   </style>
 </head>
 <body>

@@ -271,6 +271,11 @@
       }
       nav { flex-wrap: wrap; gap: 16px; font-size: 13px; }
     }
+  
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
   </style>
 </head>
 <body>
