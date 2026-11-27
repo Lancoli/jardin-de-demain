@@ -94,13 +94,19 @@ function updateRootBlock(content) {
     );
   }
 
-  // Add --border if missing
+  // Add --border if missing (T15: color-mix 10%)
   if (!rootBlock.includes('--border:')) {
     rootBlock = rootBlock.replace(
       /(--text-tertiary:[^;]+;)/,
-      '$1\n      --border: oklch(22% 0.01 var(--hue));'
+      '$1\n      --border: color-mix(in oklch, var(--text) 10%, transparent);'
     );
   }
+
+  // Update existing --border to T15 format if needed
+  rootBlock = rootBlock.replace(
+    /--border:\s*oklch\([^)]+\);/g,
+    '--border: color-mix(in oklch, var(--text) 10%, transparent);'
+  );
 
   // Add --text-muted if missing
   if (!rootBlock.includes('--text-muted:')) {

@@ -15,7 +15,7 @@
       --text: oklch(96% 0.01 var(--hue));
       --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);
       --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
-      --border: oklch(22% 0.01 var(--hue));
+      --border: color-mix(in oklch, var(--text) 10%, transparent);
       --shadow-1: 0 8px 24px rgba(0, 0, 0, .3);
       --shadow-2: 0 12px 32px rgba(0, 0, 0, .4);
       --text-sm: 0.75rem;
@@ -263,6 +263,16 @@
       }
       .hero {
         padding: 80px 20px 70px;
+      }
+    }
+
+    @media (min-resolution: 2dppx) {
+      header,
+      .hero,
+      .tool-card,
+      .info-banner,
+      footer {
+        border-width: 0.5px;
       }
     }
   </style>
