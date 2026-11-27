@@ -6,6 +6,10 @@
   <meta name="description" content="Jardin de demain — Outils et ressources pour un jardinage résilient face au changement climatique." />
   <title>Jardin de demain — Accueil</title>
   <style>
+    :root {
+      --accent: #d6f900;
+    }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -17,6 +21,10 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     .container { width: min(calc(100% - 40px), 1280px); margin: 0 auto; }
 
     header {
