@@ -8,6 +8,10 @@
   <style>
     :root {
       --accent: #d6f900;
+      --text-sm: 0.75rem;
+      --text-base: 1rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.563rem;
     }
 
     * { box-sizing: border-box; }
@@ -37,7 +41,7 @@
       align-items: center;
       gap: 16px;
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
-      font-size: 32px;
+      font-size: var(--text-xl);
       justify-content: center;
     }
 
@@ -75,7 +79,7 @@
       color: #d6f900;
       text-transform: uppercase;
       letter-spacing: .13em;
-      font-size: 11px;
+      font-size: var(--text-sm);
       font-weight: 700;
     }
 
@@ -86,12 +90,12 @@
       margin: 0;
     }
 
-    h1 { font-size: clamp(48px, 8vw, 92px); margin: 20px 0 18px; }
-    h2 { font-size: clamp(32px, 5vw, 52px); margin: 0 0 32px; }
-    h3 { font-size: 24px; margin: 0 0 12px; }
+    h1 { font-size: clamp(calc(var(--text-xl) * 2), 8vw, calc(var(--text-xl) * 3)); margin: 20px 0 18px; }
+    h2 { font-size: clamp(var(--text-xl), 5vw, calc(var(--text-xl) * 2)); margin: 0 0 32px; }
+    h3 { font-size: var(--text-lg); margin: 0 0 12px; }
 
     .lead {
-      font-size: 20px;
+      font-size: var(--text-lg);
       color: #a4a6aa;
       max-width: 680px;
       margin: 0 auto;
@@ -117,7 +121,7 @@
       color: #a4a6aa;
       max-width: 600px;
       margin: 16px auto 0;
-      font-size: 16px;
+      font-size: var(--text-base);
     }
 
     .tools-grid {
@@ -161,7 +165,7 @@
     .tool-card.type-prototype:hover { border-color: #ffb347; }
 
     .tool-icon {
-      font-size: 40px;
+      font-size: calc(var(--text-xl) * 1.6);
       margin-bottom: 16px;
       line-height: 1;
       color: inherit;
@@ -169,14 +173,14 @@
 
     .tool-name {
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
-      font-size: 26px;
+      font-size: var(--text-xl);
       margin: 0 0 12px;
       color: #f5f4ef;
     }
 
     .tool-desc {
       color: #a4a6aa;
-      font-size: 15px;
+      font-size: var(--text-base);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -192,7 +196,7 @@
       background: #15191f;
       padding: 4px 10px;
       border-radius: 12px;
-      font-size: 12px;
+      font-size: var(--text-sm);
       color: #a4a6aa;
     }
 
@@ -201,7 +205,7 @@
       align-items: center;
       gap: 8px;
       color: inherit;
-      font-size: 14px;
+      font-size: var(--text-base);
       font-weight: 600;
     }
 
@@ -235,7 +239,7 @@
 
     .footer-content {
       color: #a4a6aa;
-      font-size: 14px;
+      font-size: var(--text-base);
       line-height: 1.8;
     }
 
