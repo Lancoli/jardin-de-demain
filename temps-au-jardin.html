@@ -12,6 +12,11 @@
       --bg-0: oklch(16% 0.01 var(--hue));
       --bg-1: oklch(18% 0.01 var(--hue));
       --bg-2: oklch(20% 0.01 var(--hue));
+      --text: oklch(96% 0.01 var(--hue));
+      --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);
+      --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
+      --border: var(--border);
+      --text-muted: oklch(56% 0.01 var(--hue));
     }
 
     * { box-sizing: border-box; }
@@ -19,7 +24,7 @@
     body {
       margin: 0;
       background: var(--bg-0);
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
     }
@@ -213,7 +218,7 @@
       background: transparent;
       border: 0;
       outline: 0;
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
       font: inherit;
       font-size: 16px;
       padding: 10px 0 10px 12px;

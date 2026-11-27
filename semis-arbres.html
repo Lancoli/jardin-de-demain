@@ -12,6 +12,11 @@
       --bg-0: oklch(16% 0.01 var(--hue));
       --bg-1: oklch(18% 0.01 var(--hue));
       --bg-2: oklch(20% 0.01 var(--hue));
+      --text: oklch(96% 0.01 var(--hue));
+      --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);
+      --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);
+      --border: var(--border);
+      --text-muted: oklch(56% 0.01 var(--hue));
     }
 
     * { box-sizing: border-box; }
@@ -19,7 +24,7 @@
     body {
       margin: 0;
       background: var(--bg-0);
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
     }
@@ -119,7 +124,7 @@
     }
 
     .intro strong {
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
     }
 
     .section {
@@ -157,7 +162,7 @@
       font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif;
       font-size: 28px;
       margin: 0 0 8px;
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
     }
 
     .species-latin {
@@ -254,7 +259,7 @@
     .advantage-content h4 {
       font-size: 15px;
       margin: 0 0 8px;
-      color: oklch(96% 0.01 var(--hue));
+      color: var(--text);
       text-transform: none;
       letter-spacing: 0;
       font-weight: 600;

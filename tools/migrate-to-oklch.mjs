@@ -70,6 +70,30 @@ function updateRootBlock(content) {
     '--text: oklch(96% 0.01 var(--hue));'
   );
 
+  // Add --text if missing (after --bg-2)
+  if (!rootBlock.includes('--text:')) {
+    rootBlock = rootBlock.replace(
+      /(--bg-2:[^;]+;)/,
+      '$1\n      --text: oklch(96% 0.01 var(--hue));'
+    );
+  }
+
+  // Add --text-secondary if missing (after --text)
+  if (!rootBlock.includes('--text-secondary:')) {
+    rootBlock = rootBlock.replace(
+      /(--text:[^;]+;)/,
+      '$1\n      --text-secondary: color-mix(in oklch, var(--text) 68%, transparent);'
+    );
+  }
+
+  // Add --text-tertiary if missing (after --text-secondary)
+  if (!rootBlock.includes('--text-tertiary:')) {
+    rootBlock = rootBlock.replace(
+      /(--text-secondary:[^;]+;)/,
+      '$1\n      --text-tertiary: color-mix(in oklch, var(--text) 48%, transparent);'
+    );
+  }
+
   // Add --border if missing
   if (!rootBlock.includes('--border:')) {
     rootBlock = rootBlock.replace(
@@ -100,6 +124,12 @@ function replaceColors(content) {
     const regex = new RegExp(escapedOld, 'gi');
     result = result.replace(regex, newColor);
   }
+
+  // Replace direct oklch text color with var(--text)
+  result = result.replace(
+    /color:\s*oklch\(96%\s+0\.01\s+var\(--hue\)\)/gi,
+    'color: var(--text)'
+  );
 
   // Replace color: #718078 with var(--text-muted) or the oklch equivalent
   result = result.replace(
