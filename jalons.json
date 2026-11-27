@@ -33,8 +33,9 @@
       "texte": "N0 · sur GitHub, à jour (origin, 0 commit non poussé)",
       "pour": "github",
       "preuve": "branche main jamais poussée",
-      "fait": false,
-      "auto": true
+      "fait": true,
+      "auto": true,
+      "fait_le": "2026-11-27T00:44:15.021Z"
     },
     {
       "id": "auto-readme",
@@ -44,14 +45,31 @@
       "fait": true,
       "auto": true,
       "fait_le": "2026-11-26T18:18:25.661Z"
+    },
+    {
+      "id": "auto-licence",
+      "texte": "N1 · licence déclarée (fichier LICENSE)",
+      "pour": "licence",
+      "preuve": "LICENSE absent",
+      "fait": false,
+      "auto": true
+    },
+    {
+      "id": "auto-changelog",
+      "texte": "N1 · journal des versions (CHANGELOG.md)",
+      "pour": "changelog",
+      "preuve": "CHANGELOG.md absent",
+      "fait": false,
+      "auto": true
     }
   ],
   "etat": {
-    "date": "2026-11-26T22:58:37.890Z",
-    "niveau": null,
-    "prochain": "N0",
+    "date": "2026-11-27T00:44:15.021Z",
+    "niveau": "N0",
+    "prochain": "N1",
     "bloque": [
-      "github"
+      "licence",
+      "changelog"
     ],
     "humain": {},
     "criteres": {
@@ -63,15 +81,15 @@
         "type": "auto"
       },
       "github": {
-        "ok": false,
-        "preuve": "branche main jamais poussée",
+        "ok": true,
+        "preuve": "Lancoli/jardin-de-demain.git",
         "niveau": "N0",
         "texte": "sur GitHub, à jour (origin, 0 commit non poussé)",
         "type": "auto"
       },
       "readme": {
         "ok": true,
-        "preuve": "910 caractères",
+        "preuve": "1790 caractères",
         "niveau": "N0",
         "texte": "README : ce que c'est, comment le lancer (≥ 300 caractères)",
         "type": "auto"
