@@ -6,12 +6,19 @@
   <meta name="description" content="Guide des arbres fruitiers résistants à la sécheresse : classement, fiches détaillées et conseils de plantation." />
   <title>Arbres résistants à la sécheresse — Jardin de demain</title>
   <style>
+    :root {
+      --hue: 76;
+      --accent: #d6f900;
+      --bg-0: oklch(16% 0.01 var(--hue));
+      --bg-1: oklch(18% 0.01 var(--hue));
+      --bg-2: oklch(20% 0.01 var(--hue));
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: #0b0d10;
+      background: var(--bg-0);
       color: #f5f4ef;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
@@ -44,7 +51,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: #d6f900;
+      background: var(--accent);
       position: relative;
     }
 
@@ -99,7 +106,7 @@
       max-width: 760px;
       margin: 0 auto 60px;
       padding: 32px;
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
       border-radius: 8px;
     }
@@ -146,7 +153,7 @@
     }
 
     .tree-card {
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
       border-radius: 8px;
       padding: 28px;
@@ -164,9 +171,9 @@
       height: 100%;
     }
 
-    .tree-card.level-exceptionnel::before { background: #d6f900; }
-    .tree-card.level-tres-bon::before { background: #7bc96f; }
-    .tree-card.level-bon::before { background: #64b4ff; }
+    .tree-card.level-exceptionnel::before { background: var(--accent); }
+    .tree-card.level-tres-bon::before { background: oklch(70% 0.12 145); }
+    .tree-card.level-bon::before { background: oklch(70% 0.14 240); }
 
     .tree-card:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,.3);
@@ -224,7 +231,7 @@
     }
 
     .tree-tag {
-      background: #15191f;
+      background: var(--bg-2);
       padding: 4px 10px;
       border-radius: 12px;
       font-size: 12px;

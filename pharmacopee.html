@@ -7,6 +7,13 @@
 <title>Pharmacopée — Jardin de demain</title>
 
 <style>
+:root {
+  --hue: 150;
+  --bg-0: oklch(94% 0.02 var(--hue));
+  --bg-1: oklch(96% 0.015 var(--hue));
+  --bg-2: oklch(90% 0.025 var(--hue));
+  --accent: oklch(42% 0.08 var(--hue));
+}
 
 /* =========================================================
    02. BASE
@@ -17,10 +24,10 @@ html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
-  color:#285c42;
+  color: var(--accent);
   font-family:Arial, Helvetica, sans-serif;
   line-height:1.55;
-  background-color:#f3efe2;
+  background-color: var(--bg-0);
   background-image:
     radial-gradient(circle at 12% 8%, rgba(255,255,255,.55), transparent 32%),
     radial-gradient(circle at 88% 30%, rgba(40,92,66,.035), transparent 30%),
@@ -153,7 +160,7 @@ h1 em, h2 em{ font-style:italic; }
   font:inherit;
   font-size:13px;
   color:#285c42;
-  background:#faf7ed;
+  background: var(--bg-1);
   border:1px solid rgba(40,92,66,.25);
   border-radius:999px;
   padding:8px 15px;
@@ -164,7 +171,7 @@ h1 em, h2 em{ font-style:italic; }
 .filtre:hover{ border-color:#285c42; }
 
 .filtre[aria-pressed="true"]{
-  background:#285c42;
+  background: var(--accent);
   border-color:#285c42;
   color:#fffdf5;
 }
@@ -209,7 +216,7 @@ h1 em, h2 em{ font-style:italic; }
 .fond{
   border-radius:4px;
   padding:6px 0 0;
-  background-color:#e7e0cc;
+  background-color: var(--bg-2);
   background-image:
     radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.35), transparent 60%),
     image-set(url("assets/textures/paper-grain.png") 2x);
@@ -319,7 +326,7 @@ h1 em, h2 em{ font-style:italic; }
   top:20px;
   padding:28px;
   border-radius:14px;
-  background:#faf7ed;
+  background: var(--bg-1);
   background-image:image-set(url("assets/textures/paper-grain.png") 2x);
   background-size:256px 256px;
   background-blend-mode:soft-light;
@@ -391,7 +398,7 @@ h1 em, h2 em{ font-style:italic; }
   font-size:12px;
   padding:4px 10px;
   border-radius:999px;
-  background:#dce6d7;
+  background: var(--bg-2);
   color:#193f2d;
 }
 
@@ -453,7 +460,7 @@ h1 em, h2 em{ font-style:italic; }
   counter-increment:critere;
   padding:22px;
   border-radius:12px;
-  background:#faf7ed;
+  background: var(--bg-1);
   border:1px solid rgba(40,92,66,.12);
 }
 

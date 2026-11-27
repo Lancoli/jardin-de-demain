@@ -6,19 +6,26 @@
   <meta name="description" content="Jardin de demain — horticulture, agronomie, paysage et expérimentation." />
   <title>Jardin de demain</title>
   <style>
+    :root {
+      --hue: 150;
+      --bg-0: oklch(94% 0.02 var(--hue));
+      --bg-1: oklch(96% 0.015 var(--hue));
+      --bg-2: oklch(90% 0.025 var(--hue));
+      --accent: oklch(42% 0.08 var(--hue));
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background-color: #f3efe2;
+      background-color: var(--bg-0);
       background-image:
         radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.42), transparent 35%),
         radial-gradient(ellipse at 85% 25%, rgba(212,222,204,.20), transparent 32%),
         radial-gradient(ellipse at 45% 85%, rgba(255,255,255,.25), transparent 40%),
         image-set(url("assets/textures/paper-grain.png") 2x);
       background-blend-mode: normal, normal, normal, soft-light;
-      color: #285c42;
+      color: var(--accent);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -89,7 +96,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: #285c42;
+      background: var(--accent);
       color: #fffdf5;
       padding: 16px 25px;
       border-radius: 6px;
@@ -98,7 +105,7 @@
       transition: background .2s ease, box-shadow .2s ease;
     }
 
-    .button:hover { background: #193f2d; box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
+    .button:hover { background: var(--accent); box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045); }
 
     section { padding: 95px 0; }
     .section-head { text-align: center; max-width: 650px; margin: 0 auto 50px; }
@@ -113,7 +120,7 @@
 
     .service-card {
       border: 1px solid rgba(40,92,66,.18);
-      background: #fffdf5;
+      background: var(--bg-1);
       box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
       padding: 28px;
       min-height: 225px;
@@ -130,7 +137,7 @@
       height: 105px;
       display: grid;
       place-items: center;
-      background: #dce6d7;
+      background: var(--bg-2);
       color: #193f2d;
       border-radius: 7px;
       font-size: 47px;
@@ -143,7 +150,7 @@
     .method {
       border-top: 1px solid rgba(40,92,66,.22);
       border-bottom: 1px solid rgba(40,92,66,.22);
-      background: #faf7ed;
+      background: var(--bg-1);
     }
 
     .method-grid {
@@ -167,7 +174,7 @@
       border: 1px solid rgba(40,92,66,.18);
       padding: 28px;
       min-height: 190px;
-      background: #fffdf5;
+      background: var(--bg-1);
       box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
       transition: box-shadow .2s ease;
     }
@@ -183,7 +190,7 @@
       padding: 95px 24px 105px;
       text-align: center;
       border: 1px solid rgba(40,92,66,.18);
-      background: #fffdf5;
+      background: var(--bg-1);
       box-shadow: 0 8px 28px rgba(36,67,49,.055), 0 1px 3px rgba(36,67,49,.045);
     }
 

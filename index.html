@@ -7,7 +7,11 @@
   <title>Jardin de demain — Accueil</title>
   <style>
     :root {
+      --hue: 76;
       --accent: #d6f900;
+      --bg-0: oklch(16% 0.01 var(--hue));
+      --bg-1: oklch(18% 0.01 var(--hue));
+      --bg-2: oklch(20% 0.01 var(--hue));
       --text-sm: 0.75rem;
       --text-base: 1rem;
       --text-lg: 1.25rem;
@@ -18,7 +22,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: #0b0d10;
+      background: var(--bg-0);
       color: #f5f4ef;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
@@ -49,7 +53,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #d6f900;
+      background: var(--accent);
       position: relative;
       flex-shrink: 0;
     }
@@ -131,7 +135,7 @@
     }
 
     .tool-card {
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
       border-radius: 8px;
       padding: 32px;
@@ -193,7 +197,7 @@
     }
 
     .tool-tag {
-      background: #15191f;
+      background: var(--bg-2);
       padding: 4px 10px;
       border-radius: 12px;
       font-size: var(--text-sm);
@@ -210,9 +214,9 @@
     }
 
     .info-banner {
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
-      border-left: 4px solid #d6f900;
+      border-left: 4px solid var(--accent);
       padding: 32px;
       border-radius: 8px;
       max-width: 800px;

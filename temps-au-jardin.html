@@ -6,12 +6,19 @@
   <meta name="description" content="Notice et calculateur : combien de temps prévoir pour installer et entretenir un jardin selon sa surface." />
   <title>Temps au jardin — Jardin de demain</title>
   <style>
+    :root {
+      --hue: 76;
+      --accent: #d6f900;
+      --bg-0: oklch(16% 0.01 var(--hue));
+      --bg-1: oklch(18% 0.01 var(--hue));
+      --bg-2: oklch(20% 0.01 var(--hue));
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: #0b0d10;
+      background: var(--bg-0);
       color: #f5f4ef;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
@@ -44,7 +51,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: #d6f900;
+      background: var(--accent);
       position: relative;
     }
 
@@ -96,7 +103,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: #d6f900;
+      background: var(--accent);
       color: #263000;
       padding: 16px 25px;
       border-radius: 6px;
@@ -177,7 +184,7 @@
 
     .calc-form, .calc-results {
       border: 1px solid #30343a;
-      background: #111419;
+      background: var(--bg-1);
       padding: 28px;
     }
 
@@ -195,7 +202,7 @@
       flex: 0 0 118px;
       border: 1px solid #30343a;
       border-radius: 6px;
-      background: #15191f;
+      background: var(--bg-2);
     }
 
     .input-unit:focus-within { border-color: #d6f900; }
@@ -262,7 +269,7 @@
       padding: 18px 20px;
       border: 1px solid #30343a;
       border-left: 3px solid #d6f900;
-      background: #15191f;
+      background: var(--bg-2);
       font-size: 14px;
     }
     .verdict.warn { border-left-color: #ffb347; }

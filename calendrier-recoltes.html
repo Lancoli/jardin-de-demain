@@ -6,12 +6,19 @@
   <meta name="description" content="Calendrier des récoltes : quels légumes et fruits récolter chaque mois de l'année." />
   <title>Calendrier des récoltes — Jardin de demain</title>
   <style>
+    :root {
+      --hue: 76;
+      --accent: #d6f900;
+      --bg-0: oklch(16% 0.01 var(--hue));
+      --bg-1: oklch(18% 0.01 var(--hue));
+      --bg-2: oklch(20% 0.01 var(--hue));
+    }
 
-* { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: #0b0d10;
+      background: var(--bg-0);
       color: #f5f4ef;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
@@ -44,7 +51,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: #d6f900;
+      background: var(--accent);
       position: relative;
     }
 
@@ -173,7 +180,7 @@
     }
 
     .harvest-item {
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
       padding: 8px 14px;
       border-radius: 20px;
@@ -185,7 +192,7 @@
     }
 
     .harvest-item:hover {
-      background: #15191f;
+      background: var(--bg-2);
     }
 
     .month-card.season-printemps .harvest-item:hover { border-color: rgba(214, 249, 0, .9); }
@@ -218,7 +225,7 @@
       max-width: 760px;
       margin: 0 auto 60px;
       padding: 32px;
-      background: #111419;
+      background: var(--bg-1);
       border: 1px solid #30343a;
       border-radius: 8px;
     }
