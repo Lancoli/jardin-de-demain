@@ -14,7 +14,7 @@ and approachable, with an earthy dark background and a bright lime accent color.
 **Key characteristics:**
 - Background: dark (`#0b0d10`), calm
 - Accent: lime green (`#d6f900`), vibrant, used for the brand mark and category highlights
-- Typography: serif headings (Georgia), sans-serif body (Arial/Helvetica)
+- Typography: system font stack for all text (Inter var fallback to -apple-system/BlinkMacSystemFont/Segoe UI Variable)
 - Cards: rounded corners (`border-radius: 8px`), colored left borders for category types
 - Hover: shadow and border color changes (no movement)
 
@@ -136,9 +136,9 @@ by it. Same URL ⇒ same screen. Tests and audits navigate by URL only.
 **Brand color:** `#d6f900` (lime green) — used for the brand mark, eyebrows, and category highlights.
 
 **Typography:**
-- Headings: Georgia, "Times New Roman", serif — classic, calm, readable
-- Body: Arial, Helvetica, sans-serif — simple, clean
+- All text: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable", system-ui, sans-serif
 - Scale: responsive via `clamp()` for headings; fixed sizes for body text
+- Follows THEME.md T2 (no AI assistant serif look)
 
 **Shapes:**
 - Cards: rounded corners (`8px`)
