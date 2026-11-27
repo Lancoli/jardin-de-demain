@@ -24,7 +24,7 @@
       "texte": "N0 · dépôt git propre (rien en attente de commit)",
       "pour": "git",
       "preuve": "2 fichier(s) non commité(s)",
-      "fait": true,
+      "fait": false,
       "auto": true,
       "fait_le": "2026-11-26T20:05:34.143Z"
     },
@@ -32,10 +32,10 @@
       "id": "auto-github",
       "texte": "N0 · sur GitHub, à jour (origin, 0 commit non poussé)",
       "pour": "github",
-      "preuve": "branche main jamais poussée",
+      "preuve": "1 commit(s) non poussé(s)",
       "fait": true,
       "auto": true,
-      "fait_le": "2026-11-27T00:44:15.021Z"
+      "fait_le": "2026-11-27T04:17:17.647Z"
     },
     {
       "id": "auto-readme",
@@ -51,31 +51,32 @@
       "texte": "N1 · licence déclarée (fichier LICENSE)",
       "pour": "licence",
       "preuve": "LICENSE absent",
-      "fait": false,
-      "auto": true
+      "fait": true,
+      "auto": true,
+      "fait_le": "2026-11-27T03:37:46.433Z"
     },
     {
       "id": "auto-changelog",
       "texte": "N1 · journal des versions (CHANGELOG.md)",
       "pour": "changelog",
       "preuve": "CHANGELOG.md absent",
-      "fait": false,
-      "auto": true
+      "fait": true,
+      "auto": true,
+      "fait_le": "2026-11-27T03:37:46.433Z"
     }
   ],
   "etat": {
-    "date": "2026-11-27T00:44:15.021Z",
-    "niveau": "N0",
-    "prochain": "N1",
+    "date": "2026-11-27T04:17:17.647Z",
+    "niveau": null,
+    "prochain": "N0",
     "bloque": [
-      "licence",
-      "changelog"
+      "git"
     ],
     "humain": {},
     "criteres": {
       "git": {
-        "ok": true,
-        "preuve": "propre",
+        "ok": false,
+        "preuve": "2 fichier(s) non commité(s)",
         "niveau": "N0",
         "texte": "dépôt git propre (rien en attente de commit)",
         "type": "auto"
@@ -110,14 +111,14 @@
       },
       "console": {
         "ok": true,
-        "preuve": "11 page(s) sans erreur (dernier passage)",
+        "preuve": "11 page(s) sans erreur",
         "niveau": "N1",
         "texte": "chaque page s'ouvre sans erreur JS ni ressource en erreur",
         "type": "auto"
       },
       "mobile": {
         "ok": true,
-        "preuve": "11 page(s) à 375 px (dernier passage)",
+        "preuve": "11 page(s) à 375 px",
         "niveau": "N1",
         "texte": "aucune page plus large que 375 px",
         "type": "auto"
@@ -130,15 +131,15 @@
         "type": "auto"
       },
       "licence": {
-        "ok": false,
-        "preuve": "LICENSE absent",
+        "ok": true,
+        "preuve": "LICENSE",
         "niveau": "N1",
         "texte": "licence déclarée (fichier LICENSE)",
         "type": "auto"
       },
       "changelog": {
-        "ok": false,
-        "preuve": "CHANGELOG.md absent",
+        "ok": true,
+        "preuve": "CHANGELOG.md",
         "niveau": "N1",
         "texte": "journal des versions (CHANGELOG.md)",
         "type": "auto"
