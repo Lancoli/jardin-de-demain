@@ -23,7 +23,7 @@
       "id": "auto-git",
       "texte": "N0 · dépôt git propre (rien en attente de commit)",
       "pour": "git",
-      "preuve": "2 fichier(s) non commité(s)",
+      "preuve": "4 fichier(s) non commité(s)",
       "fait": false,
       "auto": true,
       "fait_le": "2026-11-26T20:05:34.143Z"
@@ -32,10 +32,10 @@
       "id": "auto-github",
       "texte": "N0 · sur GitHub, à jour (origin, 0 commit non poussé)",
       "pour": "github",
-      "preuve": "1 commit(s) non poussé(s)",
+      "preuve": "2 commit(s) non poussé(s)",
       "fait": true,
       "auto": true,
-      "fait_le": "2026-11-27T04:17:17.647Z"
+      "fait_le": "2026-11-27T08:47:03.365Z"
     },
     {
       "id": "auto-readme",
@@ -66,7 +66,7 @@
     }
   ],
   "etat": {
-    "date": "2026-11-27T04:17:17.647Z",
+    "date": "2026-11-27T12:10:43.813Z",
     "niveau": null,
     "prochain": "N0",
     "bloque": [
@@ -76,7 +76,7 @@
     "criteres": {
       "git": {
         "ok": false,
-        "preuve": "2 fichier(s) non commité(s)",
+        "preuve": "4 fichier(s) non commité(s)",
         "niveau": "N0",
         "texte": "dépôt git propre (rien en attente de commit)",
         "type": "auto"
@@ -202,7 +202,7 @@
       },
       "e2e": {
         "ok": null,
-        "preuve": "scénario à écrire (champ « test » de jalons.json)",
+        "preuve": "scenario to write (\"test\" field in milestones.json)",
         "niveau": "N3",
         "texte": "le parcours critique passe de bout en bout",
         "type": "auto"
