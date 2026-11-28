@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: /JardinDeDemain/sitemap.xml
